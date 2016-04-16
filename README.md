@@ -1,4 +1,4 @@
-# README #
+# README (en serio leeme, no seas pavote) #
 
 Repositorio dedicado al proyecto de Laboratorio de Microprocesadores.
 
