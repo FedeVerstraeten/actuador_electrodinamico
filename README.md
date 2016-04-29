@@ -12,6 +12,9 @@ https://www.overleaf.com/4727217zqyjxb
 
 ## Links e Info de Interés ##
 
+* Proyecto Espectrofotocolorímetro (para ver cómo manejan el display)
+https://github.com/cristiandouce/ProyectoEFC
+
 * Compilar código C y Assembly con la consola
 http://goo.gl/7QhFGv
 
