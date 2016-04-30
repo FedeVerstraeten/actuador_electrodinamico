@@ -14,28 +14,29 @@
 ;		 federico.verstraeten@gmail.com 
 ;                
 ;------------------------------------------------------------------
-;  menu.inc:
-;	Rutinas para trabajar con el MENU
+;	MENU
+;------------------------------------------------------------------
+;	Rutinas utilizadas para el funcionamiento del menu.
 ;------------------------------------------------------------------
 
 MENU_init:
-		;*inicializo Flags
-		ldi 	Yh,0x00
-		ldi 	Yl,0x01
-		ldi tmp,1
-		;seteo posición inicial del menu
-		ldi		Xh,high(Lectura<<1)
-		ldi		Xl,low(Lectura<<1)
-		;seteo los switches como entrada con pull up on
-		cbi		DDRC,switchUP
-		cbi		DDRC,switchDW
-		cbi		DDRC,switchRT
-		sbi		PORTC,switchUP
-		sbi		PORTC,switchDW
-		sbi		PORTC,switchRT
-		;seteo pin lampara como salida en 0
-		sbi		DDRC,lamp
-		cbi		PORTC,lamp
-		;cargo mi registro ZERO
-		clr		zero
-		ret
+;		;*inicializo Flags
+;		ldi 	Yh,0x00
+;		ldi 	Yl,0x01
+;		ldi tmp,1
+;		;seteo posición inicial del menu
+;		ldi		Xh,high(Lectura<<1)
+;		ldi		Xl,low(Lectura<<1)
+;		;seteo los switches como entrada con pull up on
+;		cbi		DDRC,switchUP
+;		cbi		DDRC,switchDW
+;		cbi		DDRC,switchRT
+;		sbi		PORTC,switchUP
+;		sbi		PORTC,switchDW
+;		sbi		PORTC,switchRT
+;		;seteo pin lampara como salida en 0
+;		sbi		DDRC,lamp
+;		cbi		PORTC,lamp
+;		;cargo mi registro ZERO
+;		clr		zero
+;		ret

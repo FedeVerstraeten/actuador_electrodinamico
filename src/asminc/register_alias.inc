@@ -14,14 +14,14 @@
 ;		 federico.verstraeten@gmail.com 
 ;                
 ;------------------------------------------------------------------
-;  README:
-;	Referencia de nombres a directorios y archivos en los
-; 	códigos fuentes (SRC) del repositorio.
+;	REGISTER_ALIAS
+;------------------------------------------------------------------
+;
+;	Definición de alias (.DEF) de cada uno de los registros
+;	utilizados en la implementación.
+;
 ;------------------------------------------------------------------
 
-* Directorios
-
-	- asminc : Archivos include de assembly
-
-* Archivos:
+	.def	test1	=	r0		; Definicion de prueba 0
+	.def    test2  	=   r1		; Definicion de prueba 1
 	
