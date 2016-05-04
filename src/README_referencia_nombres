@@ -14,15 +14,15 @@
 ;		 federico.verstraeten@gmail.com 
 ;                
 ;------------------------------------------------------------------
-;	REGISTER_ALIAS
-;------------------------------------------------------------------
-;
-;	Definición de alias (.DEF) de cada uno de los registros
-;	utilizados en la implementación.
-;
+;  ref_nombres:
+;	Referencia de nombres a directorios y archivos en los
+; 	códigos fuentes (SRC) del repositorio.
 ;------------------------------------------------------------------
 
-	.def	test1	=	r0		; Definicion de prueba 0
-	.def	test2	=	r1		; Definicion de prueba 1
-	.def	tmp		=	r16		; Registro para uso general
-	.def	arg		=	r17		; Registro pasaje de Argumentos
+* Directorios
+
+	- asminc : Incluye archivos include de assembly.
+
+* Archivos:
+	- main : Archivo de ejecucion principal del programa.
+	
