@@ -21,11 +21,18 @@ https://github.com/cristiandouce/ProyectoEFC
 * Compilar código C y Assembly con la consola
 http://goo.gl/7QhFGv
 
-* Comandos útiles de Fede para compilar código Assembler
-
+* Comandos para compilar código en Assembler
 ```
 #!bash
-avr-gcc -mmcu=atmega88 <nombre.c> -o <nombre.elf>
+avra <nombre.s> -o <nombre.hex>
+avrdude -c usbtiny -p m328p -U flash:w:<nombre.hex>
+```
+Nota: es necesario instalar el programa *avra* e incluir las definiciones para el microcontrolador atmega328p usando la directiva *include* ya que *avra* no tiene la opción *mmcu* como si la tiene *avr-gcc*.
+
+* Comandos para compilar código en C
+```
+#!bash
+avr-gcc -mmcu=atmega328p <nombre.c> -o <nombre.elf>
 avr-objcopy -j .text -j .data -O ihex <nombre.elf> <nombre.hex>
-avrdude -c usbtiny -p m88 -U flash:w:<nombre.hex>
+avrdude -c usbtiny -p m328p -U flash:w:<nombre.hex>
 ```
