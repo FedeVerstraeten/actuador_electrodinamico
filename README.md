@@ -7,8 +7,11 @@ Repositorio dedicado al proyecto de Laboratorio de Microprocesadores.
 * Google Drive
 https://drive.google.com/folderview?id=0B8r41_q91dvmSWJHaV9veFA4RlU&usp=sharing
 
-* Overleaf
+* Overleaf Informe
 https://www.overleaf.com/4727217zqyjxb
+
+* Overleaf Poster
+https://www.overleaf.com/5136789npntdk
 
 * Repositorio Includes ATMEL
 https://github.com/DarkSector/AVR/tree/master/asm/include
