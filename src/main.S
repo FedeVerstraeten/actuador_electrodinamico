@@ -19,7 +19,7 @@
 ;	Programa principal
 ;------------------------------------------------------------------
 
-	.include "asminc/m32def.inc"
+	.include "asminc/m32def.inc" ; Revisar sea acorde al uM elegido
 	.include "asminc/menudef.inc"
 	.include "asminc/register_alias.inc"
 	.include "asminc/macros.inc"	
