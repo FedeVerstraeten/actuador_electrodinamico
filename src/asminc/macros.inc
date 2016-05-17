@@ -14,15 +14,11 @@
 ;		 federico.verstraeten@gmail.com 
 ;                
 ;******************************************************************
-;	REGISTER_ALIAS
-;******************************************************************
-;
-;	Definición de alias (.DEF) de cada uno de los registros
-;	utilizados en la implementación.
-;
+;	MACROS
 ;******************************************************************
 
-	.def	test1	=	r0		; Definicion de prueba 0
-	.def	test2	=	r1		; Definicion de prueba 1
-	.def	tmp		=	r16		; Registro para uso general
-	.def	arg		=	r17		; Registro pasaje de Argumentos
+	.MACRO	LoadWord
+		lpm		wrdh,Z+
+		lpm		wrdl,Z+
+		movw	Zh:Zl,wrdh:wrdl
+	.ENDMACRO
