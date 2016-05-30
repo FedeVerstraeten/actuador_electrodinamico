@@ -20,17 +20,18 @@
 ; Información almacenada en Program Memory (ROM).
 ;
 ; Definición de de elementos del menú:
-;	- Mensajes a imprimirse en el menú
+;	- Mensajes del menú a imprimirse en el Display
 ;	- Listado de instrucciones según funcionalidad (handler)
 ;	- Variables y constantes.
 ;
-; Por cada opción existente del menú existe una sentencia con el 
-; siguiente formato:
+; Se define una "Tabla de Opciones (OPTIONS TABLE)".
+; Por cada opción del menú, existe una sentencia con el siguiente 
+; formato:
 ;	
-; OPTION:	prev(2),
-;			next(2),
-;			return(2),
-;			firsthandler,secondhandler,
+; OPTION:	previous(1),previous(2)
+;			next(1),next(2)
+;			enter(2),enter(2),
+;			firstLineHandler,secondLineHandler,
 ;			firstline,secondline
 ;
 ; Por cada componente de OPTION se cargan las partes High y Low de
@@ -39,32 +40,40 @@
 
 
 ;*****************************************************************
-;	Constantes
+;	CONSTANTES
 ;*****************************************************************
 	
 
 ; Botones controladores
-	.equ	switchUP	= 	2
-	.equ	switchDW	= 	3
-	.equ	switchRT	= 	4
+	.equ	SWITCHUP	= 	2
+	.equ	SWITCHDW	= 	3
+	.equ	SWITCHEN	= 	4
 	
-;-Cadenas de caracteres
-	.equ	ENDSTR		=	0		; Fin del String
-	.equ	PREV		=	0
-	.equ	NEXT		=	2
-	.equ	fwd			=	4
-	.equ 	FIRSTHANDLER	=	6
-	.equ 	SECONDHANDLER	=	8
-	.equ 	fstline = 10
-	.equ 	scdline = 12
+	
+; Cadenas de caracteres
+	.equ	ENDSTR	=	0		; Fin del String
+	.equ	PREV	=	0
+	.equ	NEXT	=	2
+	.equ	ENTER	=	4
+	.equ 	FIRSTLINEHANDLER	=	6
+	.equ 	SECONCDLINEHANDLER	=	8
+	.equ 	FIRSTLINEDISPLAY	=	10
+	.equ 	SECONDLINEDISPLAY	=	12
 
 ;*****************************************************************
-;	Definicion OPTION. Secuencia de cadenas de caracteres en ROM
+;	OPTIONS TABLE:
+;	Definicion OPTION. Secuencia de cadenas de caracteres en ROM.
 ;*****************************************************************
    
 .cseg
 	.org 0x0600   
 	
-	Lectura:	.db		high(checkButtons),low(checkButtons),high(lCalibra),low(lCalibra),high(ComunicateL),low(ComunicateL),high(flstd),low(flstd),high(slstd),low(slstd),high(strLectura<<1),low(strLectura<<1),high(sCalibra<<1),low(sCalibra<<1)
-		strLectura:	.db 	"Lectura",ENDSTR
+	Matlab:	.db		high(check_keys),low(check_keys),high(lSeno),low(lSeno),high(genSeno),low(genSeno),high(flstd),low(flstd),high(slstd),low(slstd),high(strMatlab<<1),low(strMatlab<<1),high(strSeno<<1),low(strSeno<<1)
+	
+	
+
+; Cadenas de caractateres en Display
+	 
+	strMatlab:	.db 	"Matlab",ENDSTR
+	strSeno:	.db 	"Seno",ENDSTR
 	

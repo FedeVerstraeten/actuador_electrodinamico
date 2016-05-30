@@ -24,5 +24,8 @@
 
 	.def	test1	=	r0		; Definicion de prueba 0
 	.def	test2	=	r1		; Definicion de prueba 1
+	.def	wrdl	=	r10		; Almacena parte baja de WORD cargado en ROM
+	.def	wrdh 	=	r11		; Almacena parte alta de WORD cargado en ROM
 	.def	tmp		=	r16		; Registro para uso general
 	.def	arg		=	r17		; Registro pasaje de Argumentos
+
