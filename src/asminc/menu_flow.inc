@@ -62,8 +62,8 @@ checkButtons:
 
 ;******************************************************************
 ; jumper: Rutina salto indirecto. 
-; Se carga el contenido de lo apuntado en ROM por Z en registro, en
-; el mismo registro Z. Luego se aplica el salto indirecto por ijmp.
+; Se carga el contenido de lo apuntado en ROM por Z, en el mismo 
+; registro Z. Luego se aplica el salto indirecto por ijmp.
 ;
 ; Z <- (Z)
 ; PC <- Z(15:0)

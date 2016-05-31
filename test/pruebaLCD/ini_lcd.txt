@@ -1,0 +1,160 @@
+				.EQU RS=0
+				.EQU RW=1
+				.EQU EN=2 ;Control del LCD
+
+
+
+INI_LCD:		        SBI DDRD,0 ;RS
+				SBI DDRD,1 ;RW
+				SBI DDRD,2 ;E    Hago salida los pines 0,1,2 del puerto D, que son los de control
+
+				CALL DELAY_2ms ;Espero a que se prenda el LCD
+
+				SBI DDRD,0 ;RS
+				SBI DDRD,1 ;RW
+				SBI DDRD,2 ;E    Hago salida los pines 0,1,2 del puerto D, que son los de control
+
+				SBI DDRB,1
+				SBI DDRB,2
+				SBI DDRB,3
+				SBI DDRB,4 ; PB1 a PB4 los hago salida
+
+				SBI DDRC,1
+				SBI DDRC,2
+				SBI DDRC,3
+				SBI DDRC,4 ; PC1 a PC4 los hago salida
+
+
+				LDI R16,0X30 ;Esto se supone que debe mandarse a control
+				CALL MANDAR_COM
+	
+				CALL DELAY_2ms ;Espero a que se prenda el LCD
+				CALL DELAY_2ms ;Espero a que se prenda el LCD
+				CALL DELAY_2ms ;Espero a que se prenda el LCD
+				CALL DELAY_2ms ;Espero a que se prenda el LCD
+				CALL DELAY_2ms ;Espero a que se prenda el LCD
+
+				LDI R16,0X38 ;Inicio al LCD en 2 lineas, matriz de 5x7
+				CALL MANDAR_COM
+
+				CALL DELAY_2ms
+
+				LDI R16,0X0E ;Prendo el Display, Prendo el cursor
+				CALL MANDAR_COM
+
+				CALL DELAY_2ms
+
+				LDI R16,0X01 ;Borro la pantalla
+				CALL MANDAR_COM
+
+				CALL DELAY_2ms
+
+				LDI R16,0X06 ;Corro el cursor hacia la derecha
+				CALL MANDAR_COM
+
+				CALL DELAY_2ms
+
+				RET
+
+;-----------------------------------------------------------------------------------------;
+;RUTINAS PARA ENVIAR DATOS O COMANDOS AL LCD
+;-----------------------------------------------------------------------------------------;
+MANDAR_COM:			CBI PORTD,RS ;RS=0 para mandar comandos
+				CBI PORTD,RW ;RW=0 para escribir en el LCD
+
+				SBI PORTD,EN ;E=1
+				CALL ENVIAR
+				CALL SDELAY 
+				CBI PORTD,EN ;E=0 ;Es el pulso High-to-Low
+
+				CALL DELAY_2ms
+			
+				RET
+
+MANDAR_DAT: 			SBI PORTD,RS ;RS=1 para mandar datos
+				CBI PORTD,RW ;RW=0 para escribir en el LCD
+			
+				SBI PORTD,EN ;E=1
+				CALL ENVIAR			
+				CBI PORTD,EN ;E=0  ;Es el pulso High-to-Low
+
+				CALL DELAY_2ms
+				CALL DELAY_2ms
+
+;Ahora en las siguientes lineas se envia una palabra al LCD de prueba
+
+				LDI R16,'H'
+				CALL MANDAR_DAT
+				CALL DELAY_2ms
+
+				LDI R16,'o'
+				CALL MANDAR_DAT
+				CALL DELAY_2ms
+
+				LDI R16,'l'
+				CALL MANDAR_DAT
+				CALL DELAY_2ms
+
+				LDI R16,'a'
+				CALL MANDAR_DAT
+				CALL DELAY_2ms
+
+
+				RET
+;-----------------------------------------------------------------------------------------;
+;Sub Rutinas que utilizan las rutinas MANDAR_COM y MANDAR_DAT
+;-----------------------------------------------------------------------------------------;
+
+SDELAY:				NOP
+				NOP
+				RET
+
+DELAY_100us:			PUSH R17
+				LDI R17,60
+DR0:				CALL SDELAY
+				DEC R17
+				BRNE DR0
+				POP R17
+				RET
+
+DELAY_2ms:  			PUSH R17
+				LDI R17,20
+LDR0:				CALL DELAY_100us
+				DEC R17
+				BRNE LDR0
+				POP R17
+				RET
+
+ENVIAR:				SBI PORTC,1
+				SBRS R16,0
+				CBI PORTC,1
+
+				SBI PORTC,2
+				SBRS R16,1
+				CBI PORTC,2
+
+				SBI PORTC,3
+				SBRS R16,2
+				CBI PORTC,3
+
+				SBI PORTC,4
+				SBRS R16,3
+				CBI PORTC,4
+
+				SBI PORTB,1
+				SBRS R16,4
+				CBI PORTB,1
+
+				SBI PORTB,2
+				SBRS R16,5
+				CBI PORTB,2
+
+				SBI PORTB,3
+				SBRS R16,6
+				CBI PORTB,3
+
+				SBI PORTB,4
+				SBRS R16,7
+				CBI PORTB,4
+
+				RET

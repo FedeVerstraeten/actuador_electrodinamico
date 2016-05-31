@@ -1,0 +1,13 @@
+Atmega 328P: 28 pines
+
+2 GND
+1 VCC
+8 DAC
+7 Display
+3 Pulsadores
+1 Fotodiodo
+2 Matlab (Rx+Tx)
+
+Subtotal: 24 pines
+Falta alguno?
+

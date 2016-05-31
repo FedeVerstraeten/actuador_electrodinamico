@@ -1,0 +1,38 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.57</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include\m328Pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\Debug/PruebaLCDpro.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>PruebaLCDpro.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>PruebaLCDpro.map</FILE>
+  <FILE>PruebaLCDpro.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <DELAY_2ms><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>120</LINE></DELAY_2ms>
+  <CMNDWRT><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>82</LINE></CMNDWRT>
+  <MSG><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>79</LINE></MSG>
+  <LOOP><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>56</LINE></LOOP>
+  <CONTINUO><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>62</LINE></CONTINUO>
+  <DATAWRT><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>92</LINE></DATAWRT>
+  <MSG2><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>80</LINE></MSG2>
+  <LOOP2><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>69</LINE></LOOP2>
+  <HERE><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>77</LINE></HERE>
+  <SDELAY><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>103</LINE></SDELAY>
+  <DELAY_100us><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>109</LINE></DELAY_100us>
+  <DR0><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>112</LINE></DR0>
+  <LDRO><FILE>D:\Universidad\Laboratorio de Microprocesadores\pruebaLCD\PruebaLCDpro\PruebaLCDpro\PruebaLCDpro.asm</FILE><LINE>123</LINE></LDRO>
+ </LABELS>
+</ASSEMBLER_INFO>
