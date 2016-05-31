@@ -19,10 +19,20 @@
 ;	Programa principal
 ;******************************************************************
 
-	.include "asminc/m32def.inc" ; Revisar sea acorde al uM elegido
-	.include "asminc/menudef.inc"
+
+;******************************************************************
+;	Includes
+;******************************************************************
+
+	.include "asminc/m328Pdef.inc" ; Revisar sea acorde al uM elegido
+	.include "asminc/menu_def.inc"
 	.include "asminc/register_alias.inc"
 	.include "asminc/macros.inc"	
+
+;******************************************************************
+;	Memorias definiciones.
+;******************************************************************
+
 
 	; Segmento EEPROM
 	.eseg
@@ -46,13 +56,13 @@
 			out		SPL, tmp
 			ldi		tmp, high(RAMEND)
 			out		SPH, tmp
-			rjmp 	MAIN
+			;rjmp 	MAIN
 
 
 ;*****************************************************************
 ; MAIN. Rutina principal del micro controlador.
 ;*****************************************************************
-MAIN:
+	MAIN:
 
 ;		;seteo el prescaler para que divida por 4 la frec del cristal
 ;		ldi tmp,0x80
@@ -61,27 +71,30 @@ MAIN:
 ;		sts $0061,tmp
 
 
-;		;* Habilito el LCD
+;		;Habilitar LCD
 ;		rcall	LCD_init
 
-;		;* Inicio el SPI como Master
+;		;Iniciar el SPI como Master
 ;		rcall 	SPI_Minit
 
-;		;* Inicio el USART 
+;		;Iniciar USART 
 ;		rcall 	Usart_Init
 		
-;		;* Ordeno el inicio del Menu
-;		rcall	MENU_init
+;		;Config. inicial del Menu
+		rcall	MENU_init
 
-;		;* Meto todo el codigo de jmps del menu.
-;	.include "asminc/menu_flow.inc"
+		;Llamada display
+		rcall showScreen	
+		
+;		;Codigo de jmps del menu.
+	.include "asminc/menu_flow.inc"
 
 ;	.include "asminc/common.inc"
 ;	.include "asminc/ascii.inc"
 ;	.include "asminc/spi_master.inc"
 ;	.include "asminc/usart_master.inc"
 ;	.include "asminc/lcd_driver.inc"
-;	.include "asminc/menu.inc"
+	.include "asminc/menu.inc"
 
 	EndProgram:
 			rjmp EndProgram	
