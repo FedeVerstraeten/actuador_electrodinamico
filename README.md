@@ -39,9 +39,16 @@ avr-gcc -mmcu=atmega328p <nombre.c> -o <nombre.elf>
 avr-objcopy -j .text -j .data -O ihex <nombre.elf> <nombre.hex>
 avrdude -c usbtiny -p m328p -U flash:w:<nombre.hex>
 ```
-* Utilización de 28 pines integrado Atmega328P
+# Utilización de 28 pines integrado Atmega328P
 
 Elemento      | Cant. pines
 ------------- | -------------
-VCC  | Content Cell
-Content Cell  | Content Cell
+VCC           | 1
+GND           | 2
+Parlante (DAC)| 8
+Display       | 7(11)
+Pulsadores    | 3
+Matlab (Tx+Rx)| 2
+Fotodiodo(ADC)| 1 ?
+Total         | 24 utilizados
+     
