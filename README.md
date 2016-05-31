@@ -51,7 +51,4 @@ Pulsadores    | 3
 Matlab (Tx+Rx)| 2
 Fotodiodo(ADC)| 1 ?
 Corte señal - Int.Externa | 1
-Total         | 24 utilizados
-
-# Hola
-bla bla
+Total         | 25 utilizados
