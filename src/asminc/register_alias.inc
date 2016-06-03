@@ -1,5 +1,5 @@
 ;******************************************************************
-; Materia......: Laboratorio de Microcomputadoras.
+; Materia......: Laboratorio de Microprocesadores.
 ; Curso........: Campigglio - Stola
 ; Fecha inicio.: 14/03/2016
 ; Fecha entrega: 20/06/2016
@@ -26,6 +26,6 @@
 	.def	test2	=	r1		; Definicion de prueba 1
 	.def	wrdl	=	r10		; Almacena parte baja de WORD cargado en ROM
 	.def	wrdh 	=	r11		; Almacena parte alta de WORD cargado en ROM
-	.def	tmp		=	r16		; Registro para uso general
-	.def	arg		=	r17		; Registro pasaje de Argumentos
+	.def	tmp	=	r16		; Registro para uso general
+	.def	arg	=	r17		; Registro pasaje de Argumentos
 

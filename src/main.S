@@ -1,5 +1,5 @@
 ;******************************************************************
-; Materia......: Laboratorio de Microcomputadoras.
+; Materia......: Laboratorio de Microprocesadores.
 ; Curso........: Campigglio - Stola
 ; Fecha inicio.: 14/03/2016
 ; Fecha entrega: 20/06/2016
@@ -50,10 +50,10 @@
 ; Inicialización del Micro luego del RESET. Iniciar Stack-Pointer
 ;*****************************************************************
 	RESET:
-			ldi		tmp, low(RAMEND)
-			out		SPL, tmp
-			ldi		tmp, high(RAMEND)
-			out		SPH, tmp
+			ldi	tmp, low(RAMEND)
+			out	SPL, tmp
+			ldi	tmp, high(RAMEND)
+			out	SPH, tmp
 			;rjmp 	MAIN
 
 
@@ -95,5 +95,5 @@
 	.include "asminc/menu.inc"
 
 	EndProgram:
-			rjmp EndProgram
+		rjmp EndProgram
 

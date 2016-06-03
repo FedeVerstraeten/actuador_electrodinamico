@@ -1,5 +1,5 @@
 ;******************************************************************
-; Materia......: Laboratorio de Microcomputadoras.
+; Materia......: Laboratorio de Microprocesadores.
 ; Curso........: Campigglio - Stola
 ; Fecha inicio.: 14/03/2016
 ; Fecha entrega: 20/06/2016
@@ -49,7 +49,7 @@ checkButtons:
 
 		;Lectura puerto C
 		;Botón presionado el bit estará en cero
-		in		tmp,PINC
+		in	tmp,PINC
 		sbrs	tmp,SWITCHUP
 		rjmp	pressUP
 		sbrs	tmp,SWITCHDW
@@ -111,7 +111,7 @@ pressEnter:
 ;******************************************************************
 
 fstLineStrDisplay:
-		ldi		arg,'>'
+		ldi	arg,'>'
 		rcall 	lcd_putc
 		movw	Zh:Zl,Xh:Xl
 		MoveZTo (FIRSTLINEDISPLAY)
@@ -121,7 +121,7 @@ fstLineStrDisplay:
 
 sndLineStrDisplay:
 		Secondline
-		ldi		arg,' '
+		ldi	arg,' '
 		rcall 	lcd_putc
 		movw	Zh:Zl,Xh:Xl
 		MoveZTo (SECONDLINEDISPLAY)
@@ -130,7 +130,7 @@ sndLineStrDisplay:
 		ret
 
 endLineStrDisplay1:
-		ldi		arg,' '
+		ldi	arg,' '
 		rcall 	lcd_putc
 		movw	Zh:Zl,Xh:Xl
 		MoveZTo (FIRSTLINEDISPLAY)
@@ -139,7 +139,7 @@ endLineStrDisplay1:
 
 endLineStrDisplay2:
 		Secondline
-		ldi		arg,'>'
+		ldi	arg,'>'
 		rcall 	lcd_putc
 		movw	Zh:Zl,Xh:Xl
 		MoveZTo (SECONDLINEDISPLAY)
@@ -157,28 +157,28 @@ endLineStrDisplay2:
 ;******************************************************************
 
 optMatlab:
-		ldi		Xh,high(Matlab<<1)
-		ldi		Xl,low(Matlab<<1)
+		ldi	Xh,high(Matlab<<1)
+		ldi	Xl,low(Matlab<<1)
 		rjmp 	showScreen
 
 optSeno:
-		ldi		Xh,high(Seno<<1)
-		ldi		Xl,low(Seno<<1)
+		ldi	Xh,high(Seno<<1)
+		ldi	Xl,low(Seno<<1)
 		rjmp	showScreen
 
 optCuadrada:
-		ldi		Xh,high(Cuadrada<<1)
-		ldi		Xl,low(Cuadrada<<1)
+		ldi	Xh,high(Cuadrada<<1)
+		ldi	Xl,low(Cuadrada<<1)
 		rjmp	showScreen
 
 optSierra:
-		ldi		Xh,high(Sierra<<1)
-		ldi		Xl,low(Sierra<<1)
+		ldi	Xh,high(Sierra<<1)
+		ldi	Xl,low(Sierra<<1)
 		rjmp	showScreen
 
 optIntensidad:
-		ldi		Xh,high(Intensidad<<1)
-		ldi		Xl,low(Intensidad<<1)
+		ldi	Xh,high(Intensidad<<1)
+		ldi	Xl,low(Intensidad<<1)
 		rjmp	showScreen
 
 ;******************************************************************

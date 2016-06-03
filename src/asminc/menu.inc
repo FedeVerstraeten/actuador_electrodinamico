@@ -1,5 +1,5 @@
 ;******************************************************************
-; Materia......: Laboratorio de Microcomputadoras.
+; Materia......: Laboratorio de Microprocesadores.
 ; Curso........: Campigglio - Stola
 ; Fecha inicio.: 14/03/2016
 ; Fecha entrega: 20/06/2016
