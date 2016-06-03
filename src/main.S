@@ -3,16 +3,16 @@
 ; Curso........: Campigglio - Stola
 ; Fecha inicio.: 14/03/2016
 ; Fecha entrega: 20/06/2016
-; Autores......: 
+; Autores......:
 ;		 Ezequiel Martín Zarza
 ;		 Santiago Roman
 ;		 Federico Verstraeten
-;                
-; Contacto.....: 
-;		 ezequielm.zarza@gmail.com 
-;		 santiago_roman@outlook.com	
-;		 federico.verstraeten@gmail.com 
-;                
+;
+; Contacto.....:
+;		 ezequielm.zarza@gmail.com
+;		 santiago_roman@outlook.com
+;		 federico.verstraeten@gmail.com
+;
 ;******************************************************************
 ;	MAIN
 ;******************************************************************
@@ -24,29 +24,27 @@
 ;	Includes
 ;******************************************************************
 
-	.include "asminc/m328Pdef.inc" ; Revisar sea acorde al uM elegido
+	.include "asminc/m328Pdef.inc" ; Revisar sea acorde al uC elegido
 	.include "asminc/menu_def.inc"
 	.include "asminc/register_alias.inc"
-	.include "asminc/macros.inc"	
+	.include "asminc/macros.inc"
 
 ;******************************************************************
 ;	Memorias definiciones.
 ;******************************************************************
-
-
 	; Segmento EEPROM
 	.eseg
 	.org 0x0000
-	
+
 	; Segmento Datos en SRAM
 	.dseg
 		var:	.byte	6
-	
+
 	; Segmento Codigo en Flash-ROM
 	.cseg
 	.org 0x0000
 		rjmp 	RESET
-	
+
 
 ;*****************************************************************
 ; Inicialización del Micro luego del RESET. Iniciar Stack-Pointer
@@ -67,7 +65,7 @@
 ;		;seteo el prescaler para que divida por 4 la frec del cristal
 ;		ldi tmp,0x80
 ;		sts $0061,tmp
-;		ldi tmp,0x02 
+;		ldi tmp,0x02
 ;		sts $0061,tmp
 
 
@@ -77,15 +75,15 @@
 ;		;Iniciar el SPI como Master
 ;		rcall 	SPI_Minit
 
-;		;Iniciar USART 
+;		;Iniciar USART
 ;		rcall 	Usart_Init
-		
+
 ;		;Config. inicial del Menu
 		rcall	MENU_init
 
 		;Llamada display
-		rcall showScreen	
-		
+		rcall showScreen
+
 ;		;Codigo de jmps del menu.
 	.include "asminc/menu_flow.inc"
 
@@ -97,5 +95,5 @@
 	.include "asminc/menu.inc"
 
 	EndProgram:
-			rjmp EndProgram	
+			rjmp EndProgram
 
