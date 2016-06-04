@@ -1,0 +1,146 @@
+% This style was created by Philippe Dreuw and Thomas Deselaers
+
+\ProvidesPackage{styles/beamerthemeFEV}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{styles/FEVcolors}
+\selectcolormodel{cmyk}
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamercolor{headline}{fg=fevbinst,bg=white}
+\setbeamercolor{footline}{fg=white,bg=fevbinst}
+\setbeamerfont{footline}{size=\large}
+\setbeamercolor{separation line}{bg=fevbinst}
+\setbeamercolor{title in headline}{fg=fevbinst}
+\setbeamercolor{author in headline}{fg=black}
+\setbeamercolor{institute in headline}{fg=black}
+
+\setbeamercolor{framesubtitle}{fg=white,bg=fevbinst}
+\setbeamercolor{author in head/foot}{fg=white,bg=fevbinst}
+\setbeamercolor{title in head/foot}{fg=white,bg=fevbinst}
+
+\setbeamercolor*{normal text}{fg=fevbinst, bg=white}
+\setbeamercolor*{block body}{bg=white,fg=black}
+\setbeamercolor*{block title}{fg=white,bg=fevbinst}
+\setbeamerfont{block title}{size=\normalsize,series=\bf}
+\setbeamercolor{upper separation line head}{fg=fevbinst}
+
+\setbeamercolor*{example body}{fg=fevbinst,bg=white}
+\setbeamercolor*{example text}{fg=fevbinst,bg=white}
+\setbeamercolor*{example title}{bg=white,fg=fevbinst}
+
+\setbeamercolor{alerted text}{fg=fevbinst}
+
+\setbeamercolor{structure}{fg=fevbinst}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{navigation symbols}{}  % no navigation on a poster
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{block begin}{
+  \vskip.75ex
+  \begin{beamercolorbox}[rounded=true,shadow=false,leftskip=1cm,colsep*=.75ex]{block title}%
+    \usebeamerfont*{block title}\insertblocktitle
+  \end{beamercolorbox}%
+      {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+      \usebeamerfont{block body}
+      \begin{beamercolorbox}[rounded=true,shadow=false,colsep*=.75ex,sep=.75ex,vmode]{block body}%
+        \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+\setbeamertemplate{block end}{
+      \end{beamercolorbox}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \setbeamertemplate{headline}{  
+    \leavevmode
+
+    \begin{beamercolorbox}[wd=\paperwidth]{headline}
+      \begin{columns}[T]
+        \begin{column}{.2\paperwidth}
+          \vspace{0.5cm}
+	  \begin{center}
+	    \includegraphics[height=0.5\linewidth]{img/topfot_logo_2016_1.png}
+	  \end{center}
+	\end{column}
+        %       \begin{column}{.6\paperwidth} %para posters con título en un idioma con largo suficiente como para dos lineas
+        \begin{column}{.6\paperwidth}
+          \vskip3ex
+	  %\raggedleft
+          \begin{center}
+            %\usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE\inserttitle}}\\[1ex]} %original para un solo titulo corto
+            \usebeamercolor{title in headline}{\color{fg}\textbf{\Large{\inserttitle}}\\[1ex]}
+            
+	    \usebeamercolor{author in headline}{\color{fg}\large{\insertauthor}\\[1ex]}
+          \end{center}
+          \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]} 
+          
+        \end{column}
+        \begin{column}{.2\paperwidth}
+	  \begin{column}{.5\linewidth}
+	    \begin{center}
+              \includegraphics[width=0.5\linewidth]{img/logo_UBA_cian.pdf}\\
+	      \vspace{0.5cm}
+              \includegraphics[width=0.7\linewidth]{img/logo_glomae.jpg}
+	    \end{center}
+	  \end{column}
+	  \begin{column}{.5\linewidth}
+            \begin{center}
+              \vspace{0.7cm}
+	      \includegraphics[width=1\linewidth]{img/logo_fiuba.pdf}\\
+              \vspace{1.5cm}
+	      \includegraphics[width=0.7\linewidth]{img/logo_conicet.jpg}
+	    \end{center}
+	  \end{column}
+
+        \end{column}
+
+
+        \begin{column}{.03\paperwidth}
+        \end{column}
+      \end{columns}
+    \end{beamercolorbox}
+
+    \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+      \rule{0pt}{4pt}
+    \end{beamercolorbox}
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+  
+  \leavevmode%
+  \begin{beamercolorbox}[ht=5ex,leftskip=1cm,rightskip=1cm]{author in head/foot}%
+    {\footnotesize Este trabajo fue realizado con el aporte de la Universidad de Buenos Aires (UBACYT 2013--2016 No. 20020120100025BA, UBACYT 2014--2017 No. 20020130100346BA, UBACYT 2016--2017 20020150200143BA)}\\
+    \vskip1ex
+        {http://www.fi.uba.ar/laboratorios/glomae/}
+        \hfill   
+            {glomae@googlegroups.com}
+            \vskip0.5ex
+  \end{beamercolorbox}
+  \vskip0pt%
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Display a grid to help align images
+%\beamertemplategridbackground[1cm]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<all>
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-master: "poster"
+%%% End: 
