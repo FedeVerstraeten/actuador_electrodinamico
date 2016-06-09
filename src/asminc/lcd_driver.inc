@@ -14,6 +14,10 @@
 ;		 federico.verstraeten@gmail.com
 ;
 ;******************************************************************
+;     LCD_DRIVER
+;******************************************************************
+; Rutinas utilizadas para manejar el display LCD.
+;****************************************************************** 
 
 ;*****************************************************************
 ; TODO: CHEQUEAR QUE LOS PUERTOS COINCIDAN A LA HORA DE IMPLEMENTAR
@@ -40,6 +44,7 @@
         .equ    LCD_D_ON_C_OFF  =       0x0C ; Display encendido, sin cursor
         .equ    LCD_4_BIT       =       0x20 ; Modo de 4 bit. (Ver http://www.avrbeginners.net/interfacing/44780_lcd/4bit.html)
         .equ    LCD_2_LINE      =       0x28 ; Usar dos lineas, matriz 5x7, modo de 4 bit
+        .equ    LCD_CURSOR_2LINE =      0xC0 ; Forzar al cursor hacia el inicio de la 2da línea
 
 ;******************************************************************
 ;	LCD_DRIVER

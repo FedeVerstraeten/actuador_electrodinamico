@@ -45,7 +45,16 @@
 ;	CONSTANTES
 ;*****************************************************************
 
-; Botones controladores
+; DDR correspondiente a los botones controladores
+        .equ    MENU_DDR        =       DDRC
+
+; Puerto correspondiente a los botones controladores
+        .equ    MENU_PORT       =       PORTC
+
+; Pin correspondiente a los botones controladores
+        .equ    MENU_PIN        =       PINC
+
+; Pines correspondientes a los botones controladores
 	.equ	SWITCHUP	= 	2
 	.equ	SWITCHDW	= 	3
 	.equ	SWITCHEN	= 	4
@@ -55,10 +64,10 @@
 	.equ	PREV	        =	0
 	.equ	NEXT	        =	2
 	.equ	ENTER	        =	4
-	.equ 	FIRSTLINEHANDLER	=	6
-	.equ 	SECONDLINEHANDLER	=	8
-	.equ 	FIRSTLINEDISPLAY	=	10
-	.equ 	SECONDLINEDISPLAY	=	12
+	.equ 	1STLINEHANDLER	=	6
+	.equ 	2NDLINEHANDLER	=	8
+	.equ 	1STLINESTR	=	10
+	.equ 	2NDLINESTR	=	12
 
 ;*****************************************************************
 ;	OPTIONS_TABLE:
@@ -78,7 +87,7 @@
 
 	Intensidad: .db		high(optSierra),low(optSierra),high(optMatlab),low(optMatlab),high(medInten),low(medInten),high(fstLineStrDisplay),low(fstLineStrDisplay),high(sndLineStrDisplay),low(sndLineStrDisplay),high(strIntensidad<<1),low(strIntensidad<<1),high(strMatlab<<1),low(strMatlab<<1)
 
-; Mensajes por display
+; Lista de mensajes que se muestran por display
 
 	strMatlab:	.db 	"Matlab",ENDSTR
 	strSeno:	.db 	"Seno",ENDSTR

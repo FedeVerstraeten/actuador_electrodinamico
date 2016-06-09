@@ -22,20 +22,20 @@
 
 ;******************************************************************
 ; showScreen: Rutina principal de muestra por Display.
-; Carga la primer linea y segunda línea en el Display, corriendo
+; Carga la primer línea y segunda línea en el Display, corriendo
 ; el puntero Z a la posición del Handler en la tabla de OPTIONS,
 ; y así ejecutando la sentencia correspondiente.
 ; (ver "Table Options" en archivo menu_def.inc).
 ;******************************************************************
 showScreen:
-		SetLcdClearAtHome
-		movw	Zh:Zl,Xh:Xl
-		MoveZTo (FIRSTLINEHANDLER)
-		rcall	jumper
-		movw	Zh:Zl,Xh:Xl
-		MoveZTo (SECONDLINEHANDLER)
-		rcall   jumper
-		rjmp	checkButtons
+	SetLcdClearAtHome
+	movw	Zh:Zl, Xh:Xl
+	MoveZTo (1STLINEHANDLER)
+	rcall	jumper
+	movw	Zh:Zl, Xh:Xl
+	MoveZTo (2NDLINEHANDLER)
+	rcall   jumper
+	rjmp	checkButtons
 
 ;******************************************************************
 ; checkButtons: Rutina lectura de botón de entrada: UP, DOWN, ENTER
@@ -44,21 +44,21 @@ showScreen:
 ; checkButtons repite hasta que sea presionado algún botón.
 ;******************************************************************
 checkButtons:
-		; reseteo las flags de las keys
-		; rcall delay200ms
+	; reseteo las flags de las keys
+	; rcall delay200ms
 
-		; Lectura puerto C
-		; Botón presionado el bit estará en cero
-		in	tmp,PINC
-		sbrs	tmp,SWITCHUP
-		rjmp	pressUP
-		sbrs	tmp,SWITCHDW
-		rjmp	pressDOWN
-		sbrs	tmp,SWITCHEN
-		rjmp	pressEN
-		; Se repite  mientras no se presione un botón
-		; luego de esperar por posibles rebotes
-		rjmp	checkButtons
+	; Lectura puerto C
+	; Botón presionado el bit estará en cero
+	in	tmp, MENU_PIN
+	sbrs	tmp, SWITCHUP
+	rjmp	pressUP
+	sbrs	tmp, SWITCHDW
+	rjmp	pressDOWN
+	sbrs	tmp, SWITCHEN
+	rjmp	pressEN
+	; Se repite  mientras no se presione un botón
+	; luego de esperar por posibles rebotes
+	rjmp	checkButtons
 
 ;******************************************************************
 ; jumper: Rutina salto indirecto.
@@ -71,27 +71,27 @@ checkButtons:
 ; PC(21:16) <- 0
 ;******************************************************************
 jumper:
-		LoadWord
-		ijmp
+	LoadWord
+	ijmp
 
 ;******************************************************************
 ; pressUp,pressDown,pressEnter: Desplazamiento puntero Z por tabla
 ; OPTIONS_TABLE tantas posiciones según el botón presionado.
 ;******************************************************************
 pressUp:
-		movw	Zh:Zl,Xh:Xl
-		;MoveZTo	(PREV)
-		rjmp	jumper
+	movw	Zh:Zl, Xh:Xl
+	;MoveZTo	(PREV)
+	rjmp	jumper
 
 pressDown:
-		movw	Zh:Zl,Xh:Xl
-		MoveZTo	(NEXT)
-		rjmp	jumper
+	movw	Zh:Zl, Xh:Xl
+	MoveZTo	(NEXT)
+	rjmp	jumper
 
 pressEnter:
-		movw	Zh:Zl,Xh:Xl
-		MoveZTo	(ENTER)
-		rjmp	jumper
+	movw	Zh:Zl, Xh:Xl
+	MoveZTo	(ENTER)
+	rjmp	jumper
 
 ;******************************************************************
 ; fstLineStrDisplay: First Line String Display '>'
@@ -111,41 +111,41 @@ pressEnter:
 ;******************************************************************
 
 fstLineStrDisplay:
-		ldi	arg,'>'
-		rcall 	lcd_putc
-		movw	Zh:Zl,Xh:Xl
-		MoveZTo (FIRSTLINEDISPLAY)
-		LoadWord
-		rcall	LCD_Putstring
-		ret
+	ldi	arg, '>'
+	rcall 	lcd_putc
+	movw	Zh:Zl, Xh:Xl
+	MoveZTo (1STLINEDISPLAY)
+	LoadWord
+	rcall	LCD_Putstring
+	ret
 
 sndLineStrDisplay:
-		Secondline
-		ldi	arg,' '
-		rcall 	lcd_putc
-		movw	Zh:Zl,Xh:Xl
-		MoveZTo (SECONDLINEDISPLAY)
-		LoadWord
-		rcall	LCD_Putstring
-		ret
+	Secondline
+	ldi	arg, ' '
+	rcall 	lcd_putc
+	movw	Zh:Zl, Xh:Xl
+	MoveZTo (2NDLINEDISPLAY)
+	LoadWord
+	rcall	LCD_Putstring
+	ret
 
 endLineStrDisplay1:
-		ldi	arg,' '
-		rcall 	lcd_putc
-		movw	Zh:Zl,Xh:Xl
-		MoveZTo (FIRSTLINEDISPLAY)
-		LoadWord
-		rcall	LCD_Putstring
+	ldi	arg, ' '
+	rcall 	lcd_putc
+	movw	Zh:Zl, Xh:Xl
+	MoveZTo (1STLINEDISPLAY)
+	LoadWord
+	rcall	LCD_Putstring
 
 endLineStrDisplay2:
-		Secondline
-		ldi	arg,'>'
-		rcall 	lcd_putc
-		movw	Zh:Zl,Xh:Xl
-		MoveZTo (SECONDLINEDISPLAY)
-		LoadWord
-		rcall	LCD_Putstring
-		ret
+	Secondline
+	ldi	arg, '>'
+	rcall 	lcd_putc
+	movw	Zh:Zl, Xh:Xl
+	MoveZTo (2NDLINEDISPLAY)
+	LoadWord
+	rcall	LCD_Putstring
+	ret
 
 ;******************************************************************
 ; Optionns Routines:
@@ -157,46 +157,46 @@ endLineStrDisplay2:
 ;******************************************************************
 
 optMatlab:
-		ldi	Xh,high(Matlab<<1)
-		ldi	Xl,low(Matlab<<1)
-		rjmp 	showScreen
+	ldi	Xh, high(Matlab<<1)
+	ldi	Xl, low(Matlab<<1)
+	rjmp 	showScreen
 
 optSeno:
-		ldi	Xh,high(Seno<<1)
-		ldi	Xl,low(Seno<<1)
-		rjmp	showScreen
+	ldi	Xh, high(Seno<<1)
+	ldi	Xl, low(Seno<<1)
+	rjmp	showScreen
 
 optCuadrada:
-		ldi	Xh,high(Cuadrada<<1)
-		ldi	Xl,low(Cuadrada<<1)
-		rjmp	showScreen
+	ldi	Xh, high(Cuadrada<<1)
+	ldi	Xl, low(Cuadrada<<1)
+	rjmp	showScreen
 
 optSierra:
-		ldi	Xh,high(Sierra<<1)
-		ldi	Xl,low(Sierra<<1)
-		rjmp	showScreen
+	ldi	Xh, high(Sierra<<1)
+	ldi	Xl, low(Sierra<<1)
+	rjmp	showScreen
 
 optIntensidad:
-		ldi	Xh,high(Intensidad<<1)
-		ldi	Xl,low(Intensidad<<1)
-		rjmp	showScreen
+	ldi	Xh, high(Intensidad<<1)
+	ldi	Xl, low(Intensidad<<1)
+	rjmp	showScreen
 
 ;******************************************************************
 ; commMatlab:
 ; Handler inicio comunicación con Matlab.
 ;******************************************************************
 commMatlab:
-;		SetLcdClearAtHome
-;		ldi 	zh,high(strBusy<<1)
-;		ldi 	zl,low(strBusy<<1)
-;		rcall 	LCD_PutString
-;		rcall 	StartReading
-;		rcall 	SaveReading
-;		clr 	yh
-;		clr 	yl
-;		ldi		Xh,high(Resultados<<1)
-;		ldi		Xl,low(Resultados<<1)
-		rjmp 	ShowScreen
+	;; SetLcdClearAtHome
+	;; ldi 	zh, high(strBusy<<1)
+	;; ldi 	zl, low(strBusy<<1)
+	;; rcall 	LCD_PutString
+	;; rcall 	StartReading
+	;; rcall 	SaveReading
+	;; clr 	yh
+	;; clr 	yl
+	;; ldi		Xh, high(Resultados<<1)
+	;; ldi		Xl, low(Resultados<<1)
+	rjmp 	ShowScreen
 
 ;******************************************************************
 ; gen:
@@ -204,11 +204,11 @@ commMatlab:
 ;******************************************************************
 
 genSeno:
-		rjmp 	ShowScreen
+	rjmp 	ShowScreen
 genCuadrada:
-		rjmp 	ShowScreen
+	rjmp 	ShowScreen
 genSierra:
-		rjmp 	ShowScreen
+	rjmp 	ShowScreen
 
 medInten
-		rjmp 	ShowScreen
+	rjmp 	ShowScreen

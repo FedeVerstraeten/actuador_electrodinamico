@@ -16,10 +16,8 @@
 ;******************************************************************
 ;	REGISTER_ALIAS
 ;******************************************************************
-;
-;	Definición de alias (.DEF) de cada uno de los registros
-;	utilizados en la implementación.
-;
+; Definición de alias (.DEF) de cada uno de los registros
+; utilizados en la implementación.
 ;******************************************************************
 
 	.def	test1	=	r0		; Definicion de prueba 0

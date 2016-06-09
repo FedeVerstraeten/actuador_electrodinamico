@@ -14,26 +14,26 @@
 ;		 federico.verstraeten@gmail.com
 ;
 ;******************************************************************
-;	MENU
+;       MENU
 ;******************************************************************
-;	Rutinas utilizadas para el funcionamiento del menu.
+; Rutinas utilizadas para el funcionamiento del menu.
 ;******************************************************************
 
 MENU_init:
-;	;*inicializo Flags
-;	ldi 	Yh,0x00
-;	ldi 	Yl,0x01
-;	ldi tmp,1
+	; Inicializo flags
+	;; ldi     Yh, 0x00
+	;; ldi 	Yl, 0x01
+	;; ldi     tmp, 1
 	; Posición inicial del menu
-	ldi		Xh,high(Matlab<<1)
-	ldi		Xl,low(Matlab<<1)
-;	;seteo los SWITCHes como entrada con pull up on
-;	cbi		DDRC,SWITCHUP
-;	cbi		DDRC,SWITCHDW
-;	cbi		DDRC,SWITCHRT
-;	sbi		PORTC,SWITCHUP
-;	sbi		PORTC,SWITCHDW
-;	sbi		PORTC,SWITCHRT
-;	;cargo mi registro ZERO
-;	clr		zero
-;	ret
+	ldi	Xh, high(Matlab<<1)
+	ldi	Xl, low(Matlab<<1)
+	; Seteo los switches como entrada con pull-up on
+	;; cbi	MENU_DDR, SWITCHUP
+	;; cbi	MENU_DDR, SWITCHDW
+	;; cbi	MENU_DDR, SWITCHRT
+	;; sbi	MENU_PORT, SWITCHUP
+	;; sbi	MENU_PORT, SWITCHDW
+	;; sbi	MENU_PORT, SWITCHRT
+	; Cargo mi registro ZERO
+	;; clr	zero
+	;; ret
