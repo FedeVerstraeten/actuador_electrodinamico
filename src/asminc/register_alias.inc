@@ -27,5 +27,7 @@
 	.def	wrdl	=	r10		; Almacena parte baja de WORD cargado en ROM
 	.def	wrdh 	=	r11		; Almacena parte alta de WORD cargado en ROM
 	.def	tmp	=	r16		; Registro para uso general
-	.def	arg	=	r17		; Registro pasaje de Argumentos
+	.def	tmp2	=	r17		; Registro para uso general
+	.def	arg	=	r18		; Registro pasaje de Argumentos
+        .def    rtn     =       r19             ; Registro para valores de retorno de rutinas
 
