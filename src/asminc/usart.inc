@@ -22,7 +22,7 @@
 ;*****************************************************************
         .equ    USART_CLOCK     =       16000000
         .equ    USART_BAUD      =       9600
-        .equ    USART_UBRR      =       ( CLOCK / ( BAUD * 16 ) ) - 1
+        .equ    USART_UBRR      =       ( USAR_CLOCK / ( USART_BAUD * 16 ) ) - 1
 
 ;******************************************************************
 ; USART_Init: Inicialización de la comunicación. En esta rutina
@@ -30,48 +30,48 @@
 ;******************************************************************
 USART_Init:
 	;; Habilito comunicacion serie de entrada y salida
-	LDI temp, (1<<TXEN0) | (1<<RXEN0)
-	STS UCSR0B, temp
+	ldi     temp, (1<<TXEN0) | (1<<RXEN0)
+	sts     UCSR0B, temp
 
 	;; Configuro que el tipo de comunicacion será de 8 bits
 	;; de datos y 1 stop bit, sin paridad
-	LDI temp, (1<<UCSZ01) | (1<<UCSZ00)
-	STS UCSR0C, temp
+	ldi     temp, (1<<UCSZ01) | (1<<UCSZ00)
+	sts     UCSR0C, temp
 
 	;; Cargo el baud en el registro correspondiente
 	;; (Puede ser un numero alto por lo que ocupa
 	;;  dos bytes, por eso hay partes High y Low)
-	LDI temp, HIGH(USART_UBRR)
-	STS UBRR0H, temp
-	LDI temp, LOW(USART_UBRR)
-	STS UBRR0L, temp
+	ldi     temp, HIGH(USART_UBRR)
+	sts     UBRR0H, temp
+	ldi     temp, LOW(USART_UBRR)
+	sts     UBRR0L, temp
 
 ;******************************************************************
 ; USART_Transmit: Envía un byte utilizando comunicación serie.
 ;******************************************************************
 USART_Transmit:
-        push tmp
+        push    tmp
         ;; Espero a que este listo para leer
 transmit_loop:
-        lds tmp, UCSR0A
-        sbrs tmp, UDRE0
-        RJMP transmit_loop
+        lds     tmp, UCSR0A
+        sbrs    tmp, UDRE0
+        rjmp    transmit_loop
         ;; Almacenamos el byte recibido
-        sts UDR0, arg
-        pop tmp
+        sts     UDR0, arg
+        pop     tmp
         ret
 
 ;******************************************************************
 ; USART_Receive: Recibe un byte utilizando comunicación serie.
 ;******************************************************************
 USART_Receive:
-        push tmp
+        push     tmp
         ;; Espero a que este listo para leer
 recieve_loop:
-        lds tmp, UCSR0A
-        sbrs tmp, RXC0
-        RJMP recieve_loop
+        lds     tmp, UCSR0A
+        sbrs    tmp, RXC0
+        rjmp    recieve_loop
         ;; Almacenamos el byte recibido
-        sts arg, UDR0
-        pop tmp
+        sts     arg, UDR0
+        pop     tmp
         ret
