@@ -35,6 +35,8 @@ Delay_1s:
 ;******************************************************************
 
 Delay_200ms:
+        push tmp
+        push tmp2
 	ldi	tmp, 10
 delay200ms_outer:
 	ldi	tmp2, 100
@@ -44,6 +46,8 @@ delay200ms_inner:
 	brne    delay200ms_inner
 	dec	tmp
 	brne    delay200ms_outer
+        pop tmp2
+        pop tpm
 	ret
 
 
@@ -57,15 +61,15 @@ Delay_1ms:
         push    tmp2
         ldi     tmp, 10
 delay_1ms_outer:
-        ldi     tm2, 100
+        ldi     tmp2, 100
 delay_1ms_inner:
         Delay_1us
         dec     tmp2                    ; 1 ciclo
         brne    delay_1ms_inner         ; 1 ciclo
         dec     tmp                     ; Cada vez que llega aca pasaron ~100us
         brne    delay_1ms_outer
-        pop     tmp
         pop     tmp2
+        pop     tmp
 
 ;******************************************************************
 ; Delay_1us: Rutina de delay.
@@ -83,6 +87,6 @@ delay_1us_inner:
         brne    delay_1us_inner         ; 1 ciclo
         dec     tmp                     ; Cada vez que llega aca pasaron ~100ns
         brne    delay_1us_outer
-        pop     tmp
         pop     tmp2
+        pop     tmp
 
