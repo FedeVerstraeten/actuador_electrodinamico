@@ -41,9 +41,9 @@ USART_Init:
 	;; Cargo el baud en el registro correspondiente
 	;; (Puede ser un numero alto por lo que ocupa
 	;;  dos bytes, por eso hay partes High y Low)
-	LDI temp, HIGH(UBRRVAL)
+	LDI temp, HIGH(USART_UBRR)
 	STS UBRR0H, temp
-	LDI temp, LOW(UBRRVAL)
+	LDI temp, LOW(USART_UBRR)
 	STS UBRR0L, temp
 
 ;******************************************************************
