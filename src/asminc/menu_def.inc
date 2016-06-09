@@ -29,12 +29,12 @@
 ; formato:
 ;
 ; OPTION:	previous(0-1),
-;			next(2-3),
-;			enter(4-5),
-;			firstLineHandler(6-7),
-;			secondLineHandler(8-9),
-;			firstline(10-11),
-;			secondline(12-13)
+;		next(2-3),
+;		enter(4-5),
+;		firstLineHandler(6-7),
+;		secondLineHandler(8-9),
+;		firstline(10-11),
+;		secondline(12-13)
 ;
 ; Por cada componente de OPTION se cargan las partes High y Low de
 ; la dirección de memoria de la sentencia que se ejecuta.
@@ -50,12 +50,11 @@
 	.equ	SWITCHDW	= 	3
 	.equ	SWITCHEN	= 	4
 
-
 ; Cadenas de caracteres
-	.equ	ENDSTR	=	0		; Fin del String
-	.equ	PREV	=	0
-	.equ	NEXT	=	2
-	.equ	ENTER	=	4
+	.equ	ENDSTR	        =	0		; Fin del String
+	.equ	PREV	        =	0
+	.equ	NEXT	        =	2
+	.equ	ENTER	        =	4
 	.equ 	FIRSTLINEHANDLER	=	6
 	.equ 	SECONDLINEHANDLER	=	8
 	.equ 	FIRSTLINEDISPLAY	=	10
@@ -79,7 +78,7 @@
 
 	Intensidad: .db		high(optSierra),low(optSierra),high(optMatlab),low(optMatlab),high(medInten),low(medInten),high(fstLineStrDisplay),low(fstLineStrDisplay),high(sndLineStrDisplay),low(sndLineStrDisplay),high(strIntensidad<<1),low(strIntensidad<<1),high(strMatlab<<1),low(strMatlab<<1)
 
-; Mensajes por Display
+; Mensajes por display
 
 	strMatlab:	.db 	"Matlab",ENDSTR
 	strSeno:	.db 	"Seno",ENDSTR

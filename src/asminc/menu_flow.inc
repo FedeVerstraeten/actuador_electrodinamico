@@ -44,11 +44,11 @@ showScreen:
 ; checkButtons repite hasta que sea presionado algún botón.
 ;******************************************************************
 checkButtons:
-		;reseteo las flags de las keys
-		;rcall delay200ms
+		; reseteo las flags de las keys
+		; rcall delay200ms
 
-		;Lectura puerto C
-		;Botón presionado el bit estará en cero
+		; Lectura puerto C
+		; Botón presionado el bit estará en cero
 		in	tmp,PINC
 		sbrs	tmp,SWITCHUP
 		rjmp	pressUP
@@ -56,8 +56,8 @@ checkButtons:
 		rjmp	pressDOWN
 		sbrs	tmp,SWITCHEN
 		rjmp	pressEN
-		;Se repite  mientras no se presione un botón
-		;luego de esperar por posibles rebotes
+		; Se repite  mientras no se presione un botón
+		; luego de esperar por posibles rebotes
 		rjmp	checkButtons
 
 ;******************************************************************

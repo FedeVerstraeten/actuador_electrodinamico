@@ -21,16 +21,16 @@
 
 
 ;******************************************************************
-;	Includes
+; Includes
 ;******************************************************************
 
-	.include "asminc/m328Pdef.inc" ; Revisar sea acorde al uC elegido
+	.include "asminc/m328Pdef.inc"
 	.include "asminc/menu_def.inc"
 	.include "asminc/register_alias.inc"
 	.include "asminc/macros.inc"
 
 ;******************************************************************
-;	Memorias definiciones.
+; Memorias definiciones.
 ;******************************************************************
 	; Segmento EEPROM
 	.eseg
@@ -47,53 +47,53 @@
 
 
 ;*****************************************************************
-; Inicialización del Micro luego del RESET. Iniciar Stack-Pointer
+; Inicialización del micro luego del RESET. Iniciar Stack-Pointer
 ;*****************************************************************
-	RESET:
-			ldi	tmp, low(RAMEND)
-			out	SPL, tmp
-			ldi	tmp, high(RAMEND)
-			out	SPH, tmp
-			;rjmp 	MAIN
+RESET:
+	ldi	tmp, low(RAMEND)
+	out	SPL, tmp
+	ldi	tmp, high(RAMEND)
+	out	SPH, tmp
+	;rjmp 	MAIN
 
 
 ;*****************************************************************
-; MAIN. Rutina principal del micro controlador.
+; MAIN. Rutina principal del microcontrolador.
 ;*****************************************************************
-	MAIN:
+MAIN:
 
-;		;seteo el prescaler para que divida por 4 la frec del cristal
-;		ldi tmp,0x80
-;		sts $0061,tmp
-;		ldi tmp,0x02
-;		sts $0061,tmp
+	;; ;seteo el prescaler para que divida por 4 la frec del cristal
+	;; ldi tmp,0x80
+	;; sts $0061,tmp
+	;; ldi tmp,0x02
+	;; sts $0061,tmp
 
 
-;		;Habilitar LCD
-;		rcall	LCD_init
+	;; ;Habilitar LCD
+	;; rcall	LCD_init
 
-;		;Iniciar el SPI como Master
-;		rcall 	SPI_Minit
+	;; ;Iniciar el SPI como Master
+	;; rcall 	SPI_Minit
 
-;		;Iniciar USART
-;		rcall 	Usart_Init
+	;; ;Iniciar USART
+	;; rcall 	Usart_Init
 
-;		;Config. inicial del Menu
-		rcall	MENU_init
+	;Config. inicial del Menu
+	rcall	MENU_init
 
-		;Llamada display
-		rcall showScreen
+	;Llamada display
+	rcall showScreen
 
-;		;Codigo de jmps del menu.
+	; Codigo de jmps del menu.
 	.include "asminc/menu_flow.inc"
 
-;	.include "asminc/common.inc"
-;	.include "asminc/ascii.inc"
-;	.include "asminc/spi_master.inc"
-;	.include "asminc/usart_master.inc"
-;	.include "asminc/lcd_driver.inc"
+	;; .include "asminc/common.inc"
+	;; .include "asminc/ascii.inc"
+	;; .include "asminc/spi_master.inc"
+	;; .include "asminc/usart_master.inc"
+	;; .include "asminc/lcd_driver.inc"
 	.include "asminc/menu.inc"
 
-	EndProgram:
-		rjmp EndProgram
+EndProgram:
+	rjmp EndProgram
 

@@ -20,20 +20,20 @@
 ;******************************************************************
 
 MENU_init:
-;		;*inicializo Flags
-;		ldi 	Yh,0x00
-;		ldi 	Yl,0x01
-;		ldi tmp,1
-		; Posición inicial del menu
-		ldi		Xh,high(Matlab<<1)
-		ldi		Xl,low(Matlab<<1)
-;		;seteo los SWITCHes como entrada con pull up on
-;		cbi		DDRC,SWITCHUP
-;		cbi		DDRC,SWITCHDW
-;		cbi		DDRC,SWITCHRT
-;		sbi		PORTC,SWITCHUP
-;		sbi		PORTC,SWITCHDW
-;		sbi		PORTC,SWITCHRT
-;		;cargo mi registro ZERO
-;		clr		zero
-;		ret
+;	;*inicializo Flags
+;	ldi 	Yh,0x00
+;	ldi 	Yl,0x01
+;	ldi tmp,1
+	; Posición inicial del menu
+	ldi		Xh,high(Matlab<<1)
+	ldi		Xl,low(Matlab<<1)
+;	;seteo los SWITCHes como entrada con pull up on
+;	cbi		DDRC,SWITCHUP
+;	cbi		DDRC,SWITCHDW
+;	cbi		DDRC,SWITCHRT
+;	sbi		PORTC,SWITCHUP
+;	sbi		PORTC,SWITCHDW
+;	sbi		PORTC,SWITCHRT
+;	;cargo mi registro ZERO
+;	clr		zero
+;	ret
