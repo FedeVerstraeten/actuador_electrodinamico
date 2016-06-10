@@ -8,10 +8,15 @@ MICRO = m328p
 ASMBLER = avra
 ASMBLERARGS = -o "$(PROJECT)"
 
+# Archivos de codigo
+MASTER = master.asm
+INCDIR = asminc
+INC := $(wildcard $(INCDIR/*.inc))
+
 all: master
 
-master: master.asm
-	$(ASMBLER) master.asm $(ASMBLERARGS)
+master: $(MASTER) $(INC)
+	$(ASMBLER) $(ASMBLERARGS)
 
 clean:
 	rm *.hex *.cof *.HEX *.LST *.obj *.SDI
