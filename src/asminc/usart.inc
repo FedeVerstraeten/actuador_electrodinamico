@@ -27,10 +27,10 @@
         .equ    USART_UBRR      =       ( USAR_CLOCK / ( USART_BAUD * 16 ) ) - 1
 
 ;******************************************************************
-; USART_Init: Inicialización de la comunicación. En esta rutina
+; usart_init: Inicialización de la comunicación. En esta rutina
 ; se configuran los distintos parámetros.
 ;******************************************************************
-USART_Init:
+usart_init:
 	;; Habilito comunicacion serie de entrada y salida
 	ldi     temp, (1<<TXEN0) | (1<<RXEN0)
 	sts     UCSR0B, temp
@@ -49,9 +49,9 @@ USART_Init:
 	sts     UBRR0L, temp
 
 ;******************************************************************
-; USART_Transmit: Envía un byte utilizando comunicación serie.
+; usart_transmit: Envía un byte utilizando comunicación serie.
 ;******************************************************************
-USART_Transmit:
+usart_transmit:
         push    tmp
         ;; Espero a que este listo para leer
 transmit_loop:
@@ -64,9 +64,9 @@ transmit_loop:
         ret
 
 ;******************************************************************
-; USART_Receive: Recibe un byte utilizando comunicación serie.
+; usart_receive: Recibe un byte utilizando comunicación serie.
 ;******************************************************************
-USART_Receive:
+usart_receive:
         push     tmp
         ;; Espero a que este listo para leer
 recieve_loop:

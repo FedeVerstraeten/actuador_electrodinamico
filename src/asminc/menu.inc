@@ -19,7 +19,7 @@
 ; Rutinas utilizadas para el funcionamiento del menu.
 ;******************************************************************
 
-MENU_init:
+menu_init:
 	; Inicializo flags
 	;; ldi     Yh, 0x00
 	;; ldi 	Yl, 0x01
@@ -37,3 +37,18 @@ MENU_init:
 	; Cargo mi registro ZERO
 	;; clr	zero
 	;; ret
+
+;*****************************************************************
+; lcd_putstring: Va leyendo caracteres a los que apunta Z
+; hasta que llega al valor ENDSTR, el cual indica el fin de la
+; cadena de caracteres a mostrar.
+;*****************************************************************
+
+lcd_putstring:
+	lpm	arg, Z+
+putstringloop:
+	rcall   lcd_putc
+	lpm	arg, Z+
+	cpi     arg, ENDSTR
+	brne    putstringloop
+	ret

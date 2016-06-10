@@ -42,7 +42,7 @@
 
 
 ;*****************************************************************
-;	CONSTANTES
+; CONSTANTES
 ;*****************************************************************
 
 ; DDR correspondiente a los botones controladores
@@ -64,28 +64,28 @@
 	.equ	PREV	        =	0
 	.equ	NEXT	        =	2
 	.equ	ENTER	        =	4
-	.equ 	1STLINEHANDLER	=	6
-	.equ 	2NDLINEHANDLER	=	8
-	.equ 	1STLINESTR	=	10
-	.equ 	2NDLINESTR	=	12
+	.equ 	FSTLINEHANDLER	=	6
+	.equ 	SNDLINEHANDLER	=	8
+	.equ 	FSTLINESTR	=	10
+	.equ 	SNDLINESTR	=	12
 
 ;*****************************************************************
-;	OPTIONS_TABLE:
-;	Definicion OPTION. Secuencia de cadenas de caracteres en ROM.
+; OPTIONS_TABLE:
+; Definicion OPTION. Secuencia de cadenas de caracteres en ROM.
 ;*****************************************************************
 
 .cseg
 	.org 0x0600
 
-	Matlab: .db		high(checkButtons),low(checkButtons),high(optSeno),low(optSeno),high(commMatlab),low(commMatlab),high(fstLineStrDisplay),low(fstLineStrDisplay),high(sndLineStrDisplay),low(sndLineStrDisplay),high(strMatlab<<1),low(strMatlab<<1),high(strSeno<<1),low(strSeno<<1)
+	Matlab: .db		high(check_buttons),low(check_buttons),high(opt_seno),low(opt_seno),high(comm_matlab),low(comm_matlab),high(fst_line_str_display),low(fst_line_str_display),high(snd_line_str_display),low(snd_line_str_display),high(strMatlab<<1),low(strMatlab<<1),high(strSeno<<1),low(strSeno<<1)
 
-	Seno: .db		high(optMatlab),low(optMatlab),high(optCuadrada),low(optCuadrada),high(genSeno),low(genSeno),high(fstLineStrDisplay),low(fstLineStrDisplay),high(sndLineStrDisplay),low(sndLineStrDisplay),high(strSeno<<1),low(strSeno<<1),high(strCuadrada<<1),low(strCuadrada<<1)
+	Seno: .db		high(opt_matlab),low(opt_matlab),high(opt_cuadrada),low(opt_cuadrada),high(gen_seno),low(gen_seno),high(fst_line_str_display),low(fst_line_str_display),high(snd_line_str_display),low(snd_line_str_display),high(strSeno<<1),low(strSeno<<1),high(strCuadrada<<1),low(strCuadrada<<1)
 
-	Cuadrada: .db		high(optSeno),low(optSeno),high(optSierra),low(optSierra),high(genCuadrada),low(genCuadrada),high(fstLineStrDisplay),low(fstLineStrDisplay),high(sndLineStrDisplay),low(sndLineStrDisplay),high(strCuadrada<<1),low(strCuadrada<<1),high(strSierra<<1),low(strSierra<<1)
+	Cuadrada: .db		high(opt_seno),low(opt_seno),high(opt_sierra),low(opt_sierra),high(gen_cuadrada),low(gen_cuadrada),high(fst_line_str_display),low(fst_line_str_display),high(snd_line_str_display),low(snd_line_str_display),high(strCuadrada<<1),low(strCuadrada<<1),high(strSierra<<1),low(strSierra<<1)
 
-	Sierra:	.db		high(optCuadrada),low(optCuadrada),high(optIntensidad),low(optIntensidad),high(genSierra),low(genSierra),high(fstLineStrDisplay),low(fstLineStrDisplay),high(sndLineStrDisplay),low(sndLineStrDisplay),high(strSierra<<1),low(strSierra<<1),high(strIntensidad<<1),low(strIntensidad<<1)
+	Sierra:	.db		high(opt_cuadrada),low(opt_cuadrada),high(opt_intensidad),low(opt_intensidad),high(gen_sierra),low(gen_sierra),high(fst_line_str_display),low(fst_line_str_display),high(snd_line_str_display),low(snd_line_str_display),high(strSierra<<1),low(strSierra<<1),high(strIntensidad<<1),low(strIntensidad<<1)
 
-	Intensidad: .db		high(optSierra),low(optSierra),high(optMatlab),low(optMatlab),high(medInten),low(medInten),high(fstLineStrDisplay),low(fstLineStrDisplay),high(sndLineStrDisplay),low(sndLineStrDisplay),high(strIntensidad<<1),low(strIntensidad<<1),high(strMatlab<<1),low(strMatlab<<1)
+	Intensidad: .db		high(opt_sierra),low(opt_sierra),high(opt_matlab),low(opt_matlab),high(medInten),low(medInten),high(fst_line_str_display),low(fst_line_str_display),high(snd_line_str_display),low(snd_line_str_display),high(strIntensidad<<1),low(strIntensidad<<1),high(strMatlab<<1),low(strMatlab<<1)
 
 ; Lista de mensajes que se muestran por display
 

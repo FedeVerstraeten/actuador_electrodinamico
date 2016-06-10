@@ -69,20 +69,20 @@ MAIN:
 	;; sts $0061,tmp
 
 
-	;; ;Habilitar LCD
-	;; rcall	LCD_init
+	;Habilitar LCD
+	rcall	lcd_init
 
 	;; ;Iniciar el SPI como Master
 	;; rcall 	SPI_Minit
 
-	;; ;Iniciar USART
-	;; rcall 	Usart_Init
+	;Iniciar USART
+	rcall 	usart_init
 
 	;Config. inicial del Menu
-	rcall	MENU_init
+	rcall	menu_init
 
 	;Llamada display
-	rcall showScreen
+	rcall   showScreen
 
 	; Codigo de jmps del menu.
 	.include "asminc/menu_flow.inc"
@@ -95,5 +95,5 @@ MAIN:
 	.include "asminc/menu.inc"
 
 EndProgram:
-	rjmp EndProgram
+	rjmp    EndProgram
 

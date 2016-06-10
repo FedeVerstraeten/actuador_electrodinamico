@@ -49,11 +49,11 @@
 
 .MACRO	SetLcdClearAtHome
 	ldi	arg, LCD_CLEAR
-	rcall	lcd_cmd4b
-	rcall	LCD_wait
+	rcall	lcd_send_cmd4b
+	rcall	lcd_wait
 	ldi	arg, LCD_CURSOR_HOME
-	rcall	lcd_cmd4b
-	rcall	LCD_wait
+	rcall	lcd_send_cmd4b
+	rcall	lcd_wait
 .ENDMACRO
 
 ;******************************************************************
@@ -63,6 +63,6 @@
 
 .MACRO	SecondLine
 	ldi	arg, LCD_CURSOR_2LINE
-	rcall	LCD_cmd4b
-	rcall	LCD_wait
+	rcall	lcd_send_cmd4b
+	rcall	lcd_wait
 .ENDMACRO
