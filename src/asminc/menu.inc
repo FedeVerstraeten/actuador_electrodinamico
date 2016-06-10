@@ -36,7 +36,7 @@ menu_init:
 	;; sbi	MENU_PORT, SWITCHRT
 	; Cargo mi registro ZERO
 	;; clr	zero
-	;; ret
+	ret
 
 ;*****************************************************************
 ; lcd_putstring: Va leyendo caracteres a los que apunta Z

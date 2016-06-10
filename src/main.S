@@ -61,37 +61,26 @@ RESET:
 ; MAIN. Rutina principal del microcontrolador.
 ;*****************************************************************
 MAIN:
-
-	;; ;seteo el prescaler para que divida por 4 la frec del cristal
-	;; ldi tmp,0x80
-	;; sts $0061,tmp
-	;; ldi tmp,0x02
-	;; sts $0061,tmp
-
-
-	;Habilitar LCD
+	; Inicializamos el display
 	rcall	lcd_init
 
-	;; ;Iniciar el SPI como Master
-	;; rcall 	SPI_Minit
-
-	;Iniciar USART
+	; Inicializamos la comunicación serie
 	rcall 	usart_init
 
-	;Config. inicial del Menu
+	; Inicializamos el menu
 	rcall	menu_init
 
-	;Llamada display
-	rcall   showScreen
+	; Llamada display
+	rcall   show_screen
 
-	; Codigo de jmps del menu.
+	; Codigo de jmps del menu
 	.include "asminc/menu_flow.inc"
 
 	;; .include "asminc/common.inc"
 	;; .include "asminc/ascii.inc"
 	;; .include "asminc/spi_master.inc"
-	;; .include "asminc/usart_master.inc"
-	;; .include "asminc/lcd_driver.inc"
+	.include "asminc/usart.inc"
+	.include "asminc/lcd_driver.inc"
 	.include "asminc/menu.inc"
 
 EndProgram:

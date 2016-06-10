@@ -44,7 +44,7 @@ show_screen:
 ; check_buttons repite hasta que sea presionado algún botón.
 ;******************************************************************
 check_buttons:
-	; reseteo las flags de las keys
+	; Reseteo las flags de las keys
 	; rcall delay200ms
 
 	; Botón presionado el bit estará en cero
@@ -55,7 +55,7 @@ check_buttons:
 	rjmp	press_down
 	sbrs	tmp, SWITCHEN
 	rjmp	press_enter
-	; Se repite  mientras no se presione un botón
+	; Se repite mientras no se presione un botón
 	; luego de esperar por posibles rebotes
 	rjmp	check_buttons
 
@@ -111,7 +111,7 @@ press_enter:
 
 fst_line_str_display:
 	ldi	arg, '>'
-	rcall 	lcd_putc
+	rcall 	lcd_putchar
 	movw	Zh:Zl, Xh:Xl
 	MoveZTo (FSTLINESTR)
 	LoadWord
@@ -121,7 +121,7 @@ fst_line_str_display:
 snd_line_str_display:
 	Secondline
 	ldi	arg, ' '
-	rcall 	lcd_putc
+	rcall 	lcd_putchar
 	movw	Zh:Zl, Xh:Xl
 	MoveZTo (SNDLINESTR)
 	LoadWord
@@ -130,7 +130,7 @@ snd_line_str_display:
 
 end_line_str_display1:
 	ldi	arg, ' '
-	rcall 	lcd_putc
+	rcall 	lcd_putchar
 	movw	Zh:Zl, Xh:Xl
 	MoveZTo (FSTLINESTR)
 	LoadWord
@@ -139,7 +139,7 @@ end_line_str_display1:
 end_line_str_display2:
 	Secondline
 	ldi	arg, '>'
-	rcall 	lcd_putc
+	rcall 	lcd_putchar
 	movw	Zh:Zl, Xh:Xl
 	MoveZTo (SNDLINESTR)
 	LoadWord
