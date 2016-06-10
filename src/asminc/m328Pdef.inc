@@ -212,30 +212,30 @@
 
 ; ***** TWI **************************
 ; TWAMR - TWI (Slave) Address Mask Register
-.equ	TWAM0	= 1	; 
+.equ	TWAM0	= 1	;
 .equ	TWAMR0	= TWAM0	; For compatibility
-.equ	TWAM1	= 2	; 
+.equ	TWAM1	= 2	;
 .equ	TWAMR1	= TWAM1	; For compatibility
-.equ	TWAM2	= 3	; 
+.equ	TWAM2	= 3	;
 .equ	TWAMR2	= TWAM2	; For compatibility
-.equ	TWAM3	= 4	; 
+.equ	TWAM3	= 4	;
 .equ	TWAMR3	= TWAM3	; For compatibility
-.equ	TWAM4	= 5	; 
+.equ	TWAM4	= 5	;
 .equ	TWAMR4	= TWAM4	; For compatibility
-.equ	TWAM5	= 6	; 
+.equ	TWAM5	= 6	;
 .equ	TWAMR5	= TWAM5	; For compatibility
-.equ	TWAM6	= 7	; 
+.equ	TWAM6	= 7	;
 .equ	TWAMR6	= TWAM6	; For compatibility
 
 ; TWBR - TWI Bit Rate register
-.equ	TWBR0	= 0	; 
-.equ	TWBR1	= 1	; 
-.equ	TWBR2	= 2	; 
-.equ	TWBR3	= 3	; 
-.equ	TWBR4	= 4	; 
-.equ	TWBR5	= 5	; 
-.equ	TWBR6	= 6	; 
-.equ	TWBR7	= 7	; 
+.equ	TWBR0	= 0	;
+.equ	TWBR1	= 1	;
+.equ	TWBR2	= 2	;
+.equ	TWBR3	= 3	;
+.equ	TWBR4	= 4	;
+.equ	TWBR5	= 5	;
+.equ	TWBR6	= 6	;
+.equ	TWBR7	= 7	;
 
 ; TWCR - TWI Control Register
 .equ	TWIE	= 0	; TWI Interrupt Enable
@@ -307,8 +307,8 @@
 .equ	ICNC1	= 7	; Input Capture 1 Noise Canceler
 
 ; TCCR1C - Timer/Counter1 Control Register C
-.equ	FOC1B	= 6	; 
-.equ	FOC1A	= 7	; 
+.equ	FOC1B	= 6	;
+.equ	FOC1A	= 7	;
 
 ; GTCCR - General Timer/Counter Control Register
 .equ	PSRSYNC	= 0	; Prescaler Reset Timer/Counter1 and Timer/Counter0
@@ -435,12 +435,12 @@
 .equ	ADCL7	= 7	; ADC Data Register Low Byte Bit 7
 
 ; DIDR0 - Digital Input Disable Register
-.equ	ADC0D	= 0	; 
-.equ	ADC1D	= 1	; 
-.equ	ADC2D	= 2	; 
-.equ	ADC3D	= 3	; 
-.equ	ADC4D	= 4	; 
-.equ	ADC5D	= 5	; 
+.equ	ADC0D	= 0	;
+.equ	ADC1D	= 1	;
+.equ	ADC2D	= 2	;
+.equ	ADC3D	= 3	;
+.equ	ADC4D	= 4	;
+.equ	ADC5D	= 5	;
 
 
 ; ***** ANALOG_COMPARATOR ************
@@ -598,39 +598,39 @@
 .equ	CS00	= 0	; Clock Select
 .equ	CS01	= 1	; Clock Select
 .equ	CS02	= 2	; Clock Select
-.equ	WGM02	= 3	; 
+.equ	WGM02	= 3	;
 .equ	FOC0B	= 6	; Force Output Compare B
 .equ	FOC0A	= 7	; Force Output Compare A
 
 ; TCNT0 - Timer/Counter0
-.equ	TCNT0_0	= 0	; 
-.equ	TCNT0_1	= 1	; 
-.equ	TCNT0_2	= 2	; 
-.equ	TCNT0_3	= 3	; 
-.equ	TCNT0_4	= 4	; 
-.equ	TCNT0_5	= 5	; 
-.equ	TCNT0_6	= 6	; 
-.equ	TCNT0_7	= 7	; 
+.equ	TCNT0_0	= 0	;
+.equ	TCNT0_1	= 1	;
+.equ	TCNT0_2	= 2	;
+.equ	TCNT0_3	= 3	;
+.equ	TCNT0_4	= 4	;
+.equ	TCNT0_5	= 5	;
+.equ	TCNT0_6	= 6	;
+.equ	TCNT0_7	= 7	;
 
 ; OCR0A - Timer/Counter0 Output Compare Register
-.equ	OCR0A_0	= 0	; 
-.equ	OCR0A_1	= 1	; 
-.equ	OCR0A_2	= 2	; 
-.equ	OCR0A_3	= 3	; 
-.equ	OCR0A_4	= 4	; 
-.equ	OCR0A_5	= 5	; 
-.equ	OCR0A_6	= 6	; 
-.equ	OCR0A_7	= 7	; 
+.equ	OCR0A_0	= 0	;
+.equ	OCR0A_1	= 1	;
+.equ	OCR0A_2	= 2	;
+.equ	OCR0A_3	= 3	;
+.equ	OCR0A_4	= 4	;
+.equ	OCR0A_5	= 5	;
+.equ	OCR0A_6	= 6	;
+.equ	OCR0A_7	= 7	;
 
 ; OCR0B - Timer/Counter0 Output Compare Register
-.equ	OCR0B_0	= 0	; 
-.equ	OCR0B_1	= 1	; 
-.equ	OCR0B_2	= 2	; 
-.equ	OCR0B_3	= 3	; 
-.equ	OCR0B_4	= 4	; 
-.equ	OCR0B_5	= 5	; 
-.equ	OCR0B_6	= 6	; 
-.equ	OCR0B_7	= 7	; 
+.equ	OCR0B_0	= 0	;
+.equ	OCR0B_1	= 1	;
+.equ	OCR0B_2	= 2	;
+.equ	OCR0B_3	= 3	;
+.equ	OCR0B_4	= 4	;
+.equ	OCR0B_5	= 5	;
+.equ	OCR0B_6	= 6	;
+.equ	OCR0B_7	= 7	;
 
 ; GTCCR - General Timer/Counter Control Register
 ;.equ	PSRSYNC	= 0	; Prescaler Reset Timer/Counter1 and Timer/Counter0
@@ -770,9 +770,9 @@
 .equ	SPMIE	= 7	; SPM Interrupt Enable
 
 ; MCUCR - MCU Control Register
-.equ	IVCE	= 0	; 
-.equ	IVSEL	= 1	; 
-.equ	PUD	= 4	; 
+.equ	IVCE	= 0	;
+.equ	IVSEL	= 1	;
+.equ	PUD	= 4	;
 .equ	BODSE	= 5	; BOD Sleep Enable
 .equ	BODS	= 6	; BOD Sleep
 
@@ -790,34 +790,34 @@
 .equ	SM2	= 3	; Sleep Mode Select Bit 2
 
 ; GPIOR2 - General Purpose I/O Register 2
-.equ	GPIOR20	= 0	; 
-.equ	GPIOR21	= 1	; 
-.equ	GPIOR22	= 2	; 
-.equ	GPIOR23	= 3	; 
-.equ	GPIOR24	= 4	; 
-.equ	GPIOR25	= 5	; 
-.equ	GPIOR26	= 6	; 
-.equ	GPIOR27	= 7	; 
+.equ	GPIOR20	= 0	;
+.equ	GPIOR21	= 1	;
+.equ	GPIOR22	= 2	;
+.equ	GPIOR23	= 3	;
+.equ	GPIOR24	= 4	;
+.equ	GPIOR25	= 5	;
+.equ	GPIOR26	= 6	;
+.equ	GPIOR27	= 7	;
 
 ; GPIOR1 - General Purpose I/O Register 1
-.equ	GPIOR10	= 0	; 
-.equ	GPIOR11	= 1	; 
-.equ	GPIOR12	= 2	; 
-.equ	GPIOR13	= 3	; 
-.equ	GPIOR14	= 4	; 
-.equ	GPIOR15	= 5	; 
-.equ	GPIOR16	= 6	; 
-.equ	GPIOR17	= 7	; 
+.equ	GPIOR10	= 0	;
+.equ	GPIOR11	= 1	;
+.equ	GPIOR12	= 2	;
+.equ	GPIOR13	= 3	;
+.equ	GPIOR14	= 4	;
+.equ	GPIOR15	= 5	;
+.equ	GPIOR16	= 6	;
+.equ	GPIOR17	= 7	;
 
 ; GPIOR0 - General Purpose I/O Register 0
-.equ	GPIOR00	= 0	; 
-.equ	GPIOR01	= 1	; 
-.equ	GPIOR02	= 2	; 
-.equ	GPIOR03	= 3	; 
-.equ	GPIOR04	= 4	; 
-.equ	GPIOR05	= 5	; 
-.equ	GPIOR06	= 6	; 
-.equ	GPIOR07	= 7	; 
+.equ	GPIOR00	= 0	;
+.equ	GPIOR01	= 1	;
+.equ	GPIOR02	= 2	;
+.equ	GPIOR03	= 3	;
+.equ	GPIOR04	= 4	;
+.equ	GPIOR05	= 5	;
+.equ	GPIOR06	= 6	;
+.equ	GPIOR07	= 7	;
 
 ; PRR - Power Reduction Register
 .equ	PRADC	= 0	; Power Reduction ADC

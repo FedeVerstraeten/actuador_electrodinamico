@@ -29,6 +29,15 @@
         .equ    ENDSIG          =       0xCB
 
 ;******************************************************************
+; SIGNAL_TABLE: Diferentes muestras que componen a un período
+; de un seno y una dientes de sierra. Se almacenan en memoria
+; ROM del micro y se obtiene su posición calculando hasta que
+; punto de la ROM ocupa el programa en si y grabando las
+; muestras luego de dicho punto.
+;******************************************************************
+
+
+;******************************************************************
 ; signal_init: Inicializa como salida los DDR de los pines en los
 ; que esta conectado el DAC.
 ;******************************************************************

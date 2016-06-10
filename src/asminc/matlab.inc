@@ -63,9 +63,14 @@ comm_idle:
 comm_loop_start:
         ; Muestro en el display "Guardando muestras"
         ;; rcall   set_display_comm_storing
-        ; Hago una lectura antes del loop, caso contrario quedaria tmp2=COMM_HANDSHK
-        ; tmp2=COMM_HANDSHK y se terminaria guardando este valor como una muestra
-        ; de la señal que se va a enviar al DAC
+        ; Inicializo el puntero con el que me voy moviendo
+        ; en la memoria en el punto en el que empieza la memoria
+        ; de uso libre: SRAM_START
+        ldi     Zh, high(SRAM_START)
+        ldi     Zl, low(SRAM_START)
+        ; Hago una lectura antes del loop, caso contrario quedaria
+        ; tmp2=COMM_HANDSHK y se terminaría guardando este valor
+        ; como una muestra de la señal que se va a enviar al DAC
         rcall   usart_recieve
         mov     tmp, rtn
 
@@ -125,8 +130,19 @@ comm_set_handshake:
 ;******************************************************************
 
 comm_finish:
-        ; TODO: Guardo en memoria dos veces el byte ENDSIG
+        ; Guardo en memoria dos veces el byte ENDSIG
         ; para indicar que ahi termina la señal
+        ldi     tmp, ENDSIG
+        st      Z+, tmp
+        st      Z, tmp
+        ; Hago dos veces pop para poder limpiar el SP
+        ; ya que para llegar hasta aca hicimos rcall
+        ; comm_set_state y en ningun momentos vamos a
+        ; hacer un ret, el cual hace SP <- SP + 2
+        ; mientras que cada pop hace SP <- SP + 1
+        pop tmp2
+        pop tmp2
+
         rjmp    signal_out
 
 ;******************************************************************
@@ -135,3 +151,5 @@ comm_finish:
 ;******************************************************************
 mem_write:
         ; TODO
+        st      Z+, tmp         ; Almaceno la muestra y aumento el puntero
+        ret
