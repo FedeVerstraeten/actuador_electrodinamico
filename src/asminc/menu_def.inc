@@ -95,3 +95,8 @@ strSquare:	.db	"Cuadrada",ENDSTR
 strSierra:	.db	"Diente sierra",ENDSTR
 strIntnsty:	.db	"Medir intensidad",ENDSTR
 
+strCommIdle:    .db     "Esperando handshake",ENDSTR
+strCommStore:   .db     "Guardando muestras",ENDSTR
+
+strSignalOut:   .db     "Enviando senal",ENDSTR
+

@@ -214,8 +214,8 @@ lcd_getinfo:
 ; operando con el display.
 ;*****************************************************************
 lcd_wait:
-        rcall	LCD_getinfo
+        rcall	lcd_getinfo
 	andi	rtn, 0x80		; 0x80 = 0b10000000. si al hacer andi el
-	brne	LCD_wait		; resultado es 0x00 setea la flag Z = 1
+	brne	lcd_wait		; resultado es 0x00 setea la flag Z = 1
 	ret                             ; de esta manera solamente si busy flag = 0
 
