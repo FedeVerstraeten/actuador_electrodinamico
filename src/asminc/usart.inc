@@ -64,9 +64,9 @@ transmit_loop:
         ret
 
 ;******************************************************************
-; usart_receive: Recibe un byte utilizando comunicación serie.
+; usart_recieve: Recibe un byte utilizando comunicación serie.
 ;******************************************************************
-usart_receive:
+usart_recieve:
         push     tmp
         ;; Espero a que este listo para leer
 recieve_loop:
@@ -74,6 +74,6 @@ recieve_loop:
         sbrs    tmp, RXC0
         rjmp    recieve_loop
         ;; Almacenamos el byte recibido
-        sts     arg, UDR0
+        sts     rtn, UDR0
         pop     tmp
         ret

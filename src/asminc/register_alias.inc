@@ -26,6 +26,7 @@
 	.def	wrdh 	=	r11		; Almacena parte alta de WORD cargado en ROM
 	.def	tmp	=	r16		; Registro para uso general
 	.def	tmp2	=	r17		; Registro para uso general
-	.def	arg	=	r18		; Registro pasaje de Argumentos
-        .def    rtn     =       r19             ; Registro para valores de retorno de rutinas
+	.def	arg	=	r18		; Para el pasaje de Argumentos
+        .def    rtn     =       r19             ; Valores de retorno de rutinas
+        .def    handshk =       r20             ; Handshake entre el micro y matlab
 

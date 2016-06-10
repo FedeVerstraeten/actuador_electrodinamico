@@ -14,9 +14,9 @@
 ;		 federico.verstraeten@gmail.com
 ;
 ;******************************************************************
-;	MAIN
+;       MAIN
 ;******************************************************************
-;	Programa principal
+; Programa principal
 ;******************************************************************
 
 
@@ -67,6 +67,9 @@ MAIN:
 	; Inicializamos la comunicación serie
 	rcall 	usart_init
 
+        ; Inicializamos el DAC
+        rcall   signal_init
+
 	; Inicializamos el menu
 	rcall	menu_init
 
@@ -76,10 +79,10 @@ MAIN:
 	; Codigo de jmps del menu
 	.include "asminc/menu_flow.inc"
 
-	;; .include "asminc/common.inc"
-	;; .include "asminc/ascii.inc"
-	;; .include "asminc/spi_master.inc"
+	.include "asminc/common.inc"
 	.include "asminc/usart.inc"
+        .include "asminc/matlab.inc"
+        .include "asminc/signal.inc"
 	.include "asminc/lcd_driver.inc"
 	.include "asminc/menu.inc"
 
