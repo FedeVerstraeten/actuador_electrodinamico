@@ -18,65 +18,66 @@
 ;******************************************************************
 
 ;******************************************************************
-; Delay_1s: Rutina de delay.
+; delay_1s: Rutina de delay.
 ;******************************************************************
 
-Delay_1s:
-	rcall   Delay_200ms
-	rcall   Delay_200ms
-	rcall   Delay_200ms
-	rcall   Delay_200ms
-	rcall   Delay_200ms
+delay_1s:
+	rcall   delay_200ms
+	rcall   delay_200ms
+	rcall   delay_200ms
+	rcall   delay_200ms
+	rcall   delay_200ms
 	ret
 
 ;******************************************************************
-; Delay_200ms: Rutina de delay.
+; delay_200ms: Rutina de delay.
 ; Considera la presencia de un clock de 16 MHz
 ;******************************************************************
 
-Delay_200ms:
-        push tmp
-        push tmp2
+delay_200ms:
+        push    tmp
+        push    tmp2
 	ldi	tmp, 10
 delay200ms_outer:
 	ldi	tmp2, 100
 delay200ms_inner:
-        Delay_1ms
+        rcall   delay_1ms
 	dec     tmp2
 	brne    delay200ms_inner
 	dec	tmp
 	brne    delay200ms_outer
-        pop tmp2
-        pop tpm
+        pop     tmp2
+        pop     tmp
 	ret
 
 
 ;******************************************************************
-; Delay_1ms: Rutina de delay.
+; delay_1ms: Rutina de delay.
 ; Considera la presencia de un clock de 16 MHz
 ;******************************************************************
 
-Delay_1ms:
+delay_1ms:
         push    tmp
         push    tmp2
         ldi     tmp, 10
 delay_1ms_outer:
         ldi     tmp2, 100
 delay_1ms_inner:
-        Delay_1us
+        rcall   delay_1us
         dec     tmp2                    ; 1 ciclo
         brne    delay_1ms_inner         ; 1 ciclo
         dec     tmp                     ; Cada vez que llega aca pasaron ~100us
         brne    delay_1ms_outer
         pop     tmp2
         pop     tmp
+        ret
 
 ;******************************************************************
-; Delay_1us: Rutina de delay.
+; delay_1us: Rutina de delay.
 ; Considera la presencia de un clock de 16 MHz
 ;******************************************************************
 
-Delay_1us:
+delay_1us:
         push    tmp
         push    tmp2
         ldi     tmp, 10
@@ -89,4 +90,5 @@ delay_1us_inner:
         brne    delay_1us_outer
         pop     tmp2
         pop     tmp
+        ret
 

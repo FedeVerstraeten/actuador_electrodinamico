@@ -37,7 +37,7 @@ comm_start:
         ; Inicializo handshake en 0
         ldi     handshk, 0x00
         ; Muestro en el display "Esperando handshake"
-        rcall   set_display_comm_idle
+        ;; rcall   set_display_comm_idle
         rcall   usart_recieve
         mov     tmp, rtn
 
@@ -51,7 +51,7 @@ comm_idle:
         mov     tmp2, rtn
         rcall   comm_check_state
         mov     tmp, tmp2
-        cp      handshk, 0x00
+        cpi     handshk, 0x00
         breq    comm_idle
 
 ;******************************************************************
@@ -62,7 +62,7 @@ comm_idle:
 
 comm_loop_start:
         ; Muestro en el display "Guardando muestras"
-        rcall   set_display_comm_storing
+        ;; rcall   set_display_comm_storing
         ; Hago una lectura antes del loop, caso contrario quedaria tmp2=COMM_HANDSHK
         ; tmp2=COMM_HANDSHK y se terminaria guardando este valor como una muestra
         ; de la señal que se va a enviar al DAC
@@ -103,7 +103,7 @@ end_comm_check_state:
 ;******************************************************************
 
 comm_set_state:
-        cp      handshk, 0x00
+        cpi     handshk, 0x00
         breq    comm_set_handshake
         rjmp    comm_finish
 

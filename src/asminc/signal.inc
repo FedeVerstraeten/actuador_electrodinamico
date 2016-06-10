@@ -44,4 +44,5 @@ signal_init:
 ; correspondientes a una señal periódica y las va enviando
 ; hacia el DAC.
 ;******************************************************************
-
+signal_out:
+        ; TODO

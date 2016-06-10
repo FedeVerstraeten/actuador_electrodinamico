@@ -55,7 +55,7 @@ lcd_init:
         sbi     LCD_CTRL_DDR, LCD_RS    ; Configuramos a los pines IO del micro
 	sbi     LCD_CTRL_DDR, LCD_RW    ; conectados a los pines RS, RW y E del
 	sbi     LCD_CTRL_DDR, LCD_E     ; display como salida
-	rcall   delay200ms              ; Es necesario esperar un poco para continuar trabajando
+	rcall   delay_200ms              ; Es necesario esperar un poco para continuar trabajando
 
 	ldi     arg, LCD_4_BIT          ; Utilizamos el modo de trabajo de 4-bit
 	rcall   lcd_send_cmd_8b         ; Todavia estamos en modo de 8 bit asi que usamos esa rutina
@@ -196,7 +196,7 @@ lcd_getinfo:
 	cbi	LCD_CTRL_PORT, LCD_E	; Seteamos enable en 0 (termina el pulso)
 	nop                             ; Ahora hacemos lo mismo ya que al estar trabajando
 	nop                             ; en 4 bit el display nos va a mandar la informacion del low nibble
-	sbi	LCD_CTRL, LCD_E		; Seteamos enable en 1
+	sbi	LCD_CTRL_PORT, LCD_E		; Seteamos enable en 1
 	nop
 	in	tmp, LCD_CTRL_PIN	; Obtenemos datos del display
 	andi	tmp, 0b11110000		; Nos quedamos solo con D4-D7

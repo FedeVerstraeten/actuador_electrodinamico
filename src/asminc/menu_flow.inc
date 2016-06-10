@@ -93,23 +93,23 @@ press_enter:
 	rjmp	jumper
 
 ;******************************************************************
-; fst_line_str_display: First Line String Display '>'
+; fstline_str: First Line String Display '>'
 ; Desplaza el puntero Z por la tabla OPTIONS_TABLE, e imprime en la
 ; primer línea del Display el mensaje correspondiente, con el
 ; Cursor indicador al comienzo del String.
 ;
-; snd_line_str_display: Second Line String Display ' '
+; sndline_str: Second Line String Display ' '
 ; Desplaza el puntero Z por la tabla OPTIONS_TABLE, e imprime en la
 ; segunda línea del Display el mensaje correspondiente, con un
 ; espacio vacío al comienzo del String.
 ;
-; end_line_str_display: End Line String Display ' '
+; endline_str: End Line String Display ' '
 ; Puntero Z dezplazado por la tabla OPTIONS_TABLE a la última
 ; posición. Imprime en la primer línea del Display el mensaje
 ; correspondiente un espacio en blanco al comienzo del String.
 ;******************************************************************
 
-fst_line_str_display:
+fstline_str:
 	ldi	arg, '>'
 	rcall 	lcd_putchar
 	movw	Zh:Zl, Xh:Xl
@@ -118,7 +118,7 @@ fst_line_str_display:
 	rcall	lcd_putstring
 	ret
 
-snd_line_str_display:
+sndline_str:
 	Secondline
 	ldi	arg, ' '
 	rcall 	lcd_putchar
@@ -128,7 +128,7 @@ snd_line_str_display:
 	rcall	lcd_putstring
 	ret
 
-end_line_str_display1:
+endline_str1:
 	ldi	arg, ' '
 	rcall 	lcd_putchar
 	movw	Zh:Zl, Xh:Xl
@@ -136,7 +136,7 @@ end_line_str_display1:
 	LoadWord
 	rcall	lcd_putstring
 
-end_line_str_display2:
+endline_str2:
 	Secondline
 	ldi	arg, '>'
 	rcall 	lcd_putchar
@@ -160,24 +160,24 @@ opt_matlab:
 	ldi	Xl, low(Matlab<<1)
 	rjmp 	show_screen
 
-opt_seno:
+opt_sin:
 	ldi	Xh, high(Seno<<1)
 	ldi	Xl, low(Seno<<1)
 	rjmp	show_screen
 
-opt_cuadrada:
+opt_square:
 	ldi	Xh, high(Cuadrada<<1)
 	ldi	Xl, low(Cuadrada<<1)
 	rjmp	show_screen
 
-opt_sierra:
+opt_sawt:
 	ldi	Xh, high(Sierra<<1)
 	ldi	Xl, low(Sierra<<1)
 	rjmp	show_screen
 
-opt_intensidad:
-	ldi	Xh, high(Intensidad<<1)
-	ldi	Xl, low(Intensidad<<1)
+opt_intnsty:
+	ldi	Xh, high(Intnsty<<1)
+	ldi	Xl, low(Intnsty<<1)
 	rjmp	show_screen
 
 ;******************************************************************
@@ -202,12 +202,12 @@ comm_matlab:
 ; Generación funciones precargadas.
 ;******************************************************************
 
-gen_seno:
+gen_sin:
 	rjmp 	show_screen
-gen_cuadrada:
+gen_square:
 	rjmp 	show_screen
-gen_sierra:
+gen_sawt:
 	rjmp 	show_screen
 
-med_inten
+med_intnsty:
 	rjmp 	show_screen

@@ -9,14 +9,14 @@ ASMBLER = avra
 ASMBLERARGS = -o "$(PROJECT)"
 
 # Archivos de codigo
-MASTER = master.asm
+MASTER = main.S
 INCDIR = asminc
 INC := $(wildcard $(INCDIR/*.inc))
 
 all: master
 
 master: $(MASTER) $(INC)
-	$(ASMBLER) $(ASMBLERARGS)
+	$(ASMBLER) $(MASTER) $(ASMBLERARGS)
 
 clean:
 	rm *.hex *.cof *.HEX *.LST *.obj *.SDI
