@@ -88,6 +88,11 @@ Sierra:	.db high(opt_square),low(opt_square),high(opt_intnsty),low(opt_intnsty),
 Intnsty: .db high(opt_sawt),low(opt_sawt),high(opt_matlab),low(opt_matlab),high(med_intnsty),low(med_intnsty),high(fstline_str),low(fstline_str),high(sndline_str),low(sndline_str),high(strIntnsty<<1),low(strIntnsty<<1),high(strMatlab<<1),low(strMatlab<<1)
 
 ; Lista de mensajes que se muestran por display
+; Algunos tienen doble ENDSTR, esto es porque la memoria
+; del programa es de 16 Bytes y algunos strings tienen un
+; número par de bytes, con lo cual al agregar el byte del
+; ENDSTR queda 1 byte extra por llenar a la hora de guardar
+; la memoria ROM y en esos casos el compilador tira warnings.
 
 strMatlab:	.db 	"Matlab",ENDSTR,ENDSTR
 strSin:	        .db 	"Seno",ENDSTR,ENDSTR

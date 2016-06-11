@@ -69,21 +69,6 @@ matlab_loop_continue:
         mov     tmp, tmp2
         rjmp    matlab_loop
 
-;; ;******************************************************************
-;; ; signal_check_end_sample: Verifica que no se haya llegado al
-;; ; final de las muestras que se almacenaron. Si este es el caso
-;; ; vuelve a mostrar desde la primer muestra.
-;; ;******************************************************************
-
-;; signal_check_end_sample:
-;;         cpi     tmp2, ENDSIG
-;;         brne    end_signal_check_end_sample
-;;         cp      tmp2, tmp
-;;         breq    signal_out_matlab
-;; end_signal_check_end_sample:
-;;         ret
-
-
 ;******************************************************************
 ; signal_out_sine: Recorre las muestras precargadas en memoria ROM
 ; correspondientes a un seno y las va enviando hacia el DAC.
@@ -120,38 +105,3 @@ sawt_loop_continue:
         out     SIGNAL_PORT, tmp
         mov     tmp, tmp2
         rjmp    sawt_loop
-
-;; ;******************************************************************
-;; ; signal_out_sine: Recorre las muestras precargadas en memoria ROM
-;; ; correspondientes a un seno y las va enviando hacia el DAC.
-;; ;******************************************************************
-
-;; signal_out_sine:
-;;         ldi     Zh, high(samplesSin<<1)
-;;         ldi     Zl, low(samplesSin<<1)
-;;         ldi     tmp2, SIGNAL_NUMSPL
-
-;; sine_loop:
-;;         lpm     tmp, Z+
-;;         out     SIGNAL_PORT, tmp
-;;         dec     tmp2
-;;         breq    signal_out_sine
-;;         rjmp    sine_loop
-
-;; ;******************************************************************
-;; ; signal_out_sawt: Recorre las muestras precargadas en memoria ROM
-;; ; correspondientes a una dientes de sierra y las va enviando
-;; ; hacia el DAC.
-;; ;******************************************************************
-
-;; signal_out_sawt:
-;;         ldi     Zh, high(samplesSawt<<1)
-;;         ldi     Zl, low(samplesSawt<<1)
-;;         ldi     tmp2, SIGNAL_NUMSPL
-
-;; sawt_loop:
-;;         lpm     tmp, Z+
-;;         out     SIGNAL_PORT, tmp
-;;         dec     tmp2
-;;         breq    signal_out_sawt
-;;         rjmp    sawt_loop
