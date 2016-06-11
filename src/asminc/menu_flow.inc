@@ -164,18 +164,18 @@ opt_matlab:
 	rjmp 	show_menu
 
 opt_sin:
-	ldi	Xh, high(Seno<<1)
-	ldi	Xl, low(Seno<<1)
+	ldi	Xh, high(Sine<<1)
+	ldi	Xl, low(Sine<<1)
 	rjmp	show_menu
 
 opt_square:
-	ldi	Xh, high(Cuadrada<<1)
-	ldi	Xl, low(Cuadrada<<1)
+	ldi	Xh, high(Square<<1)
+	ldi	Xl, low(Square<<1)
 	rjmp	show_menu
 
 opt_sawt:
-	ldi	Xh, high(Sierra<<1)
-	ldi	Xl, low(Sierra<<1)
+	ldi	Xh, high(Sawtooth<<1)
+	ldi	Xl, low(Sawtooth<<1)
 	rjmp	show_menu
 
 opt_intnsty:
