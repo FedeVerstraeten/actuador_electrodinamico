@@ -38,7 +38,7 @@ interrupt_init:
         sbi     INT_DDR, INT_BTN        ; INT_DDR.INT_BTN es salida
         sbi     INT_PORT, 0b00000010    ; Activo pull-up
         ldi     tmp, 1<<INT0            ; Seteo INT0
-        out     GICR, tmp               ; Cargo esta opción en el GICR
-        ldi     tmp, 0b00000010         ; Seteo que la interrupción ocurra cuando hay un flanco descendente
+        ;; out     GICR, tmp               ; Cargo esta opción en el GICR
+        ;; ldi     tmp, 0b00000010         ; Seteo que la interrupción ocurra cuando hay un flanco descendente
         out     MCUCR, tmp              ; Cargo esta opción en el MCUCR
         sei                             ; Habilito interrupciones en forma global
