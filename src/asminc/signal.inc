@@ -26,6 +26,8 @@
         .equ    SIGNAL_DDR      =       DDRB
         .equ    SIGNAL_PORT     =       PORTB
 
+        .equ    SIGNAL_NUMSPL   =       0x50 ; Numero de muestras de las funciones precargadas
+  
         .equ    ENDSIG          =       0xCB
 
 ;******************************************************************
@@ -49,9 +51,42 @@ signal_init:
         ret
 
 ;******************************************************************
-; signal_out: Recorre las muestras almacenadas en memoria
-; correspondientes a una señal periódica y las va enviando
+; signal_out_matlab: Recorre las muestras almacenadas en memoria
+; RAM correspondientes a una señal periódica armada en matlab
+; y las va enviando hacia el DAC.
+;******************************************************************
+signal_out_matlab:
+        ; TODO
+
+;******************************************************************
+; signal_out_sine: Recorre las muestras precargadas en memoria ROM
+; correspondientes a un seno y las va enviando hacia el DAC.
+;******************************************************************
+signal_out_sine:
+        ldi     Zh, high(samplesSin<<1)
+        ldi     Zl, low(samplesSin<<1)
+        ldi     tmp2, SIGNAL_NUMSPL
+
+sine_loop:
+        lpm     tmp, Z+
+        out     SIGNAL_PORT, tmp
+        dec     tmp2
+        breq    signal_out_sine
+        rjmp    sine_loop
+
+;******************************************************************
+; signal_out_sawt: Recorre las muestras precargadas en memoria ROM
+; correspondientes a una dientes de sierra y las va enviando
 ; hacia el DAC.
 ;******************************************************************
-signal_out:
-        ; TODO
+signal_out_sawt:
+        ldi     Zh, high(samplesSawt<<1)
+        ldi     Zl, low(samplesSawt<<1)
+        ldi     tmp2, SIGNAL_NUMSPL
+
+sawt_loop:
+        lpm     tmp, Z+
+        out     SIGNAL_PORT, tmp
+        dec     tmp2
+        breq    signal_out_sawt
+        rjmp    sawt_loop
