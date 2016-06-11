@@ -89,16 +89,16 @@ Intnsty: .db high(opt_sawt),low(opt_sawt),high(opt_matlab),low(opt_matlab),high(
 
 ; Lista de mensajes que se muestran por display
 
-strMatlab:	.db 	"Matlab",ENDSTR
-strSin:	        .db 	"Seno",ENDSTR
-strSquare:	.db	"Cuadrada",ENDSTR
+strMatlab:	.db 	"Matlab",ENDSTR,ENDSTR
+strSin:	        .db 	"Seno",ENDSTR,ENDSTR
+strSquare:	.db	"Cuadrada",ENDSTR,ENDSTR
 strSierra:	.db	"Diente sierra",ENDSTR
-strIntnsty:	.db	"Medir intensidad",ENDSTR
+strIntnsty:	.db	"Medir intensidad",ENDSTR,ENDSTR
 
 strCommIdle:    .db     "Esperando handshake",ENDSTR
-strCommStore:   .db     "Guardando muestras",ENDSTR
+strCommStore:   .db     "Guardando muestras",ENDSTR,ENDSTR
 
-strSignalOut:   .db     "Enviando senal",ENDSTR
+strSignalOut:   .db     "Enviando senal",ENDSTR,ENDSTR
 
 ; Lista de funciones precargadas en memoria
 ; (tal vez convendría ponerlas en un archivo aparte pero no se cómo

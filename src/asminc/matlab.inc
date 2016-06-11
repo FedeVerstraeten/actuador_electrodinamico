@@ -85,7 +85,7 @@ comm_loop:
         rcall   usart_recieve
         mov     tmp2, rtn
         rcall   comm_check_state
-        rcall   mem_write
+        rcall   comm_mem_write
         rjmp    comm_loop
 
 ;******************************************************************
@@ -146,10 +146,10 @@ comm_finish:
         rjmp    signal_out_matlab
 
 ;******************************************************************
-; mem_write: Almacena en memoria los datos correspondientes a una
+; comm_mem_write: Almacena en memoria los datos correspondientes a una
 ; muestra de la señal.
 ;******************************************************************
-mem_write:
+comm_mem_write:
         ; TODO
         st      Z+, tmp         ; Almaceno la muestra y aumento el puntero
         ret

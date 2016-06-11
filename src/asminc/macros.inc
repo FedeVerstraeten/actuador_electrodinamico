@@ -66,3 +66,22 @@
 	rcall	lcd_send_cmd_4b
 	rcall	lcd_wait
 .ENDMACRO
+
+;******************************************************************
+; CheckSignalEnd: Verifica que no se haya llegado al final de las
+; muestras de una señal que se encuentran almacenadas en memoria.
+; Si el resultado es negativo sigue con la rutina al ir a la
+; etiqueta continue que toma como primer parámetro.
+; Si el resultado es positivo entonces vuelve al inicio de las
+; las muestras desviandose hacia la etiqueta que lleva como
+; segundo parámetro.
+;******************************************************************
+
+.MACRO	CheckSignalEnd
+        ; 0xCB = ENDSIG pero el include de las macros está
+        ; antes que el equ por lo que el compilador tira error
+        cpi     tmp2, 0xCB
+        brne    @0
+        cp      tmp2, tmp
+        breq    @1
+.ENDMACRO

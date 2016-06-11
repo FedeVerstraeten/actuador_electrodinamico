@@ -27,7 +27,7 @@
         .equ    SIGNAL_PORT     =       PORTB
 
         .equ    SIGNAL_NUMSPL   =       0x50 ; Numero de muestras de las funciones precargadas
-  
+
         .equ    ENDSIG          =       0xCB
 
 ;******************************************************************
@@ -55,23 +55,51 @@ signal_init:
 ; RAM correspondientes a una señal periódica armada en matlab
 ; y las va enviando hacia el DAC.
 ;******************************************************************
+
 signal_out_matlab:
-        ; TODO
+        ldi     Zh, high(SRAM_START)
+        ldi     Zl, low(SRAM_START)
+        ld      tmp, Z+
+matlab_loop:
+        ld      tmp2, Z+
+        ;; rcall   signal_check_end_sample
+        CheckSignalEnd matlab_loop_continue, signal_out_matlab
+matlab_loop_continue:
+        out     SIGNAL_PORT, tmp
+        mov     tmp, tmp2
+        rjmp    matlab_loop
+
+;; ;******************************************************************
+;; ; signal_check_end_sample: Verifica que no se haya llegado al
+;; ; final de las muestras que se almacenaron. Si este es el caso
+;; ; vuelve a mostrar desde la primer muestra.
+;; ;******************************************************************
+
+;; signal_check_end_sample:
+;;         cpi     tmp2, ENDSIG
+;;         brne    end_signal_check_end_sample
+;;         cp      tmp2, tmp
+;;         breq    signal_out_matlab
+;; end_signal_check_end_sample:
+;;         ret
+
 
 ;******************************************************************
 ; signal_out_sine: Recorre las muestras precargadas en memoria ROM
 ; correspondientes a un seno y las va enviando hacia el DAC.
 ;******************************************************************
+
 signal_out_sine:
         ldi     Zh, high(samplesSin<<1)
         ldi     Zl, low(samplesSin<<1)
-        ldi     tmp2, SIGNAL_NUMSPL
+        lpm     tmp, Z+
 
 sine_loop:
-        lpm     tmp, Z+
+        lpm     tmp2, Z+
+        CheckSignalEnd sine_loop_continue, signal_out_sine
+sine_loop_continue:
         out     SIGNAL_PORT, tmp
-        dec     tmp2
-        breq    signal_out_sine
+        mov     tmp, tmp2
         rjmp    sine_loop
 
 ;******************************************************************
@@ -79,14 +107,51 @@ sine_loop:
 ; correspondientes a una dientes de sierra y las va enviando
 ; hacia el DAC.
 ;******************************************************************
+
 signal_out_sawt:
         ldi     Zh, high(samplesSawt<<1)
         ldi     Zl, low(samplesSawt<<1)
-        ldi     tmp2, SIGNAL_NUMSPL
+        lpm     tmp, Z+
 
 sawt_loop:
-        lpm     tmp, Z+
+        lpm     tmp2, Z+
+        CheckSignalEnd sawt_loop_continue, signal_out_sawt
+sawt_loop_continue:
         out     SIGNAL_PORT, tmp
-        dec     tmp2
-        breq    signal_out_sawt
+        mov     tmp, tmp2
         rjmp    sawt_loop
+
+;; ;******************************************************************
+;; ; signal_out_sine: Recorre las muestras precargadas en memoria ROM
+;; ; correspondientes a un seno y las va enviando hacia el DAC.
+;; ;******************************************************************
+
+;; signal_out_sine:
+;;         ldi     Zh, high(samplesSin<<1)
+;;         ldi     Zl, low(samplesSin<<1)
+;;         ldi     tmp2, SIGNAL_NUMSPL
+
+;; sine_loop:
+;;         lpm     tmp, Z+
+;;         out     SIGNAL_PORT, tmp
+;;         dec     tmp2
+;;         breq    signal_out_sine
+;;         rjmp    sine_loop
+
+;; ;******************************************************************
+;; ; signal_out_sawt: Recorre las muestras precargadas en memoria ROM
+;; ; correspondientes a una dientes de sierra y las va enviando
+;; ; hacia el DAC.
+;; ;******************************************************************
+
+;; signal_out_sawt:
+;;         ldi     Zh, high(samplesSawt<<1)
+;;         ldi     Zl, low(samplesSawt<<1)
+;;         ldi     tmp2, SIGNAL_NUMSPL
+
+;; sawt_loop:
+;;         lpm     tmp, Z+
+;;         out     SIGNAL_PORT, tmp
+;;         dec     tmp2
+;;         breq    signal_out_sawt
+;;         rjmp    sawt_loop
