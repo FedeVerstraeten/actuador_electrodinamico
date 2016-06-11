@@ -32,18 +32,21 @@
 ;******************************************************************
 ; Memorias definiciones.
 ;******************************************************************
-	; Segmento EEPROM
-	.eseg
-	.org 0x0000
 
-	; Segmento Datos en SRAM
-	.dseg
-		var:	.byte	6
+; Segmento EEPROM
+.eseg
+.org 0x0000
 
-	; Segmento Codigo en Flash-ROM
-	.cseg
-	.org 0x0000
-		rjmp 	RESET
+; Segmento Datos en SRAM
+.dseg
+	var:	.byte	6
+
+; Segmento Codigo en Flash-ROM
+.cseg
+.org 0x0000
+	rjmp 	RESET
+.org INT0addr
+        rjmp    press_interrupt
 
 
 ;*****************************************************************
@@ -55,6 +58,7 @@ RESET:
 	out	SPL, tmp
 	ldi	tmp, high(RAMEND)
 	out	SPH, tmp
+        rjmp    MAIN
 
 ;*****************************************************************
 ; MAIN. Rutina principal del microcontrolador.
@@ -76,15 +80,16 @@ MAIN:
 	; Llamada display
 	rcall   show_menu
 
-	; Codigo de jmps del menu
-	.include "asminc/menu_flow.inc"
+; Codigo de jmps del menu
+.include "asminc/menu_flow.inc"
 
-	.include "asminc/delay.inc"
-	.include "asminc/usart.inc"
-        .include "asminc/matlab.inc"
-        .include "asminc/signal.inc"
-	.include "asminc/lcd.inc"
-	.include "asminc/menu.inc"
+; Codigo correspondiente a las diferentes rutinas del programa
+.include "asminc/delay.inc"
+.include "asminc/usart.inc"
+.include "asminc/matlab.inc"
+.include "asminc/signal.inc"
+.include "asminc/lcd.inc"
+.include "asminc/menu.inc"
 
 ;*****************************************************************
 ; EndProgram: El programa nunca debería llegar hasta aca, pero

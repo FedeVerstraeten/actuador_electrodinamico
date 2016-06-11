@@ -92,6 +92,9 @@ press_enter:
 	MoveZTo	(ENTER)
 	rjmp	jumper
 
+press_interrupt:
+        rjmp RESET
+
 ;******************************************************************
 ; fstline_str: First Line String Display '>'
 ; Desplaza el puntero Z por la tabla OPTIONS_TABLE, e imprime en la
