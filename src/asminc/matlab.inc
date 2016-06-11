@@ -37,7 +37,9 @@ comm_start:
         ; Inicializo handshake en 0
         ldi     handshk, 0x00
         ; Muestro en el display "Esperando handshake"
-        ;; rcall   set_display_comm_idle
+        ;; ldi     zh, high(strCommIdle)
+        ;; ldi     zl, low(strCommIdle)
+        ;; rcall   lcd_putstring
         rcall   usart_recieve
         mov     tmp, rtn
 
@@ -62,7 +64,9 @@ comm_idle:
 
 comm_loop_start:
         ; Muestro en el display "Guardando muestras"
-        ;; rcall   set_display_comm_storing
+        ;; ldi     zh, high(strCommStore)
+        ;; ldi     zl, low(strCommStore)
+        ;; rcall   lcd_putstring
         ; Inicializo el puntero con el que me voy moviendo
         ; en la memoria en el punto en el que empieza la memoria
         ; de uso libre: SRAM_START

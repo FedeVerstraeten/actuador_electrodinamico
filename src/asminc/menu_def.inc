@@ -77,7 +77,7 @@
 .cseg
 .org 0x0600
 
-Matlab: .db high(check_buttons),low(check_buttons),high(opt_sin),low(opt_sin),high(comm_matlab),low(comm_matlab),high(fstline_str),low(fstline_str),high(sndline_str),low(sndline_str),high(strMatlab<<1),low(strMatlab<<1),high(strSin<<1),low(strSin<<1)
+Matlab: .db high(check_buttons),low(check_buttons),high(opt_sin),low(opt_sin),high(comm_start),low(comm_start),high(fstline_str),low(fstline_str),high(sndline_str),low(sndline_str),high(strMatlab<<1),low(strMatlab<<1),high(strSin<<1),low(strSin<<1)
 
 Seno: .db high(opt_matlab),low(opt_matlab),high(opt_square),low(opt_square),high(gen_sin),low(gen_sin),high(fstline_str),low(fstline_str),high(sndline_str),low(sndline_str),high(strSin<<1),low(strSin<<1),high(strSquare<<1),low(strSquare<<1)
 

@@ -21,13 +21,13 @@
 ;******************************************************************
 
 ;******************************************************************
-; show_screen: Rutina principal de muestra por Display.
+; show_menu: Rutina principal de muestra por Display.
 ; Carga la primer línea y segunda línea en el Display, corriendo
 ; el puntero Z a la posición del Handler en la tabla de OPTIONS,
 ; y así ejecutando la sentencia correspondiente.
 ; (ver "Table Options" en archivo menu_def.inc).
 ;******************************************************************
-show_screen:
+show_menu:
 	SetLcdClearAtHome
 	movw	Zh:Zl, Xh:Xl
 	MoveZTo (FSTLINEHANDLER)
@@ -79,7 +79,7 @@ jumper:
 ;******************************************************************
 press_up:
 	movw	Zh:Zl, Xh:Xl
-	;MoveZTo	(PREV)
+	;; MoveZTo	(PREV)
 	rjmp	jumper
 
 press_down:
@@ -150,7 +150,7 @@ endline_str2:
 ; Options Routines:
 ; Conjunto de subrutinas con prefijo "opt" de nombre. Corren el
 ; puntero X a la opción de la tabla OPTIONS_TABLE que corresponde.
-; Luego de ello ejecutan la rutina show_screen.
+; Luego de ello ejecutan la rutina show_menu.
 ; Estas son invocadas por las rutinas de interacción por con los
 ; botones u otras subrutinas.
 ;******************************************************************
@@ -158,44 +158,44 @@ endline_str2:
 opt_matlab:
 	ldi	Xh, high(Matlab<<1)
 	ldi	Xl, low(Matlab<<1)
-	rjmp 	show_screen
+	rjmp 	show_menu
 
 opt_sin:
 	ldi	Xh, high(Seno<<1)
 	ldi	Xl, low(Seno<<1)
-	rjmp	show_screen
+	rjmp	show_menu
 
 opt_square:
 	ldi	Xh, high(Cuadrada<<1)
 	ldi	Xl, low(Cuadrada<<1)
-	rjmp	show_screen
+	rjmp	show_menu
 
 opt_sawt:
 	ldi	Xh, high(Sierra<<1)
 	ldi	Xl, low(Sierra<<1)
-	rjmp	show_screen
+	rjmp	show_menu
 
 opt_intnsty:
 	ldi	Xh, high(Intnsty<<1)
 	ldi	Xl, low(Intnsty<<1)
-	rjmp	show_screen
+	rjmp	show_menu
 
 ;******************************************************************
 ; comm_matlab:
 ; Handler inicio comunicación con Matlab.
 ;******************************************************************
-comm_matlab:
+;; comm_matlab:
 	;; SetLcdClearAtHome
 	;; ldi 	zh, high(strBusy<<1)
 	;; ldi 	zl, low(strBusy<<1)
-	;; rcall 	LCD_PutString
+	;; rcall 	lcd_putstring
 	;; rcall 	StartReading
 	;; rcall 	SaveReading
 	;; clr 	yh
 	;; clr 	yl
 	;; ldi		Xh, high(Resultados<<1)
 	;; ldi		Xl, low(Resultados<<1)
-	rjmp 	show_screen
+	;; rjmp 	show_menu
 
 ;******************************************************************
 ; gen:
@@ -203,11 +203,11 @@ comm_matlab:
 ;******************************************************************
 
 gen_sin:
-	rjmp 	show_screen
+	rjmp 	show_menu
 gen_square:
-	rjmp 	show_screen
+	rjmp 	show_menu
 gen_sawt:
-	rjmp 	show_screen
+	rjmp 	show_menu
 
 med_intnsty:
-	rjmp 	show_screen
+	rjmp 	show_menu

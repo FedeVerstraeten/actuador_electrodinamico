@@ -49,17 +49,17 @@
 ;*****************************************************************
 ; Inicialización del micro luego del RESET. Iniciar Stack-Pointer
 ;*****************************************************************
+
 RESET:
 	ldi	tmp, low(RAMEND)
 	out	SPL, tmp
 	ldi	tmp, high(RAMEND)
 	out	SPH, tmp
-	;rjmp 	MAIN
-
 
 ;*****************************************************************
 ; MAIN. Rutina principal del microcontrolador.
 ;*****************************************************************
+
 MAIN:
 	; Inicializamos el display
 	rcall	lcd_init
@@ -74,17 +74,22 @@ MAIN:
 	rcall	menu_init
 
 	; Llamada display
-	rcall   show_screen
+	rcall   show_menu
 
 	; Codigo de jmps del menu
 	.include "asminc/menu_flow.inc"
 
-	.include "asminc/common.inc"
+	.include "asminc/delay.inc"
 	.include "asminc/usart.inc"
         .include "asminc/matlab.inc"
         .include "asminc/signal.inc"
-	.include "asminc/lcd_driver.inc"
+	.include "asminc/lcd.inc"
 	.include "asminc/menu.inc"
+
+;*****************************************************************
+; EndProgram: El programa nunca debería llegar hasta aca, pero
+; si llega a pasar debido a un error se genera un loop infinito.
+;*****************************************************************
 
 EndProgram:
 	rjmp    EndProgram

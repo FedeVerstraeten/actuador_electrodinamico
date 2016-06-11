@@ -13,10 +13,16 @@ MASTER = main.S
 INCDIR = asminc
 INC := $(wildcard $(INCDIR/*.inc))
 
+# Archivos ensamblados
+BUILDDIR = build
+
 all: master
 
 master: $(MASTER) $(INC)
 	$(ASMBLER) $(MASTER) $(ASMBLERARGS)
+	mv *.hex $(BUILDDIR)/
+	mv *.cof $(BUILDDIR)/
+	mv *.obj $(BUILDDIR)/
 
 clean:
 	rm *.hex *.cof *.HEX *.LST *.obj *.SDI
