@@ -77,15 +77,15 @@
 .cseg
 .org 0x0600
 
-Matlab: .db high(check_buttons),low(check_buttons),high(opt_sin),low(opt_sin),high(comm_start),low(comm_start),high(fstline_str),low(fstline_str),high(sndline_str),low(sndline_str),high(strMatlab<<1),low(strMatlab<<1),high(strSin<<1),low(strSin<<1)
+Matlab: .db high(check_buttons),low(check_buttons),high(opt_sin),low(opt_sin),high(comm_start),low(comm_start),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strMatlab<<1),low(strMatlab<<1),high(strSin<<1),low(strSin<<1)
 
-Sine: .db high(opt_matlab),low(opt_matlab),high(opt_square),low(opt_square),high(gen_sin),low(gen_sin),high(fstline_str),low(fstline_str),high(sndline_str),low(sndline_str),high(strSin<<1),low(strSin<<1),high(strSquare<<1),low(strSquare<<1)
+Sine: .db high(opt_matlab),low(opt_matlab),high(opt_square),low(opt_square),high(gen_sin),low(gen_sin),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strSin<<1),low(strSin<<1),high(strSquare<<1),low(strSquare<<1)
 
-Square: .db high(opt_sin),low(opt_sin),high(opt_sawt),low(opt_sawt),high(gen_square),low(gen_square),high(fstline_str),low(fstline_str),high(sndline_str),low(sndline_str),high(strSquare<<1),low(strSquare<<1),high(strSawt<<1),low(strSawt<<1)
+Square: .db high(opt_sin),low(opt_sin),high(opt_sawt),low(opt_sawt),high(gen_square),low(gen_square),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strSquare<<1),low(strSquare<<1),high(strSawt<<1),low(strSawt<<1)
 
-Sawtooth: .db high(opt_square),low(opt_square),high(opt_intnsty),low(opt_intnsty),high(gen_sawt),low(gen_sawt),high(fstline_str),low(fstline_str),high(sndline_str),low(sndline_str),high(strSawt<<1),low(strSawt<<1),high(strIntnsty<<1),low(strIntnsty<<1)
+Sawtooth:.db high(opt_square),low(opt_square),high(opt_intnsty),low(opt_intnsty),high(gen_sawt),low(gen_sawt),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strSawt<<1),low(strSawt<<1),high(strIntnsty<<1),low(strIntnsty<<1)
 
-Intnsty: .db high(opt_sawt),low(opt_sawt),high(opt_matlab),low(opt_matlab),high(med_intnsty),low(med_intnsty),high(fstline_str),low(fstline_str),high(sndline_str),low(sndline_str),high(strIntnsty<<1),low(strIntnsty<<1),high(strMatlab<<1),low(strMatlab<<1)
+Intnsty: .db high(opt_sawt),low(opt_sawt),high(opt_matlab),low(opt_matlab),high(med_intnsty),low(med_intnsty),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strIntnsty<<1),low(strIntnsty<<1),high(strMatlab<<1),low(strMatlab<<1)
 
 ; Lista de mensajes que se muestran por display
 ; Algunos tienen doble ENDSTR, esto es porque la memoria

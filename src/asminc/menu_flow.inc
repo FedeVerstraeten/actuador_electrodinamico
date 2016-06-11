@@ -96,23 +96,23 @@ press_interrupt:
         rjmp RESET
 
 ;******************************************************************
-; fstline_str: First Line String Display '>'
+; fstline_dsp: First Line String Display '>'
 ; Desplaza el puntero Z por la tabla OPTIONS_TABLE, e imprime en la
 ; primer línea del Display el mensaje correspondiente, con el
 ; Cursor indicador al comienzo del String.
 ;
-; sndline_str: Second Line String Display ' '
+; sndline_dsp: Second Line String Display ' '
 ; Desplaza el puntero Z por la tabla OPTIONS_TABLE, e imprime en la
 ; segunda línea del Display el mensaje correspondiente, con un
 ; espacio vacío al comienzo del String.
 ;
-; endline_str: End Line String Display ' '
+; endline_dsp: End Line String Display ' '
 ; Puntero Z dezplazado por la tabla OPTIONS_TABLE a la última
 ; posición. Imprime en la primer línea del Display el mensaje
 ; correspondiente un espacio en blanco al comienzo del String.
 ;******************************************************************
 
-fstline_str:
+fstline_dsp:
 	ldi	arg, '>'
 	rcall 	lcd_putchar
 	movw	Zh:Zl, Xh:Xl
@@ -121,7 +121,7 @@ fstline_str:
 	rcall	lcd_putstring
 	ret
 
-sndline_str:
+sndline_dsp:
 	Secondline
 	ldi	arg, ' '
 	rcall 	lcd_putchar
@@ -131,7 +131,7 @@ sndline_str:
 	rcall	lcd_putstring
 	ret
 
-endline_str1:
+endline_dsp1:
 	ldi	arg, ' '
 	rcall 	lcd_putchar
 	movw	Zh:Zl, Xh:Xl
@@ -139,7 +139,7 @@ endline_str1:
 	LoadWord
 	rcall	lcd_putstring
 
-endline_str2:
+endline_dsp2:
 	Secondline
 	ldi	arg, '>'
 	rcall 	lcd_putchar
