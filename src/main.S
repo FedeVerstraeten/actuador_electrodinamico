@@ -65,6 +65,8 @@ RESET:
 ;*****************************************************************
 
 MAIN:
+        ; Inicializamos las interrupciones
+        rcall   interrupt_init
 	; Inicializamos el display
 	rcall	lcd_init
 
@@ -89,6 +91,7 @@ MAIN:
 .include "asminc/matlab.inc"
 .include "asminc/signal.inc"
 .include "asminc/lcd.inc"
+.include "asminc/interrupt.inc"
 .include "asminc/menu.inc"
 
 ;*****************************************************************
