@@ -88,20 +88,33 @@ sine_loop_continue:
         rjmp    sine_loop
 
 ;******************************************************************
+; signal_out_sawt: Genera una funcion diente de sierra
+; y va enviando las muestras hacia el DAC.
+;******************************************************************
+signal_out_sawt:
+        ldi     tmp, 0xFF
+sawt_loop:
+        inc     tmp                     ; tmp = 0->1->...->256->0->...
+        out     SIGNAL_PORT, tmp
+        nop                             ; Para que se "recupere" el DAC
+        nop
+        rjmp    sawt_loop
+
+;******************************************************************
 ; signal_out_sawt: Recorre las muestras precargadas en memoria ROM
 ; correspondientes a una dientes de sierra y las va enviando
 ; hacia el DAC.
 ;******************************************************************
 
-signal_out_sawt:
-        ldi     Zh, high(samplesSawt<<1)
-        ldi     Zl, low(samplesSawt<<1)
-        lpm     tmp, Z+
+;; signal_out_sawt:
+;;         ldi     Zh, high(samplesSawt<<1)
+;;         ldi     Zl, low(samplesSawt<<1)
+;;         lpm     tmp, Z+
 
-sawt_loop:
-        lpm     tmp2, Z+
-        CheckSignalEnd sawt_loop_continue, signal_out_sawt
-sawt_loop_continue:
-        out     SIGNAL_PORT, tmp
-        mov     tmp, tmp2
-        rjmp    sawt_loop
+;; sawt_loop:
+;;         lpm     tmp2, Z+
+;;         CheckSignalEnd sawt_loop_continue, signal_out_sawt
+;; sawt_loop_continue:
+;;         out     SIGNAL_PORT, tmp
+;;         mov     tmp, tmp2
+;;         rjmp    sawt_loop
