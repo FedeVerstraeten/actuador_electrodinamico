@@ -19,6 +19,9 @@ https://github.com/DarkSector/AVR/tree/master/asm/include
 * Microcontrolador ATmega164P/V-ATmega324P/V-ATmega644P/V (40 pines: 4 puertos de 8bits + pines Tx/Rx y XTAL por separado)
 [Link Datasheet](http://www.atmel.com/images/atmel-8011-8-bit-avr-microcontroller-atmega164p-324p-644p_datasheet.pdf)
 
+* Microcontrolador ATmega32A (40 pines)
+[Link Datasheet](http://www.atmel.com/images/atmel-8155-8-bit-microcontroller-avr-atmega32a_datasheet.pdf)
+
 ## Links e Info de Interés ##
 
 * Proyecto Espectrofotocolorímetro (para ver cómo manejan el display)
