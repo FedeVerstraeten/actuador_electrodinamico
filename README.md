@@ -16,6 +16,9 @@ https://www.overleaf.com/5136789npntdk
 * Repositorio Includes ATMEL
 https://github.com/DarkSector/AVR/tree/master/asm/include
 
+* Microcontrolador ATmega164P/V-ATmega324P/V-ATmega644P/V (40 pines: 4 puertos de 8bits + pines Tx/Rx y XTAL por separado)
+[Link Datasheet](http://www.atmel.com/images/atmel-8011-8-bit-avr-microcontroller-atmega164p-324p-644p_summary.pdf)
+
 ## Links e Info de Interés ##
 
 * Proyecto Espectrofotocolorímetro (para ver cómo manejan el display)
@@ -39,23 +42,17 @@ avr-gcc -mmcu=atmega328p <nombre.c> -o <nombre.elf>
 avr-objcopy -j .text -j .data -O ihex <nombre.elf> <nombre.hex>
 avrdude -c usbtiny -p m328p -U flash:w:<nombre.hex>
 ```
-# Utilización de 28 pines integrado Atmega328P
+# Utilización de 28 pines integrado Atmega324P
 
-Elemento      | Cant. pines
-------------- | -------------
-VCC           | 1
-GND           | 2
-Parlante (DAC)| 8
-Display       | 7(11)
-Pulsadores    | 3
-Matlab (Tx+Rx)| 2
-Fotodiodo(ADC)| 1 ?
-Corte señal - Int.Externa | 1
-Cristal       | 2
-Total         | 27 utilizados
-
-# Microcontrolador de 40 pines (4 puertos de 8bits + pines Tx/Rx y XTAL por separado)
-
-* ATmega164P/V-ATmega324P/V-ATmega644P/V
-
-http://www.atmel.com/images/atmel-8011-8-bit-avr-microcontroller-atmega164p-324p-644p_summary.pdf
+Elemento      | Cant. pines   | Puerto asignado  |
+------------- | ------------- | ---------------- |
+VCC           | 1             | VCC              |
+GND           | 2             | GND              |
+Parlante (DAC)| 8             | PB0 a PB7        |
+Display       | 7(11)         | PC0 a PC6        |
+Pulsadores    | 3             | PD3, PD4 y PD5   |
+Matlab (Tx+Rx)| 2             | PD0 y PD1        |
+Fotodiodo(ADC)| 1 ?           | ADC0             |
+Corte señal - Int.Externa | 1 | PD2/INT0         |
+Cristal       | 2             | XTAL1 y XTAL2    |
+Total         | 27 utilizados | -                |
