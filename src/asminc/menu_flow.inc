@@ -45,7 +45,7 @@ show_menu:
 ;******************************************************************
 check_buttons:
 	; Reseteo las flags de las keys
-	; rcall delay200ms
+	rcall delay_200ms
 
 	; Botón presionado el bit estará en cero
 	in	tmp, MENU_PIN

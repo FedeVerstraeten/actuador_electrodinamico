@@ -28,14 +28,12 @@ menu_init:
 	ldi	Xh, high(Matlab<<1)
 	ldi	Xl, low(Matlab<<1)
 	; Seteo los switches como entrada con pull-up on
-	;; cbi	MENU_DDR, SWITCHUP
-	;; cbi	MENU_DDR, SWITCHDW
-	;; cbi	MENU_DDR, SWITCHRT
-	;; sbi	MENU_PORT, SWITCHUP
-	;; sbi	MENU_PORT, SWITCHDW
-	;; sbi	MENU_PORT, SWITCHRT
-	; Cargo mi registro ZERO
-	;; clr	zero
+	cbi	MENU_DDR, SWITCHUP
+	cbi	MENU_DDR, SWITCHDW
+	cbi	MENU_DDR, SWITCHEN
+	sbi	MENU_PORT, SWITCHUP
+	sbi	MENU_PORT, SWITCHDW
+	sbi	MENU_PORT, SWITCHEN
 	ret
 
 ;*****************************************************************
