@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="41cm" height="26cm" viewBox="30 -12 805 501" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="360.2" y="8.45036" width="120" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="360.2" y="8.45036" width="120" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="420.2" y="31.3504">
+      <tspan x="420.2" y="31.3504">BIENVENIDA</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="419.398" y1="-10.0576" x2="419.724" y2="-2.53933"/>
+    <polygon style="fill: #000000" points="414.728,-2.32287 420.157,7.4513 424.719,-2.75579 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="414.728,-2.32287 420.157,7.4513 424.719,-2.75579 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="347.2" y="67.4504" width="148" height="118"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="347.2" y="67.4504" width="148" height="118"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="421.2" y="98.3504">
+      <tspan x="421.2" y="98.3504">MENU</tspan>
+      <tspan x="421.2" y="114.35"></tspan>
+      <tspan x="421.2" y="130.35">1. MATLAB</tspan>
+      <tspan x="421.2" y="146.35">2. Función Seno</tspan>
+      <tspan x="421.2" y="162.35">3. Dientes de cierra</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="420.2" y1="46.4504" x2="420.677" y2="56.4629"/>
+    <polygon style="fill: #000000" points="415.682,56.7007 421.152,66.4515 425.671,56.225 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="415.682,56.7007 421.152,66.4515 425.671,56.225 "/>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="421.412,202.11 498.439,247.505 421.412,292.899 344.386,247.505 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="421.412,202.11 498.439,247.505 421.412,292.899 344.386,247.505 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="421.412" y="251.405">
+      <tspan x="421.412" y="251.405">Elegir opción</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="421.2" y1="185.45" x2="421.272" y2="191.111"/>
+    <polygon style="fill: #000000" points="416.272,191.175 421.399,201.11 426.272,191.047 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="416.272,191.175 421.399,201.11 426.272,191.047 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="78.2" y="79.4504" width="87" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="78.2" y="79.4504" width="87" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="121.7" y="102.35">
+      <tspan x="121.7" y="102.35">Seno</tspan>
+    </text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="62.7089,219.452 177.329,219.452 163.499,257.452 48.878,257.452 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="62.7089,219.452 177.329,219.452 163.499,257.452 48.878,257.452 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="113.104" y="242.352">
+      <tspan x="113.104" y="242.352">Salida Seno</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="121.7" y1="117.45" x2="120.729" y2="133.819"/>
+    <polygon style="fill: #000000" points="115.738,133.523 120.137,143.802 125.72,134.115 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="115.738,133.523 120.137,143.802 125.72,134.115 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="711.76" y="29.1004" width="87" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="711.76" y="29.1004" width="87" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="755.26" y="52.0004">
+      <tspan x="755.26" y="52.0004">MATLAB</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="679.574" y="100.377" width="151.85" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="679.574" y="100.377" width="151.85" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="755.499" y="123.277">
+      <tspan x="755.499" y="123.277">Conectando...</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="755.26" y1="67.1004" x2="755.419" y2="89.3771"/>
+    <polygon style="fill: #000000" points="750.419,89.4128 755.491,99.3768 760.419,89.3413 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="750.419,89.4128 755.491,99.3768 760.419,89.3413 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="678.1" y="175.277" width="156.45" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="678.1" y="175.277" width="156.45" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="756.325" y="198.177">
+      <tspan x="756.325" y="198.177">Leyendo datos</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="755.498" y1="138.377" x2="756.078" y2="164.28"/>
+    <polygon style="fill: #000000" points="751.079,164.392 756.302,174.278 761.077,164.168 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="751.079,164.392 756.302,174.278 761.077,164.168 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="756.324" y1="213.278" x2="756.897" y2="234.106"/>
+    <polygon style="fill: #000000" points="751.899,234.244 757.172,244.102 761.895,233.969 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="751.899,234.244 757.172,244.102 761.895,233.969 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="682.2" y="245.102" width="150" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="682.2" y="245.102" width="150" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="757.2" y="268.002">
+      <tspan x="757.2" y="268.002">Generando salida</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="498.438,247.506 546.378,246.9 545.2,48.9504 700.76,48.1565 "/>
+    <polygon style="fill: #000000" points="700.786,53.1565 710.76,48.1055 700.735,43.1566 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="700.786,53.1565 710.76,48.1055 700.735,43.1566 "/>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="696.011,320.954 818.584,320.954 804.754,358.954 682.18,358.954 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="696.011,320.954 818.584,320.954 804.754,358.954 682.18,358.954 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="750.382" y="343.854">
+      <tspan x="750.382" y="343.854">Salida MATLAB</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="757.2" y1="283.102" x2="757.27" y2="309.954"/>
+    <polygon style="fill: #000000" points="752.27,309.967 757.295,319.954 762.27,309.941 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="752.27,309.967 757.295,319.954 762.27,309.941 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="31.728" y="144.8" width="176.7" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="31.728" y="144.8" width="176.7" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="120.078" y="167.7">
+      <tspan x="120.078" y="167.7">Lectura tabla Seno ROM</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="120.078" y1="182.8" x2="120.037" y2="208.452"/>
+    <polygon style="fill: #000000" points="115.037,208.444 120.021,218.452 125.037,208.46 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="115.037,208.444 120.021,218.452 125.037,208.46 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="357.124" y="318.8" width="132.85" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="357.124" y="318.8" width="132.85" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="423.549" y="341.7">
+      <tspan x="423.549" y="341.7">Dientes de Sierra</tspan>
+    </text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="352.709,450.8 491.029,450.8 477.199,488.8 338.878,488.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="352.709,450.8 491.029,450.8 477.199,488.8 338.878,488.8 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="414.954" y="473.7">
+      <tspan x="414.954" y="473.7">Salida D. Sierra</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="423.55" y1="356.8" x2="422.579" y2="373.169"/>
+    <polygon style="fill: #000000" points="417.588,372.873 421.987,383.152 427.57,373.465 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="417.588,372.873 421.987,383.152 427.57,373.465 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="320.528" y="384.15" width="202.8" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="320.528" y="384.15" width="202.8" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="421.928" y="407.05">
+      <tspan x="421.928" y="407.05">Lectura tabla D. Sierra ROM</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="421.928" y1="422.15" x2="421.892" y2="439.8"/>
+    <polygon style="fill: #000000" points="416.892,439.79 421.872,449.8 426.892,439.81 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="416.892,439.79 421.872,449.8 426.892,439.81 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="344.386,247.506 266.378,247.9 266.378,99.9 176.199,98.608 "/>
+    <polygon style="fill: #000000" points="176.27,93.6085 166.2,98.4647 176.127,103.607 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="176.27,93.6085 166.2,98.4647 176.127,103.607 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="421.412" y1="292.9" x2="422.749" y2="309.097"/>
+    <polygon style="fill: #000000" points="423.366,316.572 417.56,307.017 422.749,309.097 427.526,306.194 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="423.366,316.572 417.56,307.017 422.749,309.097 427.526,306.194 "/>
+  </g>
+</svg>

@@ -43,10 +43,8 @@ comm_start:
         rcall   usart_recieve
         mov     tmp, rtn
 
-;******************************************************************
 ; comm_idle: Loop que va recibiendo datos por medio de comunicación
 ; USART y va chequeando si se realizó o no el handshake.
-;******************************************************************
 
 comm_idle:
         rcall   usart_recieve
