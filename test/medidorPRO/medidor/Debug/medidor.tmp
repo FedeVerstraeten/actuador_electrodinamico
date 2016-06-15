@@ -1,0 +1,27 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.57</VERSION>
+ <DEVICE>"ATmega32"</DEVICE>
+ <WORKING_DIR>D:\Universidad\Laboratorio de Microprocesadores\PROYECTOFINAL ENATMEGA32\medidorIntensidad\medidorPRO\medidor\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>D:\Universidad\Laboratorio de Microprocesadores\PROYECTOFINAL ENATMEGA32\medidorIntensidad\medidorPRO\medidor\medidor.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR Assembler\Native\2.1.1175\avrassembler\Include\m32def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>D:\Universidad\Laboratorio de Microprocesadores\PROYECTOFINAL ENATMEGA32\medidorIntensidad\medidorPRO\medidor\Debug/medidor.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>medidor.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>medidor.map</FILE>
+  <FILE>medidor.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <mainloop><FILE>D:\Universidad\Laboratorio de Microprocesadores\PROYECTOFINAL ENATMEGA32\medidorIntensidad\medidorPRO\medidor\medidor.asm</FILE><LINE>24</LINE></mainloop>
+  <wait_for_conv_finished><FILE>D:\Universidad\Laboratorio de Microprocesadores\PROYECTOFINAL ENATMEGA32\medidorIntensidad\medidorPRO\medidor\medidor.asm</FILE><LINE>34</LINE></wait_for_conv_finished>
+ </LABELS>
+</ASSEMBLER_INFO>
