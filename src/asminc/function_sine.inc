@@ -19,58 +19,54 @@
 ; Rutina para tenes a la salida del DAC un seno precargado
 ;******************************************************************
 
-;******************************************************************
-; delay_1s: Rutina de delay.
-;******************************************************************
-
  
 
  
  .ORG $0000
 
- LDI R16, 0xFF
- OUT DDRC, R16; Hago que el puerto C sea de salida
+ ldi R16, 0xFF
+ out DDRC, R16; Hago que el puerto C sea de salida
  
- SENO:
+ sine:
  
- LDI R31,HIGH(MSG<<1)
- LDI R30,LOW(MSG<<1); Z APUNTA A MSG
+ ldi R31,HIGH(MSG<<1)
+ldi R30,LOW(MSG<<1); Z APUNTA A MSG
 
- LOOP1:	LPM R16, Z+
-
-
-		NOP
-		NOP
-		NOP
-
-		OUT PORTC, R16	;Mando R16 al puerto B
-		CPI R16,251
-		BREQ CONTINUO
-		NOP
-		RJMP LOOP1
-
-CONTINUO:
-
-		LDI R31,HIGH(MSG2<<1)
-		LDI R30,LOW(MSG2<<1); Y APUNTA A MSG2
+ ascending_cycle:	lpm R16, Z+
 
 
-	LOOP2:	
+		nop
+		nop
+		nop
 
-		NOP
-		NOP
-		NOP
+		out PORTC, R16	;Mando R16 al puerto B
+		cpi R16,251
+		breq change_cycle
+		nop
+		rjmp ascending_cycle
+
+change_cycle:
+
+		ldi R31,HIGH(MSG2<<1)
+		ldi R30,LOW(MSG2<<1); Y APUNTA A MSG2
 
 
-		LPM R16, Z+
-		OUT PORTC, R16	;Mando R16 al puerto C
-		CPI R16,5
-		BREQ HERE
-		NOP
-		RJMP LOOP2
+	descending_cycle:	
+
+		nop
+		nop
+		nop
+
+
+		lpm R16, Z+
+		out PORTC, R16	;Mando R16 al puerto C
+		cpi R16,5
+		breq here
+		nop
+		rjmp descending_cycle
 		
 			
-HERE: JMP SENO
+Here: JMP sine
 
 .ORG 0x500
 
