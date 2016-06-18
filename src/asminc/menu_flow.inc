@@ -45,6 +45,7 @@ show_menu:
 ; check_buttons repite hasta que sea presionado algún botón.
 ;******************************************************************
 check_buttons:
+        LcdSendCommand LCD_CURSOR_OFF
 	; Reseteo las flags de las keys
 	rcall delay_1ms
 	rcall delay_1ms
