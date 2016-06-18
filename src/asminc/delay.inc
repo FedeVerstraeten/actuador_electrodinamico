@@ -55,8 +55,6 @@ delay_1s:
 ;******************************************************************
 
 delay_200ms:
-	push    tmp
-	push    tmp2
 	ldi	tmp, 10
 delay200ms_outer:
 	ldi	tmp2, 100
@@ -66,8 +64,6 @@ delay200ms_inner:
 	brne    delay200ms_inner
 	dec	tmp
 	brne    delay200ms_outer
-	pop     tmp2
-	pop     tmp
 	ret
 
 

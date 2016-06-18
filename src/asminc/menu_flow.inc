@@ -47,8 +47,8 @@ show_menu:
 check_buttons:
         LcdSendCommand LCD_CURSOR_OFF
 	; Reseteo las flags de las keys
-	rcall delay_1ms
-	rcall delay_1ms
+	rcall   delay_1ms
+	rcall   delay_1ms
 
 	; Botón presionado el bit estará en cero
 	in	tmp, MENU_PIN
@@ -220,8 +220,9 @@ gen_sawt:
         rjmp    EndProgram
 
 med_intnsty:
-        SetLcdClearAtHome
-        ldi 	zh, high(strIntnsty << 1)
-	ldi 	zl, low(strIntnsty << 1)
-        rcall   lcd_putstring
-        rjmp    EndProgram
+        ;; SetLcdClearAtHome
+        ;; ldi 	zh, high(strIntnsty << 1)
+	;; ldi 	zl, low(strIntnsty << 1)
+        ;; rcall   lcd_putstring
+        ;; rjmp    EndProgram
+        rjmp    intensity_loop

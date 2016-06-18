@@ -76,13 +76,16 @@ MAIN:
         ;; ; Inicializamos el DAC
         ;; rcall   signal_init
 
+        ; Inicializamos el ADC
+        rcall   intensity_init
+
 	; Inicializamos el menu
 	rcall	menu_init
 
 	; Llamada display
 	rcall   show_menu
 
-        rjmp   EndProgram
+        rjmp    EndProgram
 
 ; Codigo de jmps del menu
 .include "asminc/menu_flow.inc"
@@ -92,6 +95,8 @@ MAIN:
 .include "asminc/usart.inc"
 .include "asminc/matlab.inc"
 .include "asminc/signal.inc"
+.include "asminc/bin_to_ascii.inc"
+.include "asminc/intensity.inc"
 .include "asminc/lcd.inc"
 .include "asminc/interrupt.inc"
 .include "asminc/menu.inc"

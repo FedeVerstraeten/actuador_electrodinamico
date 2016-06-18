@@ -22,6 +22,10 @@
 
 	.def	test1	=	r0		; Definicion de prueba 0
 	.def	test2	=	r1		; Definicion de prueba 1
+	.def	rBin1L	=	r6
+	.def	rBin1H	=	r7
+	.def	rBin2L	=	r4
+	.def	rBin2H	=	r5
 	.def	wrdl	=	r10		; Almacena parte baja de WORD cargado en ROM
 	.def	wrdh 	=	r11		; Almacena parte alta de WORD cargado en ROM
 	.def	tmp	=	r16		; Registro para uso general

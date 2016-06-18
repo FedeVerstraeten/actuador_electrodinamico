@@ -1,0 +1,43 @@
+/*
+ * medidor.asm
+ *
+ *  Created: 14/06/2016 02:27:11 p.m.
+ *   Author: Eze
+ */
+
+.equ channel = 0  ;; ADC0
+
+;inicializo ADC
+intensity_init:
+        ldi  tmp, (1<<ADEN)|(1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0)
+        out  ADCSR, tmp
+        ; ADEN  es ADC enable
+        ; ADPSx es prescaler
+        ; ADSC  es empezar conversion
+
+        ldi  tmp, (1<<REFS0) ;referencia = AVCC (=VCC)
+        out  ADMUX, tmp
+        ; REFS1:REFS0 - reference voltage (segun micro)
+        ; MUX2:MUX0   - channel select
+        ret
+
+;----------------------------------------------------------
+
+intensity_loop:
+
+        ldi     tmp, 0b11110000
+        out     DDRA, tmp
+
+        ; Leer adc
+        ldi     tmp, (1<<REFS0) | channel ; Seteo channel
+        out     ADMUX, tmp
+        sbi     ADCSRA, ADSC              ; Empiezo conversion
+
+wait_for_conv_finished:
+        sbic ADCSRA, ADSC  ;bit ADSC se pone en bajo luego de terminar la conversion
+        rjmp wait_for_conv_finished
+
+        in   tmp, ADCL
+        in   tmp2, ADCH
+
+rjmp intensity_loop
