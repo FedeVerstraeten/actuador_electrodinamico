@@ -33,5 +33,7 @@
 	.def	arg	=	r18		; Para el pasaje de Argumentos
         .def    rtn     =       r19             ; Valores de retorno de rutinas
         .def    handshk =       r20             ; Handshake entre el micro y matlab
+        .def    tmp3    =       r21
+        .def    tmp4    =       r22
 
 

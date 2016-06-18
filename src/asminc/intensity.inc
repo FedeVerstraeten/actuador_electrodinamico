@@ -24,7 +24,9 @@
 ; CONSTANTES
 ;******************************************************************
 
-.equ channel = 0  ;; ADC0
+        .equ    DAC_PIN         =       0 ; Pin del DAC_PORT correspondiente a la entrada
+        .equ    DAC_DDR         =       DDRA
+        .equ    DAC_PORT        =       PORTA
 
 ;******************************************************************
 ; intensity_init: Inicializa el ADC.
@@ -37,10 +39,10 @@ intensity_init:
         ; ADPSx es prescaler
         ; ADSC  es empezar conversion
 
-        ldi     tmp, (1<<REFS0) ;referencia = AVCC (=VCC)
+        ldi     tmp, (1<<REFS0) ; Referencia = AVCC (=VCC)
         out     ADMUX, tmp
         ; REFS1:REFS0 - reference voltage (segun micro)
-        ; MUX2:MUX0   - channel select
+        ; MUX2:MUX0   - DAC_PIN select
         ret
 
 
@@ -50,50 +52,126 @@ intensity_init:
 ; y lo tranforma en un valor digital. Luego se muestra el valor
 ; medido en el display.
 ;******************************************************************
+intensity_start:
+        SetLCDClearAtHome
+        ldi 	zh, high(strIntnstyMed << 1)
+	ldi 	zl, low(strIntnstyMed << 1)
+        rcall   lcd_putstring
+
 
 intensity_loop:
         rcall   wait5ms
         rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
+        rcall   wait5ms
 
-        ldi     tmp, 0b11110000
-        out     DDRA, tmp
+        SecondLine
+
+        ldi     tmp, 0b00000000 ; Seteo los pines del puerto
+        out     DAC_DDR, tmp       ; A como entrada
 
         ; Leer ADC
-        ldi     tmp, (1<<REFS0) | channel ; Seteo channel
+        ldi     tmp, (1<<REFS0) | DAC_PIN ; Seteo channel
         out     ADMUX, tmp
         sbi     ADCSRA, ADSC              ; Empiezo conversion
-
-        SetLCDClearAtHome
 
 wait_for_conv_finished:
         sbic    ADCSRA, ADSC  ; El bit ADSC se pone en bajo luego de terminar la conversion
         rjmp    wait_for_conv_finished
 
+        ; Cargamos la parte baja y alta del valor medido
         in      rBin1L, ADCL
         in      rBin1H, ADCH
 
-        ldi     tmp, 0x12
-        ldi     tmp2, 0x03
-        ;; mov     rBin1L, tmp
-        ;; mov     rBin1H, tmp2
-
-        ;; SetLcdClearAtHome
-        ;; rcall   Bin2ToAsc
-        ;; ;; ldi 	zh, high(strTst << 1)
-	;; ;; ldi 	zl, low(strTst << 1)
-        ;; rcall   lcd_putstring
-
-	movw	rBin1H:rBin1L, tmp2:tmp
+        ; Posicionamos Z en la variable buffer
 	ldi     Zh, high(buffer)
 	ldi 	Zl, low(buffer)
-	rcall	Bin2ToAsc5
-	ldi     tmp, 5
+        ; Convertimos el valor medido que se encuentra
+        ; en las variables rBin1L y rBin1H en 5
+        ; caracteres ASCII, los cuales se guardan
+        ; en el puntero Z
+	rcall	Bin2ToAsc
+
+        ; Volvemos al inicio de Z
+	ldi     Zh, high(buffer)
+	ldi 	Zl, low(buffer)
+        ; tmp3 es el indice
+	ldi     tmp3, 5
+        ; Vamos almacenando caracter a caracter en arg
 	ld	arg, Z+
-tsloop10:
+lcd_send_ascii:
         LcdPutChar
 	ld	arg, Z+
-	dec     tmp
-	cpi     tmp, 0
-	brne    tsloop10
+	dec     tmp3
+	cpi     tmp3, 0
+	brne    lcd_send_ascii
 
         rjmp    intensity_loop

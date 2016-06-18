@@ -100,7 +100,7 @@ strSquare:	.db	"Cuadrada",ENDSTR,ENDSTR
 strSawt:	.db	"Diente sierra",ENDSTR
 strIntnsty:	.db	"Medir intensidad",ENDSTR,ENDSTR
 
-strTst:	        .db	"Intensidad:",ENDSTR,ENDSTR
+strIntnstyMed:  .db	"Intensidad:",ENDSTR,ENDSTR
 
 strCommIdle:    .db     "Esperando handshake",ENDSTR
 strCommStore:   .db     "Guardando muestras",ENDSTR,ENDSTR

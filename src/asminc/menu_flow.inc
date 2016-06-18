@@ -220,9 +220,4 @@ gen_sawt:
         rjmp    EndProgram
 
 med_intnsty:
-        ;; SetLcdClearAtHome
-        ;; ldi 	zh, high(strIntnsty << 1)
-	;; ldi 	zl, low(strIntnsty << 1)
-        ;; rcall   lcd_putstring
-        ;; rjmp    EndProgram
-        rjmp    intensity_loop
+        rjmp    intensity_start
