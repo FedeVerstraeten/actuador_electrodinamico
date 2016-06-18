@@ -89,6 +89,7 @@ MAIN:
         ldi     ZH, high(strsin<<1)
         ldi     ZL, low(strSin<<1)
         rcall   lcd_putstring
+        rcall   EndProgram
 
 ; Codigo de jmps del menu
 .include "asminc/menu_flow.inc"
