@@ -19,6 +19,24 @@
 ; Rutinas para generar un retardo temporal.
 ;******************************************************************
 
+wait5ms:
+        ldi     tmp2, 0x20 ; Este valor se podria modificar para obtener un refresco mas rapido
+wait5msOuter:
+        ldi     tmp, 0xFF
+wait5msInner:
+        dec     tmp
+        brne    wait5msInner
+        dec     tmp2
+        brne    wait5msOuter
+        ret
+
+wait100us:
+        ldi     tmp2, 0x8F  ; 0x8F @ 4 MHz
+wait100usLoop:
+        dec     tmp2
+        brne    wait100usLoop
+        ret
+
 ;******************************************************************
 ; delay_1s: Rutina de delay.
 ;******************************************************************

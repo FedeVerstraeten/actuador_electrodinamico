@@ -24,7 +24,7 @@
 ; Includes
 ;******************************************************************
 
-	.include "asminc/m328Pdef.inc"
+	.include "asminc/m32def.inc"
 	.include "asminc/menu_def.inc"
 	.include "asminc/register_alias.inc"
 	.include "asminc/macros.inc"
@@ -45,8 +45,8 @@
 .cseg
 .org 0x0000
 	rjmp 	RESET
-.org INT0addr
-        rjmp    press_interrupt
+;; .org INT0addr
+;;         rjmp    press_interrupt
 
 
 ;*****************************************************************
@@ -65,22 +65,30 @@ RESET:
 ;*****************************************************************
 
 MAIN:
-        ; Inicializamos las interrupciones
-        rcall   interrupt_init
+        ;; ; Inicializamos las interrupciones
+        ;; rcall   interrupt_init
 	; Inicializamos el display
 	rcall	lcd_init
 
-	; Inicializamos la comunicación serie
-	rcall 	usart_init
+	;; ; Inicializamos la comunicación serie
+	;; rcall 	usart_init
 
-        ; Inicializamos el DAC
-        rcall   signal_init
+        ;; ; Inicializamos el DAC
+        ;; rcall   signal_init
 
 	; Inicializamos el menu
 	rcall	menu_init
 
-	; Llamada display
-	rcall   show_menu
+	;; ; Llamada display
+	;; rcall   show_menu
+        SetLcdClearAtHome
+        ldi     ZH, high(StrMatlab<<1)
+        ldi     ZL, low(strMatlab<<1)
+        rcall   lcd_putstring
+        SecondLine
+        ldi     ZH, high(strsin<<1)
+        ldi     ZL, low(strSin<<1)
+        rcall   lcd_putstring
 
 ; Codigo de jmps del menu
 .include "asminc/menu_flow.inc"

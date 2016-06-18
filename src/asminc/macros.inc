@@ -42,18 +42,83 @@
 	movw	Zh:Zl, wrdh:wrdl
 .ENDMACRO
 
+;*****************************************************************
+; SendLcdStrobe: Envia un pulso en el bit de datos Enable.
+;*****************************************************************
+
+.macro SendLcdStrobe
+        sbi     LCD_CTRL_PORT, LCD_E
+        ; Hay que esperar al menos 80 ns antes de cerrar el
+        ; pulso (E=0). Como usamos clock de 16 Mhz es necesario
+        ; usar unos nop para que pase el tiempo.
+        nop
+        nop
+        nop
+        cbi     LCD_CTRL_PORT, LCD_E
+        ; Los datos tienen que estar estables 10ns luego de haber
+        ; hecho un strobe. Para no cumplir esto deberia haber
+        ; un clock de más de 100 Mhz asi que no es un problema.
+.endmacro
+
+;*****************************************************************
+; ClearLcdRWBit, SetLcdRWBit: Establece en 0 o 1 el bit RW.
+;*****************************************************************
+
+.macro ClearLcdRWBit
+        cbi     LCD_CTRL_PORT, LCD_RW
+.endmacro
+
+.macro SetLcdRWBit
+        sbi     LCD_CTRL_PORT, LCD_RW
+.endmacro
+
+;*****************************************************************
+; ClearLcdRSBit, SetLcdRSBit: Establece en 0 o 1 el bit RS.
+;*****************************************************************
+
+.macro ClearLcdRSBit
+        cbi     LCD_CTRL_PORT, LCD_RS
+.endmacro
+
+.macro SetLcdRSBit
+        sbi     LCD_CTRL_PORT, LCD_RS
+.endmacro
+
+;*****************************************************************
+; LcdSendCommand: Envia un comando almacenado en la variable
+; arg al display.
+;*****************************************************************
+
+.macro LcdSendCommand
+        ClearLcdRSBit
+        ldi     arg, @0
+        ;; rcall   lcdBusyWait
+        rcall   lcd_send_high_nibble
+        swap    arg
+        rcall   lcd_send_high_nibble
+.endmacro
+
+;*****************************************************************
+; LcdPutChar: Envia un caracter almacenado en la variable
+; arg al display.
+;*****************************************************************
+
+.macro LcdPutChar
+        SetLcdRSBit
+        ;; rcall lcdBusyWait
+        rcall   lcd_send_high_nibble
+        swap    arg
+        rcall   lcd_send_high_nibble
+.endmacro
+
 ;******************************************************************
 ; SetLCDClearAtHome: Limpia la pantalla del display y luego ubica
 ; al cursor en Home.
 ;******************************************************************
 
 .MACRO	SetLcdClearAtHome
-	ldi	arg, LCD_CLEAR
-	rcall	lcd_send_cmd_4b
-	rcall	lcd_wait
-	ldi	arg, LCD_CURSOR_HOME
-	rcall	lcd_send_cmd_4b
-	rcall	lcd_wait
+        LcdSendCommand LCD_DISPLAY_CLEAR
+	LcdSendCommand LCD_CURSOR_HOME
 .ENDMACRO
 
 ;******************************************************************
@@ -62,9 +127,7 @@
 ;******************************************************************
 
 .MACRO	SecondLine
-	ldi	arg, LCD_CURSOR_2LINE
-	rcall	lcd_send_cmd_4b
-	rcall	lcd_wait
+	LcdSendCommand LCD_SECOND_LINE
 .ENDMACRO
 
 ;******************************************************************

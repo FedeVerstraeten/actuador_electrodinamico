@@ -32,21 +32,21 @@
 ;******************************************************************
 usart_init:
 	;; Habilito comunicacion serie de entrada y salida
-	ldi     tmp, (1<<TXEN0) | (1<<RXEN0)
-	sts     UCSR0B, tmp
+	ldi     tmp, (1<<TXEN) | (1<<RXEN)
+	sts     UCSRB, tmp
 
 	;; Configuro que el tipo de comunicacion será de 8 bits
 	;; de datos y 1 stop bit, sin paridad
-	ldi     tmp, (1<<UCSZ01) | (1<<UCSZ00)
-	sts     UCSR0C, tmp
+	ldi     tmp, (1<<UCSZ1) | (1<<UCSZ0)
+	sts     UCSRC, tmp
 
 	;; Cargo el baud en el registro correspondiente
 	;; (Puede ser un numero alto por lo que ocupa
 	;;  dos bytes, por eso hay partes High y Low)
 	ldi     tmp, HIGH(USART_UBRR)
-	sts     UBRR0H, tmp
+	sts     UBRRH, tmp
 	ldi     tmp, LOW(USART_UBRR)
-	sts     UBRR0L, tmp
+	sts     UBRRL, tmp
 
 ;******************************************************************
 ; usart_transmit: Envía un byte utilizando comunicación serie.
@@ -55,11 +55,11 @@ usart_transmit:
         push    tmp
         ;; Espero a que este listo para leer
 transmit_loop:
-        lds     tmp, UCSR0A
-        sbrs    tmp, UDRE0
+        lds     tmp, UCSRA
+        sbrs    tmp, UDRE
         rjmp    transmit_loop
         ;; Almacenamos el byte recibido
-        sts     UDR0, arg
+        sts     UDR, arg
         pop     tmp
         ret
 
@@ -70,10 +70,10 @@ usart_recieve:
         push     tmp
         ;; Espero a que este listo para leer
 recieve_loop:
-        lds     tmp, UCSR0A
-        sbrs    tmp, RXC0
+        lds     tmp, UCSRA
+        sbrs    tmp, RXC
         rjmp    recieve_loop
         ;; Almacenamos el byte recibido
-        lds     rtn, UDR0
+        lds     rtn, UDR
         pop     tmp
         ret

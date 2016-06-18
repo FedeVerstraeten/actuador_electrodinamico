@@ -114,39 +114,39 @@ press_interrupt:
 
 fstline_dsp:
 	ldi	arg, '>'
-	rcall 	lcd_putchar
+	LcdPutchar
 	movw	Zh:Zl, Xh:Xl
 	MoveZTo (FSTLINESTR)
 	LoadWord
-	rcall	lcd_putstring
+	rcall   lcd_putstring
 	ret
 
 sndline_dsp:
 	Secondline
 	ldi	arg, ' '
-	rcall 	lcd_putchar
+	LcdPutchar
 	movw	Zh:Zl, Xh:Xl
 	MoveZTo (SNDLINESTR)
 	LoadWord
-	rcall	lcd_putstring
+	rcall   lcd_putstring
 	ret
 
 endline_dsp1:
 	ldi	arg, ' '
-	rcall 	lcd_putchar
+	LcdPutchar
 	movw	Zh:Zl, Xh:Xl
 	MoveZTo (FSTLINESTR)
 	LoadWord
-	rcall	lcd_putstring
+	rcall   lcd_putstring
 
 endline_dsp2:
 	Secondline
 	ldi	arg, '>'
-	rcall 	lcd_putchar
+	LcdPutchar
 	movw	Zh:Zl, Xh:Xl
 	MoveZTo (SNDLINESTR)
 	LoadWord
-	rcall	lcd_putstring
+	rcall   lcd_putstring
 	ret
 
 ;******************************************************************

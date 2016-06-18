@@ -45,7 +45,7 @@ menu_init:
 lcd_putstring:
 	lpm	arg, Z+
 putstring_loop:
-	rcall   lcd_putchar
+	LcdPutchar
 	lpm	arg, Z+
 	cpi     arg, ENDSTR
 	brne    putstring_loop

@@ -2,7 +2,7 @@
 PROJECT = actuador
 
 # Microcontrolador que se utiliza
-MICRO = m328p
+MICRO = m32
 
 # Ensamblador a utilizar
 ASMBLER = avra
@@ -31,7 +31,7 @@ clean_win:
 	rm \*.hex \*.cof \*.HEX \*.LST \*.obj \*.SDI
 
 program:
-	avrdude -c usbtiny -p $(MICRO) -U flash:w:$(PROJECT).hex
+	avrdude -c usbtiny -p $(MICRO) -U flash:w:build/main.S.hex
 
 hfuse:
 	avrdude -c usbtiny -p $(MICRO) -U hfuse:w:0xD7:m
