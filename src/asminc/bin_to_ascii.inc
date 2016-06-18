@@ -49,16 +49,16 @@ Bin2ToAsc5c:
 
 ; Bin2ToAsc
 ; =========
-; converts a 16-bit-binary to a 5-digit ASCII coded decimal,
+; Converts a 16-bit-binary to a 5-digit ASCII coded decimal,
 ;   the pointer points to the first significant digit of the
 ;   decimal, returns the number of digits
 ; In: 16-bit-binary in rBin1H:L, Z points to first digit of
-;   the ASCII decimal (requires 5 digits buffer space, even
-;   if the number is smaller!)
+;     the ASCII decimal (requires 5 digits buffer space, even
+;     if the number is smaller!)
 ; Out: Z points to the first significant digit of the ASCII
-;   decimal, rBin2L has the number of characters (1..5)
+;      decimal, rBin2L has the number of characters (1..5)
 ; Used registers: rBin1H:L (unchanged), rBin2H (changed),
-;   rBin2L (result, length of number), tmp
+;      rBin2L (result, length of number), tmp
 ; Called subroutines: Bin2ToBcd5, Bin2ToAsc5
 ;
 

@@ -40,6 +40,7 @@
 ; Segmento Datos en SRAM
 .dseg
 	var:	.byte	6
+        buffer: .byte   5
 
 ; Segmento Codigo en Flash-ROM
 .cseg

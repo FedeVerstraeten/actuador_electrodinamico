@@ -54,44 +54,6 @@ intensity_init:
 intensity_loop:
         rcall   wait5ms
         rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
-        rcall   wait5ms
 
         ldi     tmp, 0b11110000
         out     DDRA, tmp
@@ -101,6 +63,8 @@ intensity_loop:
         out     ADMUX, tmp
         sbi     ADCSRA, ADSC              ; Empiezo conversion
 
+        SetLCDClearAtHome
+
 wait_for_conv_finished:
         sbic    ADCSRA, ADSC  ; El bit ADSC se pone en bajo luego de terminar la conversion
         rjmp    wait_for_conv_finished
@@ -108,15 +72,28 @@ wait_for_conv_finished:
         in      rBin1L, ADCL
         in      rBin1H, ADCH
 
-        ldi     tmp, 0x02
-        ldi     tmp2, 0x00
-        mov     rBin1L, tmp
-        mov     rBin1H, tmp2
+        ldi     tmp, 0x12
+        ldi     tmp2, 0x03
+        ;; mov     rBin1L, tmp
+        ;; mov     rBin1H, tmp2
 
-        SetLcdClearAtHome
-        rcall   Bin2ToAsc
-        ;; ldi 	zh, high(strTst << 1)
-	;; ldi 	zl, low(strTst << 1)
-        rcall   lcd_putstring
+        ;; SetLcdClearAtHome
+        ;; rcall   Bin2ToAsc
+        ;; ;; ldi 	zh, high(strTst << 1)
+	;; ;; ldi 	zl, low(strTst << 1)
+        ;; rcall   lcd_putstring
+
+	movw	rBin1H:rBin1L, tmp2:tmp
+	ldi     Zh, high(buffer)
+	ldi 	Zl, low(buffer)
+	rcall	Bin2ToAsc5
+	ldi     tmp, 5
+	ld	arg, Z+
+tsloop10:
+        LcdPutChar
+	ld	arg, Z+
+	dec     tmp
+	cpi     tmp, 0
+	brne    tsloop10
 
         rjmp    intensity_loop
