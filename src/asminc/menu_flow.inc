@@ -36,6 +36,7 @@ show_menu:
 	MoveZTo (SNDLINEHANDLER)
 	rcall   jumper
 	rjmp	check_buttons
+        ret
 
 ;******************************************************************
 ; check_buttons: Rutina lectura de botón de entrada: UP, DOWN, ENTER
@@ -45,7 +46,8 @@ show_menu:
 ;******************************************************************
 check_buttons:
 	; Reseteo las flags de las keys
-	rcall delay_200ms
+	rcall delay_1ms
+	rcall delay_1ms
 
 	; Botón presionado el bit estará en cero
 	in	tmp, MENU_PIN
@@ -184,33 +186,41 @@ opt_intnsty:
 	rjmp	show_menu
 
 ;******************************************************************
-; comm_matlab:
-; Handler inicio comunicación con Matlab.
-;******************************************************************
-;; comm_matlab:
-	;; SetLcdClearAtHome
-	;; ldi 	zh, high(strBusy<<1)
-	;; ldi 	zl, low(strBusy<<1)
-	;; rcall 	lcd_putstring
-	;; rcall 	StartReading
-	;; rcall 	SaveReading
-	;; clr 	yh
-	;; clr 	yl
-	;; ldi		Xh, high(Resultados<<1)
-	;; ldi		Xl, low(Resultados<<1)
-	;; rjmp 	show_menu
-
-;******************************************************************
 ; gen:
 ; Generación funciones precargadas.
 ;******************************************************************
+gen_matlab:
+        SetLcdClearAtHome
+        ldi 	zh, high(strMatlab << 1)
+	ldi 	zl, low(strMatlab << 1)
+        rcall   lcd_putstring
+        rjmp    EndProgram
 
 gen_sin:
-	rjmp 	show_menu
+        SetLcdClearAtHome
+        ldi 	zh, high(strSin << 1)
+	ldi 	zl, low(strSin << 1)
+        rcall   lcd_putstring
+        rjmp    EndProgram
+
 gen_square:
-	rjmp 	show_menu
+        SetLcdClearAtHome
+        ldi 	zh, high(strSquare << 1)
+	ldi 	zl, low(strSquare << 1)
+        rcall   lcd_putstring
+        rjmp    EndProgram
+
+
 gen_sawt:
-	rjmp 	show_menu
+        SetLcdClearAtHome
+        ldi 	zh, high(strSawt << 1)
+	ldi 	zl, low(strSawt << 1)
+        rcall   lcd_putstring
+        rjmp    EndProgram
 
 med_intnsty:
-	rjmp 	show_menu
+        SetLcdClearAtHome
+        ldi 	zh, high(strIntnsty << 1)
+	ldi 	zl, low(strIntnsty << 1)
+        rcall   lcd_putstring
+        rjmp    EndProgram

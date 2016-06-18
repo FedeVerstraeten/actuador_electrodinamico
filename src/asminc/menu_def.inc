@@ -46,18 +46,18 @@
 ;*****************************************************************
 
 ; DDR correspondiente a los botones controladores
-        .equ    MENU_DDR        =       DDRC
+        .equ    MENU_DDR        =       DDRD
 
 ; Puerto correspondiente a los botones controladores
-        .equ    MENU_PORT       =       PORTC
+        .equ    MENU_PORT       =       PORTD
 
 ; Pin correspondiente a los botones controladores
-        .equ    MENU_PIN        =       PINC
+        .equ    MENU_PIN        =       PIND
 
 ; Pines correspondientes a los botones controladores
-	.equ	SWITCHUP	= 	2
 	.equ	SWITCHDW	= 	3
-	.equ	SWITCHEN	= 	4
+        .equ	SWITCHUP	= 	4
+	.equ	SWITCHEN	= 	5
 
 ; Cadenas de caracteres
 	.equ	ENDSTR	        =	0		; Fin del String
@@ -77,7 +77,7 @@
 .cseg
 .org 0x0600
 
-Matlab: .db high(opt_intnsty),low(opt_intnsty),high(opt_sin),low(opt_sin),high(comm_start),low(comm_start),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strMatlab<<1),low(strMatlab<<1),high(strSin<<1),low(strSin<<1)
+Matlab: .db high(opt_intnsty),low(opt_intnsty),high(opt_sin),low(opt_sin),high(gen_matlab),low(gen_matlab),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strMatlab<<1),low(strMatlab<<1),high(strSin<<1),low(strSin<<1)
 
 Sine: .db high(opt_matlab),low(opt_matlab),high(opt_square),low(opt_square),high(gen_sin),low(gen_sin),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strSin<<1),low(strSin<<1),high(strSquare<<1),low(strSquare<<1)
 
@@ -121,9 +121,3 @@ samplesSin: .db 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13
 	    .db 2,1,1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15, 16, 18, 19, 21
 	    .db 23, 25, 27, 29, 31, 33, 35, 37, 39, 42, 44, 46, 49, 51, 54, 56, 59, 62, 64, 67, 70, 73, 76, 79, 81, 84, 87
 	    .db 90, 93, 96, 99, 103,106,109,112,115,118,121,124
-
-samplesSawt:.db 0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A
-            .db 0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A
-            .db 0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A
-            .db 0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A
-            .db 0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A

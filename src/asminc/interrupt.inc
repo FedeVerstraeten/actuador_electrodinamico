@@ -26,7 +26,7 @@
 
         .equ    INT_PORT        =       PORTD
         .equ    INT_DDR         =       DDRD
-        .equ    INT_BTN         =       3 ; Pin correspondiente al boton de interrupción externa (corresponde a PD2)
+        .equ    INT_BTN         =       2 ; Pin correspondiente al boton de interrupción externa (corresponde a PD2)
 
 ;*****************************************************************
 ; interrupt_init: Inicializa la configuración de las interrupciones
@@ -35,10 +35,10 @@
 ;*****************************************************************
 
 interrupt_init:
-        sbi     INT_DDR, INT_BTN        ; INT_DDR.INT_BTN es salida
-        sbi     INT_PORT, 0b00000010    ; Activo pull-up
-        ldi     tmp, 1<<INT0            ; Seteo INT0
-        ;; out     GICR, tmp               ; Cargo esta opción en el GICR
-        ;; ldi     tmp, 0b00000010         ; Seteo que la interrupción ocurra cuando hay un flanco descendente
+        cbi     INT_DDR, INT_BTN        ; Seteo el pin como entrada
+        sbi     INT_PORT, INT_BTN       ; Activo pull-up
+        ldi     tmp, 1 << INT0          ; Seteo INT0
+        out     GICR, tmp               ; Cargo esta opción en el GICR
+        ldi     tmp, 0b00000010         ; Seteo que la interrupción ocurra cuando hay un flanco descendente
         out     MCUCR, tmp              ; Cargo esta opción en el MCUCR
         sei                             ; Habilito interrupciones en forma global

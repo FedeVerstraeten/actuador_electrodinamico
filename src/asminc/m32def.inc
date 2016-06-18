@@ -2,7 +2,7 @@
 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega32.xml ************
 ;*************************************************************************
 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
-;* 
+;*
 ;* Number            : AVR000
 ;* File Name         : "m32def.inc"
 ;* Title             : Register/Bit Definitions for the ATmega32
@@ -10,27 +10,27 @@
 ;* Version           : 2.35
 ;* Support E-mail    : avr@atmel.com
 ;* Target MCU        : ATmega32
-;* 
+;*
 ;* DESCRIPTION
-;* When including this file in the assembly program file, all I/O register 
+;* When including this file in the assembly program file, all I/O register
 ;* names and I/O register bit names appearing in the data book can be used.
-;* In addition, the six registers forming the three data pointers X, Y and 
-;* Z have been assigned names XL - ZH. Highest RAM address for Internal 
-;* SRAM is also defined 
-;* 
+;* In addition, the six registers forming the three data pointers X, Y and
+;* Z have been assigned names XL - ZH. Highest RAM address for Internal
+;* SRAM is also defined
+;*
 ;* The Register names are represented by their hexadecimal address.
-;* 
+;*
 ;* The Register Bit names are represented by their bit number (0-7).
-;* 
+;*
 ;* Please observe the difference in using the bit names with instructions
 ;* such as "sbr"/"cbr" (set/clear bit in register) and "sbrs"/"sbrc"
 ;* (skip if bit in register set/cleared). The following example illustrates
 ;* this:
-;* 
+;*
 ;* in    r16,PORTB             ;read PORTB latch
 ;* sbr   r16,(1<<PB6)+(1<<PB5) ;set PB6 and PB5 (use masks, not bit#)
 ;* out   PORTB,r16             ;output to PORTB
-;* 
+;*
 ;* in    r16,TIFR              ;read the Timer Interrupt Flag Register
 ;* sbrc  r16,TOV0              ;test the overflow flag (use bit#)
 ;* rjmp  TOV0_is_set           ;jump if set
@@ -193,24 +193,24 @@
 .equ	FOC0	= 7	; Force Output Compare
 
 ; TCNT0 - Timer/Counter Register
-.equ	TCNT0_0	= 0	; 
-.equ	TCNT0_1	= 1	; 
-.equ	TCNT0_2	= 2	; 
-.equ	TCNT0_3	= 3	; 
-.equ	TCNT0_4	= 4	; 
-.equ	TCNT0_5	= 5	; 
-.equ	TCNT0_6	= 6	; 
-.equ	TCNT0_7	= 7	; 
+.equ	TCNT0_0	= 0	;
+.equ	TCNT0_1	= 1	;
+.equ	TCNT0_2	= 2	;
+.equ	TCNT0_3	= 3	;
+.equ	TCNT0_4	= 4	;
+.equ	TCNT0_5	= 5	;
+.equ	TCNT0_6	= 6	;
+.equ	TCNT0_7	= 7	;
 
 ; OCR0 - Output Compare Register
-.equ	OCR0_0	= 0	; 
-.equ	OCR0_1	= 1	; 
-.equ	OCR0_2	= 2	; 
-.equ	OCR0_3	= 3	; 
-.equ	OCR0_4	= 4	; 
-.equ	OCR0_5	= 5	; 
-.equ	OCR0_6	= 6	; 
-.equ	OCR0_7	= 7	; 
+.equ	OCR0_0	= 0	;
+.equ	OCR0_1	= 1	;
+.equ	OCR0_2	= 2	;
+.equ	OCR0_3	= 3	;
+.equ	OCR0_4	= 4	;
+.equ	OCR0_5	= 5	;
+.equ	OCR0_6	= 6	;
+.equ	OCR0_7	= 7	;
 
 ; TIMSK - Timer/Counter Interrupt Mask Register
 .equ	TOIE0	= 0	; Timer/Counter0 Overflow Interrupt Enable
@@ -414,7 +414,7 @@
 .equ	ADPS2	= 2	; ADC  Prescaler Select Bits
 .equ	ADIE	= 3	; ADC Interrupt Enable
 .equ	ADIF	= 4	; ADC Interrupt Flag
-.equ	ADATE	= 5	; 
+.equ	ADATE	= 5	;
 .equ	ADFR	= ADATE	; For compatibility
 .equ	ADSC	= 6	; ADC Start Conversion
 .equ	ADEN	= 7	; ADC Enable
@@ -666,14 +666,14 @@
 
 ; ***** TWI **************************
 ; TWBR - TWI Bit Rate register
-.equ	TWBR0	= 0	; 
-.equ	TWBR1	= 1	; 
-.equ	TWBR2	= 2	; 
-.equ	TWBR3	= 3	; 
-.equ	TWBR4	= 4	; 
-.equ	TWBR5	= 5	; 
-.equ	TWBR6	= 6	; 
-.equ	TWBR7	= 7	; 
+.equ	TWBR0	= 0	;
+.equ	TWBR1	= 1	;
+.equ	TWBR2	= 2	;
+.equ	TWBR3	= 3	;
+.equ	TWBR4	= 4	;
+.equ	TWBR5	= 5	;
+.equ	TWBR6	= 6	;
+.equ	TWBR7	= 7	;
 
 ; TWCR - TWI Control Register
 .equ	TWIE	= 0	; TWI Interrupt Enable
@@ -813,4 +813,3 @@
 #endif  /* _M32DEF_INC_ */
 
 ; ***** END OF FILE ******************************************************
-

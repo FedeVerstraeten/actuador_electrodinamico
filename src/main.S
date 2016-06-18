@@ -45,8 +45,8 @@
 .cseg
 .org 0x0000
 	rjmp 	RESET
-;; .org INT0addr
-;;         rjmp    press_interrupt
+.org INT0addr
+        rjmp    press_interrupt
 
 
 ;*****************************************************************
@@ -66,7 +66,7 @@ RESET:
 
 MAIN:
         ;; ; Inicializamos las interrupciones
-        ;; rcall   interrupt_init
+        rcall   interrupt_init
 	; Inicializamos el display
 	rcall	lcd_init
 
@@ -79,17 +79,10 @@ MAIN:
 	; Inicializamos el menu
 	rcall	menu_init
 
-	;; ; Llamada display
-	;; rcall   show_menu
-        SetLcdClearAtHome
-        ldi     ZH, high(StrMatlab<<1)
-        ldi     ZL, low(strMatlab<<1)
-        rcall   lcd_putstring
-        SecondLine
-        ldi     ZH, high(strsin<<1)
-        ldi     ZL, low(strSin<<1)
-        rcall   lcd_putstring
-        rcall   EndProgram
+	; Llamada display
+	rcall   show_menu
+
+        rjmp   EndProgram
 
 ; Codigo de jmps del menu
 .include "asminc/menu_flow.inc"
