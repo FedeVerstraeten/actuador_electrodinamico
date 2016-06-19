@@ -14,10 +14,10 @@
 ;		 federico.verstraeten@gmail.com
 ;
 ;******************************************************************
-;       MATLAB
+;       INTENSITY
 ;******************************************************************
-; Rutinas utilizadas para definir cómo se realiza la comunicación
-; con matlab a la hora de ir pasando muestras de una función.
+; Rutinas que utilizan el ADC del microcontrolador para realizar
+; la medición de intensidad lumínica.
 ;******************************************************************
 
 ;******************************************************************
@@ -135,24 +135,24 @@ intensity_loop:
         rcall   wait5ms
         rcall   wait5ms
 
+        ; Posicionamos el cursor al principio de la segunda línea
+        ; del display, de esa manera se sobreescriben los valores
+        ; de la medición anterior
         SecondLine
-
         ldi     tmp, 0b00000000         ; Seteo los pines del puerto
         out     ADC_DDR, tmp            ; A como entrada
-
         ; Leer ADC
         ldi     tmp, (1<<REFS0) | ADC_PIN ; Seteo channel
         out     ADMUX, tmp
         sbi     ADCSRA, ADSC              ; Empiezo conversion
 
 wait_for_conv_finished:
-        sbic    ADCSRA, ADSC  ; El bit ADSC se pone en bajo luego de terminar la conversion
+        ; El bit ADSC se pone en bajo luego de terminar la conversión
+        sbic    ADCSRA, ADSC
         rjmp    wait_for_conv_finished
-
         ; Cargamos la parte baja y alta del valor medido
         in      rBin1L, ADCL
         in      rBin1H, ADCH
-
         ; Posicionamos Z en la variable buffer
 	ldi     Zh, high(buffer)
 	ldi 	Zl, low(buffer)
@@ -161,13 +161,10 @@ wait_for_conv_finished:
         ; caracteres ASCII, los cuales se guardan
         ; en el puntero Z
 	rcall	bin_to_asc
-
         ; Volvemos al inicio de Z
 	ldi     Zh, high(buffer)
 	ldi 	Zl, low(buffer)
-
         ; Mostramos los caracteres en el display
         rcall   lcd_send_ascii
-
         ; Volvemos a leer datos del ADC
         rjmp    intensity_loop
