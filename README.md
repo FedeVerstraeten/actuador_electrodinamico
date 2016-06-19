@@ -22,6 +22,9 @@ https://github.com/DarkSector/AVR/tree/master/asm/include
 * Microcontrolador ATmega32A (40 pines)
 [Link Datasheet](http://www.atmel.com/images/atmel-8155-8-bit-microcontroller-avr-atmega32a_datasheet.pdf)
 
+* Number format conversion AVR-Assembler
+http://www.avr-asm-tutorial.net/avr_en/calc/CONVERSION.html
+
 ## Links e Info de Interés ##
 
 * Proyecto Espectrofotocolorímetro (para ver cómo manejan el display)
