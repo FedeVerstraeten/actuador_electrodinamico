@@ -2,7 +2,7 @@
 ; Materia......: Laboratorio de Microprocesadores.
 ; Curso........: Campigglio - Stola
 ; Fecha inicio.: 14/03/2016
-; Fecha entrega: 20/06/2016
+; Fecha entrega: 21/06/2016
 ; Autores......:
 ;		 Ezequiel Martín Zarza
 ;		 Santiago Roman

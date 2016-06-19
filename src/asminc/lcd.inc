@@ -2,7 +2,7 @@
 ; Materia......: Laboratorio de Microprocesadores.
 ; Curso........: Campigglio - Stola
 ; Fecha inicio.: 14/03/2016
-; Fecha entrega: 20/06/2016
+; Fecha entrega: 21/06/2016
 ; Autores......:
 ;		 Ezequiel Martín Zarza
 ;		 Santiago Roman
@@ -115,6 +115,27 @@ lcd_send_high_nibble:
         ; Enviamos los datos al display
         out     LCD_CTRL_PORT, tmp
         SendLcdStrobe
+        ret
+
+;*****************************************************************
+; lcd_send_ascii: Rutina utilizada en la parte de medición de
+; intensidad lumínica. Para funcionar correctamente se debe
+; cargar el puntero Z apuntando al primero de los 5 caracteres
+; (correspondientes a un numero entero de 5 digitos) que se van
+; a leer. Usamos esta rutina en vez de lcd_putstring ya que
+; los strings terminan en ENDSTR y estos 5 caracteres que leemos
+; salen de la rutina Bin2ToAsc, la cual no añade ENDSTR al final.
+;*****************************************************************
+
+lcd_send_ascii:
+        ldi     tmp3, 5         ; Contador que utilizamos
+        ld      arg, Z+         ; Almacenamos un caracter en arg
+lcd_send_ascii_loop:
+        LcdPutChar              ; Mostramos el caracter en el lcd
+	ld	arg, Z+         ; Almacenamos otro caracter
+	dec     tmp3            ; Decrementamos el contador
+	cpi     tmp3, 0         ; Si es cero termina el loop
+	brne    lcd_send_ascii_loop  ; si no, continua
         ret
 
 ;; ;*****************************************************************

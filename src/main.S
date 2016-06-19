@@ -2,7 +2,7 @@
 ; Materia......: Laboratorio de Microprocesadores.
 ; Curso........: Campigglio - Stola
 ; Fecha inicio.: 14/03/2016
-; Fecha entrega: 20/06/2016
+; Fecha entrega: 21/06/2016
 ; Autores......:
 ;		 Ezequiel Martín Zarza
 ;		 Santiago Roman
@@ -66,15 +66,15 @@ RESET:
 ;*****************************************************************
 
 MAIN:
-        ;; ; Inicializamos las interrupciones
+        ; Inicializamos las interrupciones
         rcall   interrupt_init
 	; Inicializamos el display
 	rcall	lcd_init
 
-	;; ; Inicializamos la comunicación serie
+	; Inicializamos la comunicación serie
 	;; rcall 	usart_init
 
-        ;; ; Inicializamos el DAC
+        ; Inicializamos el DAC
         ;; rcall   signal_init
 
         ; Inicializamos el ADC
@@ -83,7 +83,7 @@ MAIN:
 	; Inicializamos el menu
 	rcall	menu_init
 
-	; Llamada display
+	; Mostramos el menu
 	rcall   show_menu
 
         rjmp    EndProgram

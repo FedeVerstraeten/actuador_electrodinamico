@@ -2,7 +2,7 @@
 ; Materia......: Laboratorio de Microprocesadores.
 ; Curso........: Campigglio - Stola
 ; Fecha inicio.: 14/03/2016
-; Fecha entrega: 20/06/2016
+; Fecha entrega: 21/06/2016
 ; Autores......:
 ;		 Ezequiel Martín Zarza
 ;		 Santiago Roman
@@ -24,17 +24,17 @@
 ; CONSTANTES
 ;******************************************************************
         .equ    SIGNAL_DDR      =       DDRC
-        
-		.equ    SIGNAL_PORT     =       PORTC
+
+	.equ    SIGNAL_PORT     =       PORTC
 
         .equ    SIGNAL_NUMSPL   =       0x50 ; Numero de muestras de las funciones precargadas
 
         .equ    ENDSIG          =       0xCB
-		
-		.equ maxAmp = 127 ; Amplitud Maxima
 
-		.equ delay = 255 ; Delay, si aumenta el delay tendriamos frecuencias mas bajas
-		
+	.equ    MAX_AMPLITUDE   =       127 ; Amplitud Maxima
+
+	.equ    DELAY_FREQ      =       255 ; Delay, si aumenta el delay tendriamos frecuencias mas bajas
+
 ;******************************************************************
 ; SIGNAL_TABLE: Diferentes muestras que componen a un período
 ; de un seno y una dientes de sierra. Se almacenan en memoria
@@ -104,36 +104,36 @@ sawt_loop:
         nop                             ; Para que se "recupere" el DAC
         nop
         rjmp    sawt_loop
-		
+
 ;******************************************************************
 ; signal_out_square: Genera una funcion cuadrada
 ; y va enviando las muestras hacia el DAC.
 ;******************************************************************
 
 signal_out_square:
-	ldi tmp,0xFF
-	out SIGNAL_DDR,tmp
+	ldi     tmp, 0xFF
+	out     SIGNAL_DDR, tmp
 square_loop:
-	clr tmp		;limpio tmp para usarlo
+	clr     tmp		        ; Limpio tmp para usarlo
 loop_high:
-	ldi tmp,0xFF
-	out SIGNAL_PORT,tmp 
-	ldi tmp2,delay
-delay_high:	
-	dec tmp2
-	brne delay_high		;Si tmp es distinto de cero vuelve a hacer delay
-	cpi tmp,maxAmp		;comparo con maxAmp
-	BRCS loop_high			;si se setea el carry sigo en este loop
+	ldi     tmp, 0xFF
+	out     SIGNAL_PORT, tmp
+	ldi     tmp2, DELAY_FREQ
+delay_high:
+	dec     tmp2
+	brne    delay_high		; Si tmp2 != 0 entonces vuelve a hacer delay
+	cpi     tmp, MAX_AMPLITUDE	; Comparo con MAX_AMPLITUDE
+	BRCS    loop_high		; Si se setea el carry sigo en este loop
 loop_low:
-	ldi tmp,0
-	out SIGNAL_PORT,tmp
-	ldi tmp2,delay
+	ldi     tmp, 0
+	out     SIGNAL_PORT, tmp
+	ldi     tmp2, DELAY_FREQ
 delay_low:
 
-	dec tmp2
-	brne delay_low		;Si rmp es distinto de cero vuelve a hacer delay
-	brne loop_low		;si se setea el carry sigo en este loop
-	rjmp signal_out_square		;termina y vuelve a empezar
+	dec     tmp2
+	brne    delay_low		; Si tmp2 != 0 entonces vuelve a hacer delay
+	brne    loop_low		; Si se setea el carry sigo en este loop
+	rjmp    signal_out_square	; Termina y vuelve a empezar
 
 ;******************************************************************
 ; signal_out_triangle: Genera una funcion triangular
@@ -141,30 +141,29 @@ delay_low:
 ;******************************************************************
 
 signal_out_triangle:
-	ldi tmp,0xFF 
-	out SIGNAL_DDR,tmp
+	ldi     tmp, 0xFF
+	out     SIGNAL_DDR, tmp
 triangle_loop:
-	clr tmp		;limpio tmp para usarlo
+	clr     tmp		        ; Limpio tmp para usarlo
 loop_up:
-	out SIGNAL_PORT,tmp 
-	ldi tmp2,delay
-delay_up:	
-	dec tmp2
-	brne delay_up		;Si tmp es distinto de cero vuelve a hacer delay
-	inc tmp				; incremento tmp
-	cpi tmp,maxAmp		;comparo con maxAmp
-	brcs loop_up			;si se setea el carry sigo en este loop
+	out     SIGNAL_PORT, tmp
+	ldi     tmp2, DELAY_FREQ
+delay_up:
+	dec     tmp2
+	brne    delay_up		; Si tmp2 != 0 entonces vuelve a hacer delay
+	inc     tmp			; Incremento tmp
+	cpi     tmp, MAX_AMPLITUDE	; Comparo con MAX_AMPLITUDE
+	brcs    loop_up		        ; Si se setea el carry sigo en este loop
 loop_down:
-	out SIGNAL_PORT,tmp
-	ldi tmp2,delay
+	out     SIGNAL_PORT, tmp
+	ldi     tmp2, DELAY_FREQ
 delay_down:
+	dec     tmp2
+	brne    delay_down		; Si tmp != 0 entonces vuelve a hacer delay
+	dec     tmp			; Disminuyo tmp
+	brne    loop_down		; Si se setea el carry sigo en este loop
+	rjmp    signal_out_triangle     ; Termina y vuelve a empezar
 
-	dec tmp2
-	brne delay_down		;Si rmp es distinto de cero vuelve a hacer delay
-	dec tmp				;disminuyo tmp
-	brne loop_down		;si se setea el carry sigo en este loop
-	RJMP signal_out_triangle		;termina y vuelve a empezar
-	
 ;******************************************************************
 ; signal_out_sawt: Recorre las muestras precargadas en memoria ROM
 ; correspondientes a una dientes de sierra y las va enviando

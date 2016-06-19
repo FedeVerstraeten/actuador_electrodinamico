@@ -2,7 +2,7 @@
 ; Materia......: Laboratorio de Microprocesadores.
 ; Curso........: Campigglio - Stola
 ; Fecha inicio.: 14/03/2016
-; Fecha entrega: 20/06/2016
+; Fecha entrega: 21/06/2016
 ; Autores......:
 ;		 Ezequiel Martín Zarza
 ;		 Santiago Roman
@@ -24,9 +24,9 @@
 ; CONSTANTES
 ;******************************************************************
 
-        .equ    DAC_PIN         =       0 ; Pin del DAC_PORT correspondiente a la entrada
-        .equ    DAC_DDR         =       DDRA
-        .equ    DAC_PORT        =       PORTA
+        .equ    ADC_PIN         =       0 ; Pin del ADC_PORT correspondiente a la entrada
+        .equ    ADC_DDR         =       DDRA
+        .equ    ADC_PORT        =       PORTA
 
 ;******************************************************************
 ; intensity_init: Inicializa el ADC.
@@ -42,22 +42,24 @@ intensity_init:
         ldi     tmp, (1<<REFS0) ; Referencia = AVCC (=VCC)
         out     ADMUX, tmp
         ; REFS1:REFS0 - reference voltage (segun micro)
-        ; MUX2:MUX0   - DAC_PIN select
+        ; MUX2:MUX0   - ADC_PIN select
         ret
 
 
 ;******************************************************************
-; intensity_loop: Rutina que va leyendo indefinidamente el
-; valor analógico de tensión que se encuentra en el pin ADC_PIN
-; y lo tranforma en un valor digital. Luego se muestra el valor
-; medido en el display.
+; intensity_start, intensity_loop: Rutina que va leyendo
+; indefinidamente el valor analógico de tensión que se encuentra
+; en el pin ADC_PIN y lo tranforma en un valor digital. Luego se
+; muestra el valor medido en el display.
 ;******************************************************************
 intensity_start:
+        ; Limpiamos la pantalla del display y
+        ; mostramos en la primera linea
+        ; el string strIntnstymed
         SetLCDClearAtHome
         ldi 	zh, high(strIntnstyMed << 1)
 	ldi 	zl, low(strIntnstyMed << 1)
         rcall   lcd_putstring
-
 
 intensity_loop:
         rcall   wait5ms
@@ -135,11 +137,11 @@ intensity_loop:
 
         SecondLine
 
-        ldi     tmp, 0b00000000 ; Seteo los pines del puerto
-        out     DAC_DDR, tmp       ; A como entrada
+        ldi     tmp, 0b00000000         ; Seteo los pines del puerto
+        out     ADC_DDR, tmp            ; A como entrada
 
         ; Leer ADC
-        ldi     tmp, (1<<REFS0) | DAC_PIN ; Seteo channel
+        ldi     tmp, (1<<REFS0) | ADC_PIN ; Seteo channel
         out     ADMUX, tmp
         sbi     ADCSRA, ADSC              ; Empiezo conversion
 
@@ -163,15 +165,9 @@ wait_for_conv_finished:
         ; Volvemos al inicio de Z
 	ldi     Zh, high(buffer)
 	ldi 	Zl, low(buffer)
-        ; tmp3 es el indice
-	ldi     tmp3, 5
-        ; Vamos almacenando caracter a caracter en arg
-	ld	arg, Z+
-lcd_send_ascii:
-        LcdPutChar
-	ld	arg, Z+
-	dec     tmp3
-	cpi     tmp3, 0
-	brne    lcd_send_ascii
 
+        ; Mostramos los caracteres en el display
+        rcall   lcd_send_ascii
+
+        ; Volvemos a leer datos del ADC
         rjmp    intensity_loop
