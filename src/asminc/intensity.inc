@@ -160,7 +160,7 @@ wait_for_conv_finished:
         ; en las variables rBin1L y rBin1H en 5
         ; caracteres ASCII, los cuales se guardan
         ; en el puntero Z
-	rcall	Bin2ToAsc
+	rcall	bin_to_asc
 
         ; Volvemos al inicio de Z
 	ldi     Zh, high(buffer)
