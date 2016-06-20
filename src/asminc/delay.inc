@@ -56,13 +56,13 @@ delay_1s:
 ;******************************************************************
 
 delay_200ms:
-	ldi		tmp,0xFF
+	ldi	tmp, 0xFF
 delay200ms_outer:
-	ldi		tmp2, 0x0F
+	ldi	tmp2, 0x0F
 delay200ms_middle:
 	ldi 	tmp3, 0xFF
 delay200ms_inner:
-	dec		tmp3
+	dec	tmp3
 	brne 	delay200ms_inner
 	dec     tmp2
 	brne    delay200ms_inner
@@ -101,7 +101,7 @@ delay_1us:
 	push    tmp
 	ldi     tmp, 10
 delay_1us_outer:
-	nop								
+	nop
 	dec     tmp                     ; Cada vez que llega aca pasaron ~100ns
 	brne    delay_1us_outer
 	pop     tmp
