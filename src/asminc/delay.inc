@@ -99,11 +99,16 @@ delay_1ms_inner:
 
 delay_1us:
 	push    tmp
+	push    tmp2
 	ldi     tmp, 10
 delay_1us_outer:
-	nop
+	clr     tmp2
+delay_1us_inner:
+	dec     tmp2                    ; 1 ciclo
+	brne    delay_1us_inner         ; 1 ciclo
 	dec     tmp                     ; Cada vez que llega aca pasaron ~100ns
 	brne    delay_1us_outer
+	pop     tmp2
 	pop     tmp
 	ret
 

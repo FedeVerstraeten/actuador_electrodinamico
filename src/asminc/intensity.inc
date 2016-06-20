@@ -58,8 +58,10 @@ intensity_start:
         ; el string strIntnstyMed
         SetLCDClearAtHome
         ldi 	zh, high(strIntnstyMed << 1)
-	ldi 	zl, low(strIntnstyMed << 1)
+		ldi 	zl, low(strIntnstyMed << 1)
         rcall   lcd_putstring
+		
+		
 
 intensity_loop:
         rcall   delay_200ms
@@ -68,12 +70,13 @@ intensity_loop:
         ; del display, de esa manera se sobreescriben los valores
         ; de la medición anterior
         SecondLine
-        ldi     tmp, 0b00000000         ; Seteo los pines del puerto
+		ldi     tmp, 0b00000000         ; Seteo los pines del puerto
         out     ADC_DDR, tmp            ; A como entrada
         ; Leer ADC
         ldi     tmp, (1<<REFS0) | ADC_PIN ; Seteo channel
         out     ADMUX, tmp
         sbi     ADCSRA, ADSC              ; Empiezo conversion
+       
 
 wait_for_conv_finished:
         ; El bit ADSC se pone en bajo luego de terminar la conversión
