@@ -68,6 +68,7 @@ RESET:
 MAIN:
         ; Inicializamos las interrupciones
         rcall   interrupt_init
+
 	; Inicializamos el display
 	rcall	lcd_init
 
