@@ -33,7 +33,7 @@
 
 	.equ    MAX_AMPLITUDE   =       127 ; Amplitud Maxima
 
-	.equ    DELAY_FREQ      =       255 ; Delay, si aumenta el delay tendriamos frecuencias mas bajas
+	.equ    DELAY_FREQ      =       255 ; Si aumenta el delay tendriamos frecuencias mas bajas
 
 ;******************************************************************
 ; SIGNAL_TABLE: Diferentes muestras que componen a un período
