@@ -56,11 +56,14 @@ delay_1s:
 ;******************************************************************
 
 delay_200ms:
-	ldi	tmp, 2
+	ldi		tmp,0xFF
 delay200ms_outer:
-	ldi	tmp2, 100
+	ldi		tmp2, 0x0F
+delay200ms_middle:
+	ldi 	tmp3, 0xFF
 delay200ms_inner:
-	rcall   delay_1ms
+	dec		tmp3
+	brne 	delay200ms_inner
 	dec     tmp2
 	brne    delay200ms_inner
 	dec	tmp
