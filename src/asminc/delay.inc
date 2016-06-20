@@ -56,7 +56,7 @@ delay_1s:
 ;******************************************************************
 
 delay_200ms:
-	ldi	tmp, 10
+	ldi	tmp, 2
 delay200ms_outer:
 	ldi	tmp2, 100
 delay200ms_inner:
@@ -96,16 +96,11 @@ delay_1ms_inner:
 
 delay_1us:
 	push    tmp
-	push    tmp2
 	ldi     tmp, 10
 delay_1us_outer:
-	clr     tmp2
-delay_1us_inner:
-	dec     tmp2                    ; 1 ciclo
-	brne    delay_1us_inner         ; 1 ciclo
+	nop								
 	dec     tmp                     ; Cada vez que llega aca pasaron ~100ns
 	brne    delay_1us_outer
-	pop     tmp2
 	pop     tmp
 	ret
 

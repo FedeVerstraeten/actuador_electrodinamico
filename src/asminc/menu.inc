@@ -20,10 +20,6 @@
 ;******************************************************************
 
 menu_init:
-	; Inicializo flags
-	;; ldi     Yh, 0x00
-	;; ldi 	Yl, 0x01
-	;; ldi     tmp, 1
 	; Posición inicial del menu
 	ldi	Xh, high(Matlab<<1)
 	ldi	Xl, low(Matlab<<1)
