@@ -1,6 +1,40 @@
 \section{Descripción}
 \label{sec:descrip}
-En este caso particular, dado que se utiliza un esquema interferométrico como el de Michelson, puede no ser necesario contar con transductores tan precisos como los piezoeléctricos, pudiéndose optar por alternativas que resulten más económicas.
-De esta manera, en el presente trabajo nos planteamos obtener un método de transducción eléctrica-mecánica a partir de dispositivos de uso común cuyo sistema de control incluya la posibilidad de definir el tipo de desplazamiento que se desea utilizar por medio de Matlab. Particularmente, se buscará generar el desplazamiento de un espejo conectándolo a un parlante o altavoz, el cual será controlado por Matlab mediante la presencia de un microcontrolador como intermediario entre estos.
 
-Se comenzará por analizar el sistema interferométrico utilizado para poder definir los parámetros más significativos de control que se requieren (desplazamiento necesario, aspectos mecánicos y de diseño, opciones de control, etc.). Finalmente, una vez diseñados e implementados, se caracterizarán mecánicamente con la misma instrumentación interferométrica para obtener una evaluación de la performance del sistema completo.
+Retomando la ecuación \ref{eq:prin}, si en lugar de colocar un espejo fijo ($M_n$) colocamos un espejo móvil, la expresión \ref{eq:prin} ahora se puede escribir como:
+
+\begin{equation}
+I(t) = A + B \enspace cos[\delta L(t) + \Delta \phi]
+\label{eq:prin_mov}
+\end{equation}
+
+donde $\Delta \phi$ corresponde a la variación de camino óptico introducido por el nuevo espejo móvil. Si logramos controlar el movimiento del espejo móvil, es posible recuperar la información de fase $\delta L(t)$. Acorde a \cite{ob:hechtoptics}, $\Delta \phi$ puede expresarse como:
+
+\begin{equation}
+\Delta \phi(t) = \frac{4 \pi}{\lambda_0} d_M (t)
+\end{equation}
+
+Dada una determinada posición inicial del espejo supongamos que introducimos ''saltos'' de desplazamiento los cuales conllevan obtener ''saltos'' de fase $\Delta \phi_i = 0$; $\Delta \phi_2 = \pi / 2$, $\Delta \phi_3 = \pi$; $\Delta \phi_4 = 3\pi / 4$. Las intensidades obtenidas para estos saltos son:
+
+\begin{gather}
+I_1=A + B \enspace cos[\delta L(t) + 0] \\
+I_2=A + B \enspace cos[\delta L(t) + \frac{\pi}{2}] \\
+I_3=A + B \enspace cos[\delta L(t) +\pi] \\
+I_4=A + B \enspace cos[\delta L(t) + \frac{3\pi}{2}] 
+\end{gather}
+
+Es posible recuperar $\delta L(t)$ como:
+\begin{equation}
+\delta L(t) = \arctan\left[\frac{I_2 (t) - I_4 (t)}{I_1 (t) - I_3 (t)}\right]
+\end{equation}
+
+Esto es posible gracias al hecho de poder controlar la fase introducida por el espejo móvil $M_n$. De esta forma es posible obtener $\delta L (t)$ introduciendo por otro tipo de desfasaje (ya sean discretos o continuos). Este tipo de técnicas se denominan $PSI$ (\textit{Phase Shifting Interferometry}).
+
+Por otro lado, como ya hemos mencionado, es posible determinar los parámetros del interferograma (A y B) para una figura de interferencia arbitraria, utilizando el movimiento del espejo móvil. De esta forma es posible compensar el interferómetro cuando el mismo se vé afectado por fluctuaciones aleatorias de intensidad debido a distintos fenómenos (turbulencias, vibraciones, etc.).
+
+En general se utilizan transductores piezoeléctricos, donde además es necesario abrir su sistema de control y tienen un costo aproximado de cientos de dólares.
+
+En este caso particular, dado que se utiliza un esquema interferométrico como el de Michelson, puede no ser necesario contar con transductores tan precisos como los piezoeléctricos, pudiéndose optar por alternativas que resulten más económicas.
+De esta manera, en el presente trabajo nos planteamos obtener un método de transducción eléctrica-mecánica a partir de dispositivos de uso común cuyo sistema de control incluya tanto la posibilidad de definir el tipo de desplazamiento que se desea utilizar por medio de Matlab, como también poder definirlo desde el microcontrolador, mediante un display y pulsadores.
+
+Particularmente, se buscará generar el desplazamiento de un espejo conectándolo a un parlante o altavoz, el cual podría ser controlado por Matlab mediante la presencia de un microcontrolador como intermediario entre estos, como también desde el microcontrolador directamente. Esta dualidad del microcontrolador para trabajar desde él mismo o como intermediario le brinda al sistema mayor ''portabilidad''.

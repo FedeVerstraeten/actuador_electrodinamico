@@ -1,3 +1,37 @@
 \section{Especificaciones}
 \label{sec:especif}
-Sed vel commodo ex. Ut rhoncus pretium turpis at tincidunt. Aliquam tincidunt, nunc id fringilla pulvinar, erat justo tristique quam, sit amet sollicitudin ante eros sit amet ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla eget leo mauris. In dui nisl, consequat id volutpat sed, ultrices in mauris. In lobortis eget diam in mattis. Morbi mattis sapien at sollicitudin commodo. In consequat, ipsum et vestibulum iaculis, enim arcu imperdiet massa, nec faucibus orci ipsum quis odio. Ut sed luctus lacus. Aliquam vel leo nec mauris blandit tristique. Praesent eleifend leo id diam tincidunt, at hendrerit metus tincidunt. Fusce a ultricies nulla, eget volutpat neque. Ut fermentum augue id magna interdum, ac auctor est hendrerit. Sed auctor, erat nec elementum tristique, purus diam tempus tortor, eget hendrerit arcu sem at mauris. 
+En cuanto a lo que se refiere al hardware propio del proyecto, es decir el parlante que se encarga de transformar energía eléctrica y producir un desplazamiento físico; tras realizar diferentes pruebas con varios modelos de parlantes elegimos aquel que mostró una mayor respuesta lineal en conjunto con un desplazamiento en una sola dirección . Esto último es de especial importancia ya que existe la posibilidad de que algunos parlantes generen un desplazamiento oblicuo.
+
+El elemento central de control del actuador electrodinámico es el microcontrolador ATMega32. La elección de este tuvo como premisa fundamental de que disponga de la suficiente memoria volátil (RAM) y la necesaria para alojar el programa que ejecutará finalmente (ROM).\\
+Estas consideraciones se deben a que en este trabajo utilizamos memoria ROM para almacenar las Lookup Tables de la función seno pre cargada (es decir, se encuentran guardadas una determinada cantidad de muestras de cada función que en total forman un período de las mismas). Por otro lado, la memoria RAM se utiliza principalmente para almacenar las muestras correspondientes a la señal generada en Matlab, la cual se exporta al microcontrolador por medio del protocolo de comunicación serie USART. \\
+Desde ya, dado que solamente vamos a utilizar señales periódicas, es posible generar una señal continua a lo largo de un período de tiempo contando únicamente con las muestras correspondientes a un período.
+
+Otro punto importante de la elección del microcontrolador en cuestión es que debe contar con la cantidad suficiente pines I/O para poder relacionarse con los distintos periféricos externos que conforman a este proyecto. A continuación mostramos una tabla con la cantidad de pines que requiere cada parte del proyecto:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{ll}
+    \toprule
+    Elemento & \# pines \\
+    \midrule
+    Parlante (DAC) & 8 \\
+    Display & 7 \\
+    Pulsadores & 4 \\
+	Matlab/USART ($T_X$ y $R_X$)  & 2 \\
+	Módulo de detección (ADC) & 1 \\
+    Cristal & 2 \\
+    \midrule
+    Total & 24 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Análisis de la cantidad de pines I/O requeridos para cada parte del programa.}
+  \label{table:pines}
+\end{table}
+
+La versión final del proyecto se presenta ensamblada sobre una placa experimental.\\
+La fuente de alimentación es provista por una placa conversora USB/Serie, la cual cuenta con salidas de \SI{5}{\volt} y \SI{3.3}{\volt}. Esto permite evitar el uso de una fuente separada para poder alimentar al microcontrolador.\\
+
+Al iniciar el programa se muestra el menú principal en el display LCD, por el cual puede desplazarse utilizando los botones \textit{Arriba} y \textit{Abajo}. Para  seleccionar alguna de las opciones se utiliza el botón \textit{Enter} y para regresar al menú principal el restante, el cual ejecuta una interrupción externa y regresa al menú principal.\\
+\\
+
+Por último, se utiliza un módulo de detección de intensidad, el cual permite medir este parámetro y mostrar un promedio del mismo en el display. El haz de luz al cual se calcula la intensidad sale de colocar un divisor de haz extra en la última rama del interferómetro (ver imágen \ref{fig:interferometro}), a partir de la cual queda colocado en una sección el detector que va conectado al osciloscopio que ya se mencionó anteriormente, y en la otra el módulo de detección que esta conectado al microcontrolador.

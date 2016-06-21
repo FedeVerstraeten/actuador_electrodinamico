@@ -1,0 +1,8 @@
+\section{Conclusiones}
+\label{sec:conclusiones}
+
+Primeramente se debe concluir que fue posible implementar correctamente en el proyecto todas las funciones que se plantearon en el informe de anteproyecto. Esto es, crear un menu para poder desplazarse a través de las diferentes opciones que modifican el modo de funcionamiento del dispositivo. Se puede seleccionar entre generar funciones seno o rampa precargadas en el microcontrolador, tomar una función enviada por medio del protocolo USART desde Matlab, y mostrar en el display la intensidad medida en el módulo de detección.
+
+Entre una de las cosas más importantes que se aprendieron durante la realización de este proyecto es la correcta utilización de las hojas de datos que provee Atmel para sus microcontroladores AVR. Esto es de vital importancia ya que muchas veces existen errores que se pueden solucionar entendiendo cómo fue diseñado el microcontrolador. Un ejemplo de esto es que el microcontrolador ATMega32 cuenta activado por defecto la funcionalidad de debuggeo JTAG, la cual impide el correcto uso del puerto C y en caso de ser necesario hay que desactivar JTAG por medio del seteo de fusibles.
+
+Este proyecto nos permitió aprender a utilizar diversas utilidades de los microcontroladores, entre las que se destacan el protocolo de comunicación serie USART, el conversor ADC, la configuración de interrupciones y el modo de comunicación con un display LCD externo.

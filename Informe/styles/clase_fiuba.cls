@@ -25,7 +25,7 @@
 	citecolor=black,
 	urlcolor=black]{hyperref}
 \RequirePackage[pdftex]{graphicx}
-\RequirePackage{cite}
+%\RequirePackage{cite} % Bibliografia
 \RequirePackage{float}
 \RequirePackage{anysize}
 \RequirePackage[hang,margin=3ex,small,bf,labelsep=endash]{caption}
@@ -55,6 +55,7 @@
 %\RequirePackage[usenames,dvipsnames]{color}
 \RequirePackage[european,cuteinductors,smartlabels,americanresistor,americanvoltages]{circuitikz}
 \RequirePackage{pdfpages}
+\RequirePackage{biblatex}
 
 
 
@@ -143,46 +144,3 @@
 
 \definecolor{ggreen}{HTML}{9BBB59}
 \definecolor{rred}{HTML}{C0504D}
-
-% Cosas Circuitikz
-\usetikzlibrary{calc}
-\usetikzlibrary{patterns}
-\ctikzset{bipoles/thickness=1}
-\ctikzset{bipoles/length=0.8cm}
-\ctikzset{bipoles/diode/height=.375}
-\ctikzset{bipoles/diode/width=.3}
-\ctikzset{tripoles/thyristor/height=.8}
-\ctikzset{tripoles/thyristor/width=1}
-\ctikzset{bipoles/vsourceam/height/.initial=.7}
-\ctikzset{bipoles/vsourceam/width/.initial=.7}
-\tikzstyle{every node}=[font=\small]
-\tikzset{
-	rarrow/.style={->, >=latex', shorten >=1pt,color=blue},
-	varrow/.style={->, >=latex', shorten >=1pt,color=red},
-}
-
-\makeatletter
-\ctikzset{lx/.code args={#1 and #2}{ 
-  \pgfkeys{/tikz/circuitikz/bipole/label/name=\parbox{0.7cm}{ \centering #1  \\ #2}}
-    \ctikzsetvalof{bipole/label/unit}{}
-    \ifpgf@circ@siunitx 
-        \pgf@circ@handleSI{#2}
-        \ifpgf@circ@siunitx@res 
-            \edef\pgf@temp{\pgf@circ@handleSI@val}
-            \pgfkeyslet{/tikz/circuitikz/bipole/label/name}{\pgf@temp}
-            \edef\pgf@temp{\pgf@circ@handleSI@unit}
-            \pgfkeyslet{/tikz/circuitikz/bipole/label/unit}{\pgf@temp}
-        \else
-        \fi
-    \else
-    \fi
-}}
-\ctikzset{lx^/.style args={#1 and #2}{ 
-    lx=#2 and #1,
-    \circuitikzbasekey/bipole/label/position=90 } 
-}
-\ctikzset{lx_/.style args={#1 and #2}{ 
-    lx=#1 and #2,
-    \circuitikzbasekey/bipole/label/position=-90 } 
-}
-\makeatother

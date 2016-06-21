@@ -1,5 +1,9 @@
+% ---------------------------------------------------------------
+% Incluyo clase personalizada
 \documentclass[a4paper]{styles/clase_fiuba}
 
+% ---------------------------------------------------------------
+% Configuracion caratula
 \newcommand{\codigoMateria}{66.09 / 86.07}
 \newcommand{\nombreMateria}{Laboratorio de Microprocesadores}
 
@@ -13,12 +17,15 @@
 \usepackage{styles/estilo_fiuba}
 
 % ---------------------------------------------------------------
+% Archivos bibliografia
+\addbibresource{bibliografia.bib}
+
+% ---------------------------------------------------------------
 % Inicio documento
 \begin{document}
-\nocite{*}
 % ---------------------------------------------------------------
 % Caratula e índice
-\includepdf[pages={1}]{caratula.pdf}
+\includepdf[pages={1}]{Caratula_Informe_Final.pdf}
 \clearpage
 
 \pagenumbering{Roman}
@@ -42,16 +49,17 @@
 
 \input{6diag_flujo}
 
-\input{7plan_trabajo}
+\input{7esquem}
 
 \input{8componentes}
 
-\include{9fact_exito}
+\input{9result}
+
+\input{10concl}
 
 % --------------------------------------------------
 % Bibliografías
-%\bibliography{biblio}{}
-%\bibliographystyle{plain}
+\printbibliography
 %\clearpage
 % --------------------------------------------------
 % Fin del informee
