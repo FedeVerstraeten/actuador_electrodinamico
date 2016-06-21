@@ -38,8 +38,8 @@ comm_start:
         ldi     handshk, 0x00
         ; Muestro en el display "Esperando handshake"
         SetLcdClearAtHome
-        ldi     zh, high(strCommIdle)
-        ldi     zl, low(strCommIdle)
+        ldi     zh, high(strCommIdle<<1)
+        ldi     zl, low(strCommIdle<<1)
         rcall   lcd_putstring
         rcall   usart_recieve
         mov     tmp, rtn
@@ -64,8 +64,8 @@ comm_idle:
 comm_loop_start:
         ; Muestro en el display "Guardando muestras"
         SetLcdClearAtHome
-        ldi     zh, high(strCommStore)
-        ldi     zl, low(strCommStore)
+        ldi     zh, high(strCommStore<<1)
+        ldi     zl, low(strCommStore<<1)
         rcall   lcd_putstring
         ; Inicializo el puntero con el que me voy moviendo
         ; en la memoria en el punto en el que empieza la memoria

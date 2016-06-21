@@ -196,11 +196,7 @@ opt_intnsty:
 ; Generación funciones precargadas.
 ;******************************************************************
 gen_matlab:
-        SetLcdClearAtHome
-        ldi 	zh, high(strMatlab << 1)
-	ldi 	zl, low(strMatlab << 1)
-        rcall   lcd_putstring
-	rjmp	signal_out_matlab
+        rjmp    comm_start
         rjmp    EndProgram
 
 gen_sin:
