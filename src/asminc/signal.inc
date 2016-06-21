@@ -74,6 +74,8 @@ matlab_loop:
         ;; rcall   signal_check_end_sample
         CheckSignalEnd matlab_loop_continue, signal_out_matlab
 matlab_loop_continue:
+        ;; mov     arg, tmp
+        ;; rcall   usart_transmit
         out     SIGNAL_PORT, tmp
         mov     tmp, tmp2
         rjmp    matlab_loop

@@ -96,7 +96,11 @@ press_enter:
 	rjmp	jumper
 
 press_interrupt:
-        rjmp RESET
+        clr     tmp
+        clr     tmp2
+        clr     tmp3
+        clr     tmp4
+        rjmp    RESET
 
 ;******************************************************************
 ; fstline_dsp: First Line String Display '>'
