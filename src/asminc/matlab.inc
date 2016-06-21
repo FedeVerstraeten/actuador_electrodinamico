@@ -90,6 +90,7 @@ comm_loop:
         mov     tmp2, rtn
         rcall   comm_check_state
         rcall   comm_mem_write
+        mov     tmp, tmp2
         rjmp    comm_loop
 
 ;******************************************************************
