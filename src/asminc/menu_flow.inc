@@ -181,6 +181,11 @@ opt_sawt:
 	ldi	Xl, low(Sawtooth<<1)
 	rjmp	show_menu
 
+opt_tri:
+	ldi	Xh, high(Triangle<<1)
+	ldi	Xl, low(Triangle<<1)
+	rjmp	show_menu
+
 opt_intnsty:
 	ldi	Xh, high(Intnsty<<1)
 	ldi	Xl, low(Intnsty<<1)
@@ -195,6 +200,7 @@ gen_matlab:
         ldi 	zh, high(strMatlab << 1)
 	ldi 	zl, low(strMatlab << 1)
         rcall   lcd_putstring
+	rjmp	signal_out_matlab
         rjmp    EndProgram
 
 gen_sin:
@@ -202,6 +208,7 @@ gen_sin:
         ldi 	zh, high(strSin << 1)
 	ldi 	zl, low(strSin << 1)
         rcall   lcd_putstring
+	rjmp	signal_out_sine
         rjmp    EndProgram
 
 gen_square:
@@ -209,6 +216,7 @@ gen_square:
         ldi 	zh, high(strSquare << 1)
 	ldi 	zl, low(strSquare << 1)
         rcall   lcd_putstring
+	rjmp	signal_out_square
         rjmp    EndProgram
 
 
@@ -217,6 +225,15 @@ gen_sawt:
         ldi 	zh, high(strSawt << 1)
 	ldi 	zl, low(strSawt << 1)
         rcall   lcd_putstring
+	rjmp	signal_out_sawt
+        rjmp    EndProgram
+
+gen_tri:
+	SetLcdClearAtHome
+        ldi 	zh, high(strTri << 1)
+	ldi 	zl, low(strTri << 1)
+        rcall   lcd_putstring
+	rjmp	signal_out_triangle
         rjmp    EndProgram
 
 med_intnsty:

@@ -83,9 +83,11 @@ Sine: .db high(opt_matlab),low(opt_matlab),high(opt_square),low(opt_square),high
 
 Square: .db high(opt_sin),low(opt_sin),high(opt_sawt),low(opt_sawt),high(gen_square),low(gen_square),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strSquare<<1),low(strSquare<<1),high(strSawt<<1),low(strSawt<<1)
 
-Sawtooth:.db high(opt_square),low(opt_square),high(opt_intnsty),low(opt_intnsty),high(gen_sawt),low(gen_sawt),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strSawt<<1),low(strSawt<<1),high(strIntnsty<<1),low(strIntnsty<<1)
+Sawtooth:.db high(opt_square),low(opt_square),high(opt_tri),low(opt_tri),high(gen_sawt),low(gen_sawt),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strSawt<<1),low(strSawt<<1),high(strTri<<1),low(strTri<<1)
 
-Intnsty: .db high(opt_sawt),low(opt_sawt),high(opt_matlab),low(opt_matlab),high(med_intnsty),low(med_intnsty),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strIntnsty<<1),low(strIntnsty<<1),high(strMatlab<<1),low(strMatlab<<1)
+Triangle:.db high(opt_sawt),low(opt_sawt),high(opt_intnsty),low(opt_intnsty),high(gen_tri),low(gen_tri),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strTri<<1),low(strTri<<1),high(strIntnsty<<1),low(strIntnsty<<1)
+
+Intnsty: .db high(opt_tri),low(opt_tri),high(opt_matlab),low(opt_matlab),high(med_intnsty),low(med_intnsty),high(fstline_dsp),low(fstline_dsp),high(sndline_dsp),low(sndline_dsp),high(strIntnsty<<1),low(strIntnsty<<1),high(strMatlab<<1),low(strMatlab<<1)
 
 ; Lista de mensajes que se muestran por display
 ; Algunos tienen doble ENDSTR, esto es porque la memoria
@@ -99,13 +101,17 @@ strSin:	        .db 	"Seno",ENDSTR,ENDSTR
 strSquare:	.db	"Cuadrada",ENDSTR,ENDSTR
 strSawt:	.db	"Diente sierra",ENDSTR
 strIntnsty:	.db	"Medir intensidad",ENDSTR,ENDSTR
+strTri:         .db	"Triangular",ENDSTR,ENDSTR
 
 strIntnstyMed:  .db	"Intensidad:",ENDSTR
 
-strCommIdle:    .db     "Esperando handshake",ENDSTR
-strCommStore:   .db     "Guardando muestras",ENDSTR,ENDSTR
+strCommIdle:    .db     "Espera handshake",ENDSTR,ENDSTR
+strCommStore:   .db     "Guardar muestras",ENDSTR,ENDSTR
 
 strSignalOut:   .db     "Enviando senal",ENDSTR,ENDSTR
+
+strWelcome:	.db	"**Bienvenidos**",ENDSTR
+strGlomae:	.db	"**GLOmAe 2016**",ENDSTR
 
 ; Lista de funciones precargadas en memoria
 ; (tal vez convendría ponerlas en un archivo aparte pero no se cómo

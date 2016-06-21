@@ -20,6 +20,9 @@
 ;******************************************************************
 
 menu_init:
+	; Mensaje bienvenida
+	rcall	menu_welcome
+	rcall   delay_1ms
 	; Posición inicial del menu
 	ldi	Xh, high(Matlab<<1)
 	ldi	Xl, low(Matlab<<1)
@@ -45,4 +48,18 @@ putstring_loop:
 	lpm	arg, Z+
 	cpi     arg, ENDSTR
 	brne    putstring_loop
+	ret
+
+;*****************************************************************
+; menu_welcome: Muestra de mensaje de bienvenida por pantalla.
+;*****************************************************************
+menu_welcome:
+	SetLCDClearAtHome
+	ldi 	zh, high(strWelcome << 1)
+	ldi 	zl, low(strWelcome << 1)
+	rcall   lcd_putstring
+	Secondline
+	ldi 	zh, high(strGlomae << 1)
+	ldi 	zl, low(strGlomae << 1)
+	rcall   lcd_putstring
 	ret
