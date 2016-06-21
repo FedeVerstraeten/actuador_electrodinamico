@@ -148,7 +148,7 @@ comm_finish:
         pop tmp2
         pop tmp2
 
-        rjmp    signal_out_matlab
+        rjmp    signal_out_matlab_start
 
 ;******************************************************************
 ; comm_mem_write: Almacena en memoria los datos correspondientes a una

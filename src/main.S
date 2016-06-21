@@ -73,10 +73,10 @@ MAIN:
 	rcall	lcd_init
 
 	; Inicializamos la comunicación serie
-	;; rcall 	usart_init
+	rcall 	usart_init
 
         ; Inicializamos el DAC
-        ;; rcall   signal_init
+        rcall   signal_init
 
         ; Inicializamos el ADC
         rcall   intensity_init

@@ -60,7 +60,11 @@ signal_init:
 ; RAM correspondientes a una señal periódica armada en matlab
 ; y las va enviando hacia el DAC.
 ;******************************************************************
-
+signal_out_matlab_start:
+        SetLCDClearAtHome
+        ldi     Zh, high(strMatlab <<1)
+        ldi     Zl, low(strMatlab <<1)
+        rcall   lcd_putstring
 signal_out_matlab:
         ldi     Zh, high(SRAM_START)
         ldi     Zl, low(SRAM_START)
