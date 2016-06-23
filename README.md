@@ -25,7 +25,7 @@ https://github.com/DarkSector/AVR/tree/master/asm/include
 * Number format conversion AVR-Assembler
 http://www.avr-asm-tutorial.net/avr_en/calc/CONVERSION.html
 
-* Programar en C micros de AVR [Documentación oficial AVR] (http://www.atmel.com/Images/doc1234.pdf)
+* Programar en C micros de AVR [Documentación oficial AVR](http://www.atmel.com/Images/doc1234.pdf)
 
 ## Links e Info de Interés ##
 
