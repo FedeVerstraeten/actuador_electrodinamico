@@ -60,12 +60,12 @@ transmit_loop:
         in      tmp, UCSRA
         sbrs    tmp, UDRE
         rjmp    transmit_loop
-        ;; Almacenamos el byte recibido
+        ;; Almacenamos el byte a transmitir
         out     UDR, arg
         pop     tmp
         ret
 
-;******************************************************************
+;********************************************************h**********
 ; usart_recieve: Recibe un byte utilizando comunicación serie.
 ;******************************************************************
 usart_recieve:
